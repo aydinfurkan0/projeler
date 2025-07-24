@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Cam Fabrikası - Otomotiv, endüstriyel ve dekoratif cam çözümleri"
+    />
+    <meta
+      name="keywords"
+      content="cam fabrikası, otomotiv camları, dekoratif camlar, endüstriyel camlar"
+    />
+    <title>Cam Fabrikası</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="light">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="#home"
+        ><i class="fas fa-home"></i>
+        <span data-lang="nav-home">Ana Sayfa</span></a
+      >
+      <a href="#about"
+        ><i class="fas fa-info-circle"></i>
+        <span data-lang="nav-about">Hakkımızda</span></a
+      >
+      <a href="#products"
+        ><i class="fas fa-box"></i>
+        <span data-lang="nav-products">Ürünler</span></a
+      >
+      <a href="#services"
+        ><i class="fas fa-cogs"></i>
+        <span data-lang="nav-services">Hizmetler</span></a
+      >
+      <a href="#contact"
+        ><i class="fas fa-envelope"></i>
+        <span data-lang="nav-contact">İletişim</span></a
+      >
+      <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img src="img/logo/furkatech75.svg" alt="Site Logo" class="logo-img" />
+        </div>
+        <i class="fas fa-bars nav-toggle"></i>
+        <nav>
+          <ul>
+            <li><a href="#home" data-lang="nav-home">Ana Sayfa</a></li>
+            <li><a href="#about" data-lang="nav-about">Hakkımızda</a></li>
+            <li><a href="#products" data-lang="nav-products">Ürünler</a></li>
+            <li><a href="#services" data-lang="nav-services">Hizmetler</a></li>
+            <li><a href="#contact" data-lang="nav-contact">İletişim</a></li>
+          </ul>
+        </nav>
+        <div class="theme-lang">
+          <button id="theme-toggle" title="Gece/Gündüz Modu">
+            <i class="fas fa-moon"></i>
+          </button>
+          <select id="lang-switch">
+            <option value="tr">TR</option>
+            <option value="en">EN</option>
+            <option value="de">DE</option>
+            <option value="ru">RU</option>
+            <option value="ar">AR</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section id="home" class="hero">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=60');
+            "
+          >
+            <div class="hero-content">
+              <h1 data-lang="hero-title-1">Otomotivde Güven ve Dayanıklılık</h1>
+              <p data-lang="hero-text-1">
+                Otobüs, minibüs, tekne ve trenler için yüksek kaliteli camlar.
+              </p>
+              <a href="#products" class="btn" data-lang="hero-btn-1">Keşfet</a>
+            </div>
+          </div>
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1600&q=60');
+            "
+          >
+            <div class="hero-content">
+              <h1 data-lang="hero-title-2">
+                Estetik ve Modern Dekoratif Camlar
+              </h1>
+              <p data-lang="hero-text-2">
+                Serigraf baskılı camlarla mekanlarınıza şıklık katın.
+              </p>
+              <a href="#products" class="btn" data-lang="hero-btn-2">İncele</a>
+            </div>
+          </div>
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=60');
+            "
+          >
+            <div class="hero-content">
+              <h1 data-lang="hero-title-3">Endüstriyel Güç ve Performans</h1>
+              <p data-lang="hero-text-3">
+                Buzdolabı, fırın ve iş makinası camları için çözümler.
+              </p>
+              <a href="#products" class="btn" data-lang="hero-btn-3"
+                >Detaylar</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="about-img">
+        <img
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=60"
+          alt="Cam Fabrikası"
+          loading="lazy"
+        />
+      </div>
+      <div class="container">
+        <h2 data-lang="about-title">Hakkımızda</h2>
+        <div class="about-text">
+          <p data-lang="about-text-1">
+            2006 yılında kurulan firmamız, uzman kadrosu ve modern teknolojik
+            ekipmanlarıyla otomotiv, endüstriyel ve dekoratif cam üretiminde
+            liderdir.
+          </p>
+          <p data-lang="about-text-2">
+            Yurt içi ve yurt dışı pazarlarda müşteri memnuniyetini ön planda
+            tutarak, yüksek kaliteli cam ürünleri sunuyoruz.
+          </p>
+          <p data-lang="about-text-3">
+            Misyonumuz, dayanıklı, estetik ve çevre dostu cam ürünleri ile yaşam
+            alanlarınızı güzelleştirmektir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="products">
+      <div class="container">
+        <h2 data-lang="products-title">Ürünlerimiz</h2>
+        <div class="product-filter">
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            data-lang="filter-all"
+          >
+            Tümü
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="otomotiv"
+            data-lang="filter-otomotiv"
+          >
+            Otomotiv Camları
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="is-makinasi"
+            data-lang="filter-is-makinasi"
+          >
+            İş Makinası Camları
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="aydinlatma"
+            data-lang="filter-aydinlatma"
+          >
+            Aydınlatma Camları
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="dekoratif"
+            data-lang="filter-dekoratif"
+          >
+            Dekoratif Camlar
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="endustriyel"
+            data-lang="filter-endustriyel"
+          >
+            Endüstriyel Camlar
+          </button>
+        </div>
+        <div class="product-grid">
+          <div
+            class="product-card"
+            data-category="otomotiv"
+            data-product="otomotiv"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Otomotiv Camları"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-otomotiv-title">Otomotiv Camları</h3>
+              <p data-lang="product-otomotiv-text">
+                Otobüs, minibüs, panelvan, tekne, yat, gemi ve trenler için
+                dayanıklı camlar.
+              </p>
+              <button class="btn" data-modal="otomotiv" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="otomotiv"
+            data-product="kursun"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Kurşun Geçirmez Cam"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-kursun-title">Kurşun Geçirmez Camlar</h3>
+              <p data-lang="product-kursun-text">
+                Yüksek güvenlik için özel olarak tasarlanmış camlar.
+              </p>
+              <button class="btn" data-modal="kursun" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="otomotiv"
+            data-product="jaluzili"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Jaluzili Cam"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-jaluzili-title">Jaluzili Camlar</h3>
+              <p data-lang="product-jaluzili-text">
+                Gizlilik ve estetik için jaluzi entegre camlar.
+              </p>
+              <button class="btn" data-modal="jaluzili" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="is-makinasi"
+            data-product="traktor"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Traktör Kabin Camı"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-traktor-title">Traktör Kabin Camları</h3>
+              <p data-lang="product-traktor-text">
+                Dayanıklı ve güvenli traktör kabin camları.
+              </p>
+              <button class="btn" data-modal="traktor" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="is-makinasi"
+            data-product="forklift"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Forklift Kabin Camı"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-forklift-title">Forklift Kabin Camları</h3>
+              <p data-lang="product-forklift-text">
+                Endüstriyel kullanım için yüksek dayanıklılık.
+              </p>
+              <button class="btn" data-modal="forklift" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="aydinlatma"
+            data-product="spot"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Spot Aydınlatma Camı"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-spot-title">Spot Aydınlatma Camları</h3>
+              <p data-lang="product-spot-text">
+                Modern dekoratif aydınlatma için şeffaf ve estetik camlar.
+              </p>
+              <button class="btn" data-modal="spot" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="aydinlatma"
+            data-product="yol"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Yol Aydınlatma Camı"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-yol-title">Yol Aydınlatma Camları</h3>
+              <p data-lang="product-yol-text">
+                Dış mekanlar için dayanıklı aydınlatma camları.
+              </p>
+              <button class="btn" data-modal="yol" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="dekoratif"
+            data-product="dijital"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Dijital Baskılı Cam"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-dijital-title">Serigraf Baskılı Camlar</h3>
+              <p data-lang="product-dijital-text">
+                Mutfak, duşakabin ve dış cephe için özel baskılı camlar.
+              </p>
+              <button class="btn" data-modal="dijital" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="dekoratif"
+            data-product="satinaj"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Satinaj Dekoratif Cam"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-satinaj-title">
+                Satinaj Dekoratif Camlar
+              </h3>
+              <p data-lang="product-satinaj-text">
+                Mat ve şık görünüm için dekoratif camlar.
+              </p>
+              <button class="btn" data-modal="satinaj" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="endustriyel"
+            data-product="buzdolabi"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Endüstriyel Buzdolabı Camı"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-buzdolabi-title">
+                Endüstriyel Buzdolabı Camları
+              </h3>
+              <p data-lang="product-buzdolabi-text">
+                Soğuk hava depoları için dayanıklı camlar.
+              </p>
+              <button
+                class="btn"
+                data-modal="buzdolabi"
+                data-lang="product-btn"
+              >
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="endustriyel"
+            data-product="firin"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Fırın Kapak Camı"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-firin-title">Fırın Kapak Camları</h3>
+              <p data-lang="product-firin-text">
+                Yüksek ısıya dayanıklı fırın camları.
+              </p>
+              <button class="btn" data-modal="firin" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="endustriyel"
+            data-product="isitmali"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Isıtmalı Cam"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-isitmali-title">Isıtmalı Camlar</h3>
+              <p data-lang="product-isitmali-text">
+                Rezistans baskılı, ısıtmalı cam çözümleri.
+              </p>
+              <button class="btn" data-modal="isitmali" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="dekoratif"
+            data-product="balkon"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Cam Balkon Kapama"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-balkon-title">Cam Balkon Kapama</h3>
+              <p data-lang="product-balkon-text">
+                Modern ve pratik cam balkon sistemleri.
+              </p>
+              <button class="btn" data-modal="balkon" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+          <div
+            class="product-card"
+            data-category="dekoratif"
+            data-product="korkuluk"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=60"
+              alt="Cam Korkuluk"
+              loading="lazy"
+            />
+            <div class="product-card-content">
+              <h3 data-lang="product-korkuluk-title">Cam Korkuluklar</h3>
+              <p data-lang="product-korkuluk-text">
+                Estetik ve güvenli cam korkuluk sistemleri.
+              </p>
+              <button class="btn" data-modal="korkuluk" data-lang="product-btn">
+                Detaylar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 data-lang="services-title">Hizmetlerimiz</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <i class="fas fa-cut"></i>
+            <h3 data-lang="service-1-title">Özel Kesim</h3>
+            <p data-lang="service-1-text">
+              Otomotiv, dekoratif ve endüstriyel projeler için milimetrik
+              hassasiyetle cam kesim hizmetleri.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3 data-lang="service-2-title">Güvenlik Camları</h3>
+            <p data-lang="service-2-text">
+              Lamine, temperli ve kurşun geçirmez camlarla maksimum güvenlik.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-truck"></i>
+            <h3 data-lang="service-3-title">Hızlı Teslimat</h3>
+            <p data-lang="service-3-text">
+              Türkiye geneli ve uluslararası teslimat. Güvenli paketleme.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-paint-roller"></i>
+            <h3 data-lang="service-4-title">Serigraf Baskı</h3>
+            <p data-lang="service-4-text">
+              Mutfak tezgahları, duşakabinler ve dış cephe için özelleştirilmiş
+              baskılı camlar.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-tools"></i>
+            <h3 data-lang="service-5-title">Montaj Hizmetleri</h3>
+            <p data-lang="service-5-text">
+              Cam balkon, korkuluk ve özel camların profesyonel montajı.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-headset"></i>
+            <h3 data-lang="service-6-title">Teknik Danışmanlık</h3>
+            <p data-lang="service-6-text">
+              Proje bazlı cam seçimi ve uygulama için uzman danışmanlık.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-recycle"></i>
+            <h3 data-lang="service-7-title">Geri Dönüşüm</h3>
+            <p data-lang="service-7-text">
+              Çevre dostu üretim süreçleri ve cam geri dönüşüm hizmetleri.
+            </p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-wrench"></i>
+            <h3 data-lang="service-8-title">Bakım ve Onarım</h3>
+            <p data-lang="service-8-text">
+              Cam sistemlerinin düzenli bakımı ve onarımı.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 data-lang="contact-title">İletişim</h2>
+        <div class="contact-info">
+          <div class="contact-details">
+            <div class="contact-phones">
+              <h4>Telefonlar</h4>
+              <ul>
+                <li>
+                  <a href="tel:+901234567890"
+                    ><i class="fas fa-phone"></i> +90 123 456 7890</a
+                  >
+                </li>
+                <li>
+                  <a href="tel:+901234567891"
+                    ><i class="fas fa-phone"></i> +90 123 456 7891</a
+                  >
+                </li>
+                <li>
+                  <a href="tel:+901234567892"
+                    ><i class="fas fa-phone"></i> +90 123 456 7892</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="contact-emails">
+              <h4>E-postalar</h4>
+              <ul>
+                <li>
+                  <a href="mailto:info@camfabrikasi.com"
+                    ><i class="fas fa-envelope"></i> info@camfabrikasi.com</a
+                  >
+                </li>
+                <li>
+                  <a href="mailto:support@camfabrikasi.com"
+                    ><i class="fas fa-envelope"></i> support@camfabrikasi.com</a
+                  >
+                </li>
+                <li>
+                  <a href="mailto:sales@camfabrikasi.com"
+                    ><i class="fas fa-envelope"></i> sales@camfabrikasi.com</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <form id="contact-form">
+          <input
+            type="text"
+            id="name"
+            placeholder="Adınız"
+            data-lang-placeholder="form-name"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            placeholder="E-posta"
+            data-lang-placeholder="form-email"
+            required
+          />
+          <textarea
+            id="message"
+            placeholder="Mesajınız"
+            data-lang-placeholder="form-message"
+            required
+          ></textarea>
+          <button type="submit" class="btn" data-lang="form-btn">Gönder</button>
+          <div class="form-notification"></div>
+        </form>
+        <div class="contact-map">
+          <h3 data-lang="contact-map-title">Adresimiz</h3>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.318!2d28.978359!3d41.008238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab765065b4181%3A0x7c4f9b0b9e4b6e9!2sIstanbul%2C%20Turkey!5e0!3m2!1sen!2str!4v1697056641234!5m2!1sen!2str"
+            width="100%"
+            height="400"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+          <a
+            href="https://maps.google.com/?q=Istanbul,+Turkey"
+            target="_blank"
+            class="btn"
+            data-lang="contact-map-btn"
+            >Konumu Aç</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-logo">
+          <img
+            src="img/logo/furkatech75.svg"
+            alt="Site Logo"
+            class="footer-logo-img"
+          />
+        </div>
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3 data-lang="footer-services">Hizmetlerimiz</h3>
+            <ul>
+              <li><a href="#" data-lang="service-1-title">Özel Kesim</a></li>
+              <li>
+                <a href="#" data-lang="service-2-title">Güvenlik Camları</a>
+              </li>
+              <li>
+                <a href="#" data-lang="service-3-title">Hızlı Teslimat</a>
+              </li>
+              <li>
+                <a href="#" data-lang="service-4-title">Serigraf Baskı</a>
+              </li>
+              <li>
+                <a href="#" data-lang="service-5-title">Montaj Hizmetleri</a>
+              </li>
+              <li>
+                <a href="#" data-lang="service-6-title">Teknik Danışmanlık</a>
+              </li>
+              <li><a href="#" data-lang="service-7-title">Geri Dönüşüm</a></li>
+              <li>
+                <a href="#" data-lang="service-8-title">Bakım ve Onarım</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 data-lang="footer-products">Ürünlerimiz</h3>
+            <div class="footer-products-grid">
+              <ul>
+                <li>
+                  <a href="#" data-lang="product-otomotiv-title"
+                    >Otomotiv Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-traktor-title"
+                    >Traktör Kabin Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-forklift-title"
+                    >Forklift Kabin Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-spot-title"
+                    >Spot Aydınlatma Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-yol-title"
+                    >Yol Aydınlatma Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-satinaj-title"
+                    >Satinaj Dekoratif Camlar</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-buzdolabi-title"
+                    >Endüstriyel Buzdolabı Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-firin-title"
+                    >Fırın Kapak Camları</a
+                  >
+                </li>
+                <li>
+                  <a href="#" data-lang="product-isitmali-title"
+                    >Isıtmalı Camlar</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3 data-lang="footer-contact">İletişim</h3>
+            <ul>
+              <li>
+                <a href="tel:+901234567890"
+                  ><i class="fas fa-phone"></i> +90 123 456 7890</a
+                >
+              </li>
+              <li>
+                <a href="tel:+901234567891"
+                  ><i class="fas fa-phone"></i> +90 123 456 7891</a
+                >
+              </li>
+              <li>
+                <a href="tel:+901234567892"
+                  ><i class="fas fa-phone"></i> +90 123 456 7892</a
+                >
+              </li>
+              <li>
+                <a href="mailto:info@camfabrikasi.com"
+                  ><i class="fas fa-envelope"></i> info@camfabrikasi.com</a
+                >
+              </li>
+              <li>
+                <a href="mailto:support@camfabrikasi.com"
+                  ><i class="fas fa-envelope"></i> support@camfabrikasi.com</a
+                >
+              </li>
+              <li>
+                <a href="mailto:sales@camfabrikasi.com"
+                  ><i class="fas fa-envelope"></i> sales@camfabrikasi.com</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="footer-copyright">
+          © 2025 ERCAMAY TÜM HAKLARI SAKLIDIR.
+          <img
+            src="img/logo/furkatech75.svg"
+            alt="Furkatech Logo"
+            class="furkatech-logo"
+          />
+          <span class="furkatech">FURKATECH</span>
+          <span class="tecnology">TECNOLOGY</span>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Ultra Clear Modal -->
+    <div id="ultra-clear-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">×</span>
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=60"
+          alt="Ultra Clear Cam"
+          loading="lazy"
+          class="modal-img"
+        />
+        <h2 data-lang="ultra-clear-title">Ultra Clear Cam</h2>
+        <p data-lang="ultra-clear-text">
+          Ultra Clear (Extra Clear) cam, düşük demir içeriği sayesinde yüksek
+          şeffaflık sağlar.
+        </p>
+        <button class="btn modal-close-btn" data-lang="modal-close">
+          Kapat
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">×</span>
+        <div class="modal-slider swiper">
+          <div class="swiper-wrapper" id="modal-slider-images"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-text"></p>
+        <button class="btn modal-close-btn" data-lang="modal-close">
+          Kapat
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

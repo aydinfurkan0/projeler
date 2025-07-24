@@ -1,0 +1,351 @@
+<!-- index.html (değişiklik yok, tamamı aynı) -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETTSHOPP - Evcil Hayvan Ürünleri | Premium Pet Shop</title>
+    <meta name="description" content="Köpek, kedi, kuş ve diğer evcil hayvanlar için kaliteli mama, oyuncak, aksesuar ve bakım ürünleri. Türkiye'nin en güvenilir petshop'u PetLove!">
+    <meta name="keywords" content="petshop, evcil hayvan, köpek maması, kedi maması, pet ürünleri, hayvan bakımı, pet aksesuar, online petshop">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <a href="#home" class="logo">
+                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=100&h=100&fit=crop&crop=face" alt="PetLove Logo">
+                <span>PetLove</span>
+            </a>
+            <div class="hamburger" onclick="toggleMenu()">
+                ☰
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="toggleMenu()">Ana Sayfa</a></li>
+                <li><a href="#categories" onclick="toggleMenu()">Kategoriler</a></li>
+                <li><a href="#products" onclick="toggleMenu()">Ürünler</a></li>
+                <li><a href="#about" onclick="toggleMenu()">Hakkımızda</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">İletişim</a></li>
+            </ul>
+            <div class="cart-section">
+                <div class="cart-icon" onclick="openCartModal()">
+                    🛒
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <section id="home" class="hero">
+        <div class="slider">
+            <!-- Dinamik slaytlar JS ile yüklenecek -->
+        </div>
+        <div class="slider-nav">
+            <!-- Dinamik dot'lar JS ile yüklenecek -->
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="section">
+        <h2 class="section-title">Kategorilerimiz</h2>
+        <div class="categories">
+            <div class="category-card" onclick="openCategoryModal('köpek')">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=200&h=200&fit=crop" alt="Köpek Ürünleri">
+                <h3>🐕 Köpek Ürünleri</h3>
+                <p>Sadık dostlarınız için premium mama, oyuncak, tasma ve bakım ürünleri</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">250+</span>
+                        <span class="stat-label">Ürün</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">★ 4.8</span>
+                        <span class="stat-label">Puan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-card" onclick="openCategoryModal('kedi')">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=200&h=200&fit=crop" alt="Kedi Ürünleri">
+                <h3>🐱 Kedi Ürünleri</h3>
+                <p>Sevimli dostlarınız için özel mama, kum, oyuncak ve tırmalama tahtaları</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">180+</span>
+                        <span class="stat-label">Ürün</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">★ 4.9</span>
+                        <span class="stat-label">Puan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-card" onclick="openCategoryModal('kuş')">
+                <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=200&h=200&fit=crop" alt="Kuş Ürünleri">
+                <h3>🦜 Kuş Ürünleri</h3>
+                <p>Renkli dostlarınız için özel yem, kafes ve eğlenceli oyuncaklar</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Ürün</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">★ 4.7</span>
+                        <span class="stat-label">Puan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-card" onclick="openCategoryModal('balık')">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=200&fit=crop" alt="Balık Ürünleri">
+                <h3>🐠 Akvaryum Ürünleri</h3>
+                <p>Su altı dostlarınız için kaliteli yem, akvaryum ve dekorasyon malzemeleri</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Ürün</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">★ 4.6</span>
+                        <span class="stat-label">Puan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-card" onclick="openCategoryModal('bakım')">
+                <img src="https://images.unsplash.com/photo-1601758174493-bea9f73b58c4?w=200&h=200&fit=crop" alt="Bakım Ürünleri">
+                <h3>🧴 Bakım Ürünleri</h3>
+                <p>Tüm evcil dostlarınız için şampuan, fırça, tırnak makası ve hijyen ürünleri</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">95+</span>
+                        <span class="stat-label">Ürün</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">★ 4.8</span>
+                        <span class="stat-label">Puan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="category-card" onclick="openCategoryModal('oyuncak')">
+                <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=200&h=200&fit=crop" alt="Oyuncaklar">
+                <h3>🎾 Oyuncaklar</h3>
+                <p>Evcil dostlarınızın eğlencesi için interaktif ve eğitici oyuncaklar</p>
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">130+</span>
+                        <span class="stat-label">Ürün</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">★ 4.9</span>
+                        <span class="stat-label">Puan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Kategori Detayları</h2>
+                <button class="modal-close" onclick="closeCategoryModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription" class="modal-description">Kategori açıklaması buraya gelecek...</p>
+                <div class="modal-grid" id="modalGrid">
+                    <!-- Modal content will be loaded here -->
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="cta-button" onclick="goToProducts()">🛍️ Tüm Ürünleri Görüntüle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>🛒 Sepetim</h2>
+                <button class="modal-close" onclick="closeCartModal()">×</button>
+            </div>
+            <div class="cart-modal-body">
+                <div id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-total" id="cartTotal" style="display: none;">
+                    <h3>Toplam: <span id="totalAmount">₺0</span></h3>
+                    <p style="color: #666; margin-top: 0.5rem;">🚚 Ücretsiz kargo (75₺ ve üzeri)</p>
+                </div>
+                <div class="cart-actions" id="cartActions" style="display: none;">
+                    <button class="cart-btn cart-btn-continue" onclick="closeCartModal()">
+                        🛍️ Alışverişe Devam
+                    </button>
+                    <button class="cart-btn cart-btn-order" onclick="confirmOrder()">
+                        ✅ Siparişi Onayla
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <h2 class="section-title">Tüm Ürünlerimiz</h2>
+        <div class="filter-buttons" style="text-align: center; margin-bottom: 3rem;">
+            <button class="filter-btn active" onclick="filterProducts('all')">🏠 Tümü</button>
+            <button class="filter-btn" onclick="filterProducts('köpek')">🐕 Köpek</button>
+            <button class="filter-btn" onclick="filterProducts('kedi')">🐱 Kedi</button>
+            <button class="filter-btn" onclick="filterProducts('kuş')">🦜 Kuş</button>
+            <button class="filter-btn" onclick="filterProducts('balık')">🐠 Balık</button>
+            <button class="filter-btn" onclick="filterProducts('bakım')">🧴 Bakım</button>
+            <button class="filter-btn" onclick="filterProducts('oyuncak')">🎾 Oyuncak</button>
+        </div>
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded dynamically here -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">Hakkımızda</h2>
+        <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+            <p style="font-size: 1.3rem; line-height: 1.8; color: #666; margin-bottom: 3rem;">
+                PetLove olarak, 2015 yılından beri evcil hayvan sahiplerine kaliteli ürünler sunuyoruz. 
+                Köpek, kedi, kuş, balık ve diğer evcil dostlarınız için ihtiyaç duyduğunuz her şeyi 
+                tek bir çatı altında bulabilirsiniz. Uzman ekibimizle birlikte, evcil hayvanınızın 
+                sağlığı ve mutluluğu için en uygun ürünleri seçiyoruz.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-top: 4rem;">
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(145deg, #f8f9fa, #e9ecef); border-radius: 20px;">
+                    <h3 style="color: #4a7c59; font-size: 2.5rem; margin-bottom: 0.5rem;">1000+</h3>
+                    <p style="font-weight: bold; color: #333;">Mutlu Müşteri</p>
+                </div>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(145deg, #f8f9fa, #e9ecef); border-radius: 20px;">
+                    <h3 style="color: #4a7c59; font-size: 2.5rem; margin-bottom: 0.5rem;">2500+</h3>
+                    <p style="font-weight: bold; color: #333;">Ürün Çeşidi</p>
+                </div>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(145deg, #f8f9fa, #e9ecef); border-radius: 20px;">
+                    <h3 style="color: #4a7c59; font-size: 2.5rem; margin-bottom: 0.5rem;">24/7</h3>
+                    <p style="font-weight: bold; color: #333;">Müşteri Desteği</p>
+                </div>
+                <div style="text-align: center; padding: 2rem; background: linear-gradient(145deg, #f8f9fa, #e9ecef); border-radius: 20px;">
+                    <h3 style="color: #4a7c59; font-size: 2.5rem; margin-bottom: 0.5rem;">9+</h3>
+                    <p style="font-weight: bold; color: #333;">Yıllık Deneyim</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo" onclick="openAdminPanel()">
+                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=100&h=100&fit=crop&crop=face" alt="PetLove Logo">
+                    <h3>PetLove</h3>
+                </div>
+                <p>Evcil dostlarınız için en kaliteli ürünleri sunuyoruz. Sevgi dolu bir yaşam için biz buradayız. 9 yıllık deneyimimizle yanınızdayız.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📺</a>
+                    <a href="#" title="WhatsApp">💬</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <a href="#home">🏠 Ana Sayfa</a>
+                <a href="#categories">📂 Kategoriler</a>
+                <a href="#products">🛍️ Ürünler</a>
+                <a href="#about">ℹ️ Hakkımızda</a>
+                <a href="#contact">📞 İletişim</a>
+                <a href="#">🚚 Kargo Bilgileri</a>
+                <a href="#">💳 Ödeme Seçenekleri</a>
+            </div>
+            <div class="footer-section">
+                <h3>Kategoriler</h3>
+                <a href="#" onclick="openCategoryModal('köpek')">🐕 Köpek Ürünleri</a>
+                <a href="#" onclick="openCategoryModal('kedi')">🐱 Kedi Ürünleri</a>
+                <a href="#" onclick="openCategoryModal('kuş')">🦜 Kuş Ürünleri</a>
+                <a href="#" onclick="openCategoryModal('balık')">🐠 Akvaryum Ürünleri</a>
+                <a href="#" onclick="openCategoryModal('bakım')">🧴 Bakım Ürünleri</a>
+                <a href="#" onclick="openCategoryModal('oyuncak')">🎾 Oyuncaklar</a>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim Bilgileri</h3>
+                <p>📍 Merkez Mah. Pet Caddesi No:123<br>Kadıköy / İstanbul</p>
+                <p>📞 +90 (212) 555 01 23</p>
+                <p>📱 +90 (532) 555 01 23</p>
+                <p>✉️ info@petlove.com</p>
+                <p>🌐 www.petlove.com</p>
+                <p>🕒 Pazartesi - Pazar: 09:00 - 22:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+          © 2025 SÜLÜN ASANSÖR & NAKLİYAT TÜM HAKLARI SAKLIDIR.
+          <img
+            src="img/logo/furkatech75.svg"
+            alt="Furkatech Logo"
+            class="furkatech-logo"
+          />
+          <span class="furkatech">FURKATECH</span>
+          <span class="tecnology">TECNOLOGY</span>
+        </p>
+            <p> <a href="#" style="color: rgba(255,255,255,0.8);">Gizlilik Politikası</a> | 
+            <a href="#" style="color: rgba(255,255,255,0.8);">Kullanım Şartları</a> | 
+            <a href="#" style="color: rgba(255,255,255,0.8);">İade ve Değişim</a></p>
+        </div>
+    </footer>
+
+    <!-- Admin Modal -->
+    <div id="adminModal" class="admin-modal">
+        <div class="admin-content">
+            <span class="admin-close" onclick="closeAdminPanel()">×</span>
+            <div id="adminLogin" class="admin-login">
+                <h2>Admin Girişi</h2>
+                <input type="password" id="adminPassword" placeholder="Şifre Girin">
+                <button onclick="loginAdmin()">Giriş Yap</button>
+            </div>
+            <div id="adminPanel" class="admin-panel">
+                <h2>Ürün Yönetimi</h2>
+                <form id="productForm" class="admin-form">
+                    <input type="text" id="prodName" placeholder="Ürün Adı" required>
+                    <input type="number" id="prodPrice" placeholder="Fiyat (₺)" required>
+                    <input type="text" id="prodImageUrl" placeholder="Resim URL (veya aşağıdan dosya yükle)">
+                    <input type="file" id="prodImageFile" accept="image/*">
+                    <select id="prodCategory" required>
+                        <option value="">Kategori Seç</option>
+                        <option value="köpek">Köpek</option>
+                        <option value="kedi">Kedi</option>
+                        <option value="kuş">Kuş</option>
+                        <option value="balık">Balık</option>
+                        <option value="bakım">Bakım</option>
+                        <option value="oyuncak">Oyuncak</option>
+                    </select>
+                    <input type="number" id="prodOriginalPrice" placeholder="Orijinal Fiyat (Opsiyonel)">
+                    <input type="text" id="prodDiscount" placeholder="İndirim Yüzdesi (ör: 15%)">
+                    <button type="submit">Ürün Ekle</button>
+                </form>
+                <div id="productList" class="admin-list"></div>
+                
+                <h2>Slider Yönetimi</h2>
+                <form id="sliderForm" class="admin-form">
+                    <input type="text" id="slideBgUrl" placeholder="Arka Plan Resim URL (veya aşağıdan dosya yükle)">
+                    <input type="file" id="slideBgFile" accept="image/*">
+                    <input type="text" id="slideTitle" placeholder="Başlık" required>
+                    <input type="text" id="slideDesc" placeholder="Açıklama" required>
+                    <input type="text" id="slideButtonText" placeholder="Buton Metni" required>
+                    <input type="text" id="slideButtonLink" placeholder="Buton Linki (ör: #products)" required>
+                    <button type="submit">Slayt Ekle</button>
+                </form>
+                <div id="sliderList" class="admin-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
