@@ -1,0 +1,2070 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FZA-OTO</title>
+</head>
+</html>
+<body>
+    <!-- Main Header -->
+    <div class="main-header">
+        <div class="header-flex">
+            <div class="logo">
+                <span class="logo-icon">🔧</span>
+                FZA-OTO SERVİS
+            </div>
+            <div class="user-info">
+                <span>Hoşgeldin, <strong>Mehmet Usta</strong></span>
+                <span>|</span>
+                <span id="currentDate"></span>
+                <div class="user-avatar">MU</div>
+            </div>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Navigation -->
+    <div class="main-nav" id="mobileNav">
+        <div class="nav-container">
+            <div class="nav-buttons">
+                <button class="nav-btn active" onclick="showPage('dashboard')">
+                    <span>📊</span> Dashboard
+                </button>
+                <button class="nav-btn" onclick="showPage('vehicles')">
+                    <span>🚗</span> Araç Yönetimi
+                </button>
+                <button class="nav-btn" onclick="showPage('customers')">
+                    <span>👥</span> Müşteri Yönetimi
+                </button>
+                <button class="nav-btn" onclick="showPage('services')">
+                    <span>🔧</span> Servis İşleri
+                </button>
+                <button class="nav-btn" onclick="showPage('parts')">
+                    <span>⚙️</span> Parça Stok
+                </button>
+                <button class="nav-btn" onclick="showPage('appointments')">
+                    <span>📅</span> Randevular
+                </button>
+                <button class="nav-btn" onclick="showPage('reports')">
+                    <span>📈</span> Raporlar
+                </button>
+                <button class="nav-btn" onclick="showPage('settings')">
+                    <span>⚙️</span> Ayarlar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Dashboard Page -->
+            <div id="dashboard" class="page active">
+                <h2 class="page-title">
+                    <span class="page-title-icon">📊</span>
+                    Genel Durum Paneli
+                </h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🚗</div>
+                        <div class="stat-number" data-count="127">0</div>
+                        <div class="stat-label">Toplam Araç</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔧</div>
+                        <div class="stat-number" data-count="23">0</div>
+                        <div class="stat-label">Aktif İş Emri</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-number" data-count="398">0</div>
+                        <div class="stat-label">Toplam Müşteri</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-number" data-count="75420">₺0</div>
+                        <div class="stat-label">Bu Ay Gelir</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>🔧 Son İş Emirleri</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="padding: 15px 0; border-bottom: 1px solid #7f8c8d; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="color: #ecf0f1;">34 ABC 123</strong><br>
+                                    <small style="color: #bdc3c7;">Fren Balata Değişimi</small>
+                                </div>
+                                <span class="status-badge status-active">Devam Ediyor</span>
+                            </div>
+                            <div style="padding: 15px 0; border-bottom: 1px solid #7f8c8d; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="color: #ecf0f1;">06 XYZ 456</strong><br>
+                                    <small style="color: #bdc3c7;">Motor Revizyonu</small>
+                                </div>
+                                <span class="status-badge status-pending">Parça Bekliyor</span>
+                            </div>
+                            <div style="padding: 15px 0; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <strong style="color: #ecf0f1;">35 DEF 789</strong><br>
+                                    <small style="color: #bdc3c7;">Yağ Değişimi</small>
+                                </div>
+                                <span class="status-badge status-completed">Tamamlandı</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>📅 Bugünkü Randevular</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="padding: 15px 0; border-bottom: 1px solid #7f8c8d;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong style="color: #ecf0f1;">08:30 - Ahmet Yılmaz</strong><br>
+                                        <small style="color: #bdc3c7;">34 ABC 123 - BMW 320i</small>
+                                    </div>
+                                    <span class="status-badge status-completed">Geldi</span>
+                                </div>
+                            </div>
+                            <div style="padding: 15px 0; border-bottom: 1px solid #7f8c8d;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong style="color: #ecf0f1;">10:00 - Fatma Demir</strong><br>
+                                        <small style="color: #bdc3c7;">06 XYZ 456 - Mercedes C200</small>
+                                    </div>
+                                    <span class="status-badge status-pending">Bekliyor</span>
+                                </div>
+                            </div>
+                            <div style="padding: 15px 0;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong style="color: #ecf0f1;">13:30 - Can Özkan</strong><br>
+                                        <small style="color: #bdc3c7;">35 DEF 789 - Audi A4</small>
+                                    </div>
+                                    <span class="status-badge status-pending">Bekliyor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>📊 Stok Durumu</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="color: #ecf0f1;">Motor Yağı</span>
+                                    <span style="color: #2ecc71; font-weight: bold;">85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%; background: linear-gradient(90deg, #27ae60, #2ecc71);"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="color: #ecf0f1;">Fren Balata</span>
+                                    <span style="color: #f39c12; font-weight: bold;">25%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%; background: linear-gradient(90deg, #e67e22, #f39c12);"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="color: #ecf0f1;">Lastik</span>
+                                    <span style="color: #2ecc71; font-weight: bold;">92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%; background: linear-gradient(90deg, #27ae60, #2ecc71);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>💰 Mali Durum</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="padding: 15px 0; border-bottom: 1px solid #7f8c8d; display: flex; justify-content: space-between;">
+                                <span style="color: #bdc3c7;">Bu Hafta Gelir:</span>
+                                <strong style="color: #2ecc71;">₺18,450</strong>
+                            </div>
+                            <div style="padding: 15px 0; border-bottom: 1px solid #7f8c8d; display: flex; justify-content: space-between;">
+                                <span style="color: #bdc3c7;">Bu Hafta Gider:</span>
+                                <strong style="color: #e74c3c;">₺5,230</strong>
+                            </div>
+                            <div style="padding: 15px 0; display: flex; justify-content: space-between;">
+                                <span style="color: #bdc3c7;">Net Kar:</span>
+                                <strong style="color: #3498db;">₺13,220</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicles Page -->
+            <div id="vehicles" class="page">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <h2 class="page-title">
+                        <span class="page-title-icon">🚗</span>
+                        Araç Yönetimi
+                    </h2>
+                    <button class="btn btn-success" onclick="openModal('vehicleModal')">
+                        ➕ Yeni Araç Ekle
+                    </button>
+                </div>
+
+                <input type="text" class="search-box" placeholder="🔍 Araç ara (plaka, marka, model...)">
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Plaka</th>
+                                <th>Marka/Model</th>
+                                <th>Yıl</th>
+                                <th>Kilometre</th>
+                                <th>Müşteri</th>
+                                <th>Son Servis</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">34 ABC 123</strong></td>
+                                <td>BMW 320i</td>
+                                <td>2019</td>
+                                <td>87,500 km</td>
+                                <td>Ahmet Yılmaz</td>
+                                <td>15.12.2024</td>
+                                <td><span class="status-badge status-active">Serviste</span></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                    <button class="btn btn-warning" style="padding: 6px 10px; font-size: 12px;">📋</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">06 XYZ 456</strong></td>
+                                <td>Mercedes C200</td>
+                                <td>2020</td>
+                                <td>52,300 km</td>
+                                <td>Fatma Demir</td>
+                                <td>08.12.2024</td>
+                                <td><span class="status-badge status-pending">Randevu Var</span></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                    <button class="btn btn-warning" style="padding: 6px 10px; font-size: 12px;">📋</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">35 DEF 789</strong></td>
+                                <td>Audi A4</td>
+                                <td>2018</td>
+                                <td>125,800 km</td>
+                                <td>Can Özkan</td>
+                                <td>12.12.2024</td>
+                                <td><span class="status-badge status-completed">Teslim Edildi</span></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                    <button class="btn btn-warning" style="padding: 6px 10px; font-size: 12px;">📋</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Customers Page -->
+            <div id="customers" class="page">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <h2 class="page-title">
+                        <span class="page-title-icon">👥</span>
+                        Müşteri Yönetimi
+                    </h2>
+                    <button class="btn btn-success" onclick="openModal('customerModal')">
+                        ➕ Yeni Müşteri Ekle
+                    </button>
+                </div>
+
+                <input type="text" class="search-box" placeholder="🔍 Müşteri ara (ad, telefon, email...)">
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>Telefon</th>
+                                <th>Email</th>
+                                <th>Araç Sayısı</th>
+                                <th>Son Ziyaret</th>
+                                <th>Toplam Harcama</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">Ahmet Yılmaz</strong></td>
+                                <td>0532 123 45 67</td>
+                                <td>ahmet@email.com</td>
+                                <td>2</td>
+                                <td>15.12.2024</td>
+                                <td><strong style="color: #2ecc71;">₺12,450</strong></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                    <button class="btn btn-warning" style="padding: 6px 10px; font-size: 12px;">📋</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">Fatma Demir</strong></td>
+                                <td>0544 987 65 43</td>
+                                <td>fatma@email.com</td>
+                                <td>1</td>
+                                <td>08.12.2024</td>
+                                <td><strong style="color: #3498db;">₺4,200</strong></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                    <button class="btn btn-warning" style="padding: 6px 10px; font-size: 12px;">📋</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Services Page -->
+            <div id="services" class="page">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <h2 class="page-title">
+                        <span class="page-title-icon">🔧</span>
+                        Servis İşleri
+                    </h2>
+                    <button class="btn btn-success" onclick="openModal('serviceModal')">
+                        ➕ Yeni İş Emri
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-number" data-count="23">0</div>
+                        <div class="stat-label">Aktif İş Emri</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-number" data-count="8">0</div>
+                        <div class="stat-label">Bugün Teslim</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-number" data-count="186">0</div>
+                        <div class="stat-label">Bu Ay Tamamlanan</div>
+                    </div>
+                </div>
+
+                <input type="text" class="search-box" placeholder="🔍 İş emri ara...">
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>İş Emri No</th>
+                                <th>Plaka</th>
+                                <th>Müşteri</th>
+                                <th>İşlem Türü</th>
+                                <th>Tutar</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">#2024001</strong></td>
+                                <td>34 ABC 123</td>
+                                <td>Ahmet Yılmaz</td>
+                                <td>Fren Tamiri</td>
+                                <td><strong style="color: #2ecc71;">₺1,850</strong></td>
+                                <td><span class="status-badge status-active">Devam Ediyor</span></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                    <button class="btn btn-success" style="padding: 6px 10px; font-size: 12px;">✅</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Parts Page -->
+            <div id="parts" class="page">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <h2 class="page-title">
+                        <span class="page-title-icon">⚙️</span>
+                        Parça Stok
+                    </h2>
+                    <button class="btn btn-success" onclick="openModal('partModal')">
+                        ➕ Yeni Parça Ekle
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-number" data-count="1847">0</div>
+                        <div class="stat-label">Toplam Parça</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-number" data-count="34">0</div>
+                        <div class="stat-label">Kritik Stok</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-number" data-count="247850">₺0</div>
+                        <div class="stat-label">Stok Değeri</div>
+                    </div>
+                </div>
+
+                <input type="text" class="search-box" placeholder="🔍 Parça ara...">
+
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Parça Kodu</th>
+                                <th>Parça Adı</th>
+                                <th>Marka</th>
+                                <th>Stok</th>
+                                <th>Fiyat</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #ecf0f1;">FRN001</strong></td>
+                                <td>Fren Balata</td>
+                                <td>Bosch</td>
+                                <td>15 adet</td>
+                                <td>₺450</td>
+                                <td><span class="status-badge status-active">Yeterli</span></td>
+                                <td>
+                                    <button class="btn" style="padding: 6px 10px; font-size: 12px;">✏️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Appointments Page -->
+            <div id="appointments" class="page">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px;">
+                    <h2 class="page-title">
+                        <span class="page-title-icon">📅</span>
+                        Randevular
+                    </h2>
+                    <button class="btn btn-success" onclick="openModal('appointmentModal')">
+                        ➕ Yeni Randevu
+                    </button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>📅 Bugünkü Randevular</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71; margin-bottom: 15px; border-radius: 8px;">
+                                <strong style="color: #ecf0f1;">08:30 - Ahmet Yılmaz</strong><br>
+                                <small style="color: #bdc3c7;">34 ABC 123 - BMW 320i</small>
+                            </div>
+                            <div style="padding: 15px; background: rgba(243, 156, 18, 0.1); border-left: 4px solid #f39c12; margin-bottom: 15px; border-radius: 8px;">
+                                <strong style="color: #ecf0f1;">10:00 - Fatma Demir</strong><br>
+                                <small style="color: #bdc3c7;">06 XYZ 456 - Mercedes C200</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div id="reports" class="page">
+                <h2 class="page-title">
+                    <span class="page-title-icon">📈</span>
+                    Raporlar
+                </h2>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>💰 Gelir Analizi</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span style="color: #bdc3c7;">Bu Ay:</span>
+                                <strong style="color: #2ecc71;">₺75,420</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span style="color: #bdc3c7;">Geçen Ay:</span>
+                                <strong style="color: #ecf0f1;">₺68,200</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #bdc3c7;">Artış:</span>
+                                <strong style="color: #2ecc71;">+10.6%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>🔧 İş Emri İstatistikleri</h3>
+                        <div style="margin-top: 20px;">
+                            <div style="margin-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #ecf0f1;">Tamamlanan</span>
+                                    <span><strong>186</strong></span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #ecf0f1;">Devam Eden</span>
+                                    <span><strong>23</strong></span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%; background: linear-gradient(90deg, #f39c12, #e67e22);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings" class="page">
+                <h2 class="page-title">
+                    <span class="page-title-icon">⚙️</span>
+                    Sistem Ayarları
+                </h2>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>🏢 İşletme Bilgileri</h3>
+                        <div class="form-group">
+                            <label>İşletme Adı</label>
+                            <input type="text" value="Mehmet Usta Oto Tamirhanesi">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="text" value="0212 123 45 67">
+                        </div>
+                        <button class="btn btn-success">Kaydet</button>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>💰 Fiyat Ayarları</h3>
+                        <div class="form-group">
+                            <label>İş Gücü Saatlik Ücret</label>
+                            <input type="number" value="150">
+                        </div>
+                        <div class="form-group">
+                            <label>KDV Oranı (%)</label>
+                            <input type="number" value="20">
+                        </div>
+                        <button class="btn btn-success">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Windows -->
+    <!-- Vehicle Modal -->
+    <div id="vehicleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('vehicleModal')">&times;</span>
+            <h2 style="color: #ecf0f1; margin-bottom: 20px;">🚗 Yeni Araç Ekle</h2>
+            <div class="form-grid">
+                <div>
+                    <div class="form-group">
+                        <label>Plaka *</label>
+                        <input type="text" placeholder="34 ABC 123" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Marka *</label>
+                        <select required>
+                            <option value="">Marka Seçin</option>
+                            <option>BMW</option>
+                            <option>Mercedes</option>
+                            <option>Audi</option>
+                            <option>Volkswagen</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Model *</label>
+                        <input type="text" placeholder="320i" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Yıl *</label>
+                        <input type="number" min="1990" max="2024" placeholder="2020" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kilometre</label>
+                        <input type="number" placeholder="85000">
+                    </div>
+                    <div class="form-group">
+                        <label>Müşteri Seç *</label>
+                        <select required>
+                            <option value="">Müşteri Seçin</option>
+                            <option>Ahmet Yılmaz</option>
+                            <option>Fatma Demir</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success">Araç Ekle</button>
+            <button class="btn" onclick="closeModal('vehicleModal')">İptal</button>
+        </div>
+    </div>
+
+    <!-- Customer Modal -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('customerModal')">&times;</span>
+            <h2 style="color: #ecf0f1; margin-bottom: 20px;">👥 Yeni Müşteri Ekle</h2>
+            <div class="form-grid">
+                <div>
+                    <div class="form-group">
+                        <label>Ad *</label>
+                        <input type="text" placeholder="Ahmet" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Soyad *</label>
+                        <input type="text" placeholder="Yılmaz" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Telefon *</label>
+                        <input type="tel" placeholder="0532 123 45 67" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="ahmet@email.com">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success">Müşteri Ekle</button>
+            <button class="btn" onclick="closeModal('customerModal')">İptal</button>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('serviceModal')">&times;</span>
+            <h2 style="color: #ecf0f1; margin-bottom: 20px;">🔧 Yeni İş Emri</h2>
+            <div class="form-grid">
+                <div>
+                    <div class="form-group">
+                        <label>Müşteri Seç *</label>
+                        <select required>
+                            <option value="">Müşteri Seçin</option>
+                            <option>Ahmet Yılmaz</option>
+                            <option>Fatma Demir</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Araç Seç *</label>
+                        <select required>
+                            <option value="">Araç Seçin</option>
+                            <option>34 ABC 123 - BMW 320i</option>
+                            <option>06 XYZ 456 - Mercedes C200</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>İşlem Türü *</label>
+                        <select required>
+                            <option value="">İşlem Türü Seçin</option>
+                            <option>Periyodik Bakım</option>
+                            <option>Fren Tamiri</option>
+                            <option>Motor Tamiri</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tahmini Maliyet (₺)</label>
+                        <input type="number" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Arıza Açıklaması *</label>
+                <textarea rows="3" placeholder="Problem açıklamasını girin..." required></textarea>
+            </div>
+            <button class="btn btn-success">İş Emri Oluştur</button>
+            <button class="btn" onclick="closeModal('serviceModal')">İptal</button>
+        </div>
+    </div>
+
+    <!-- Part Modal -->
+    <div id="partModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('partModal')">&times;</span>
+            <h2 style="color: #ecf0f1; margin-bottom: 20px;">⚙️ Yeni Parça Ekle</h2>
+            <div class="form-grid">
+                <div>
+                    <div class="form-group">
+                        <label>Parça Kodu *</label>
+                        <input type="text" placeholder="FRN001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Parça Adı *</label>
+                        <input type="text" placeholder="Fren Balata" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Marka</label>
+                        <input type="text" placeholder="Bosch">
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Stok Miktarı *</label>
+                        <input type="number" placeholder="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Birim Fiyat (₺) *</label>
+                        <input type="number" step="0.01" placeholder="0.00" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Minimum Stok</label>
+                        <input type="number" placeholder="5">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success">Parça Ekle</button>
+            <button class="btn" onclick="closeModal('partModal')">İptal</button>
+        </div>
+    </div>
+
+    <!-- Appointment Modal -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('appointmentModal')">&times;</span>
+            <h2 style="color: #ecf0f1; margin-bottom: 20px;">📅 Yeni Randevu</h2>
+            <div class="form-grid">
+                <div>
+                    <div class="form-group">
+                        <label>Müşteri Seç *</label>
+                        <select required>
+                            <option value="">Müşteri Seçin</option>
+                            <option>Ahmet Yılmaz</option>
+                            <option>Fatma Demir</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Randevu Tarihi *</label>
+                        <input type="date" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Randevu Saati *</label>
+                        <select required>
+                            <option value="">Saat Seçin</option>
+                            <option>08:00</option>
+                            <option>09:00</option>
+                            <option>10:00</option>
+                            <option>11:00</option>
+                            <option>13:00</option>
+                            <option>14:00</option>
+                            <option>15:00</option>
+                            <option>16:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>İşlem Türü *</label>
+                        <select required>
+                            <option value="">İşlem Türü Seçin</option>
+                            <option>Periyodik Bakım</option>
+                            <option>Fren Kontrolü</option>
+                            <option>Yağ Değişimi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Randevu Notları</label>
+                <textarea rows="3" placeholder="Özel notlar..."></textarea>
+            </div>
+            <button class="btn btn-success">Randevu Oluştur</button>
+            <button class="btn" onclick="closeModal('appointmentModal')">İptal</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const overlay = document.querySelector('.mobile-overlay');
+            
+            nav.classList.remove('active');
+            toggle.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Date Display
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                weekday: 'long'
+            };
+            const dateElement = document.getElementById('currentDate');
+            if (dateElement) {
+                dateElement.textContent = now.toLocaleDateString('tr-TR', options);
+            }
+        }
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            // Add active to clicked button
+            event.target.classList.add('active');
+
+            // Close mobile menu on mobile
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
+
+            // Animate numbers on dashboard
+            if (pageId === 'dashboard') {
+                setTimeout(animateNumbers, 200);
+            }
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Animate Numbers
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number[data-count]');
+            numbers.forEach(num => {
+                const target = parseInt(num.getAttribute('data-count'));
+                const prefix = num.textContent.includes('₺') ? '₺' : '';
+                let current = 0;
+                const increment = target / 60;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (prefix) {
+                        num.textContent = prefix + Math.floor(current).toLocaleString('tr-TR');
+                    } else {
+                        num.textContent = Math.floor(current);
+                    }
+                }, 25);
+            });
+        }
+
+        // Search Functionality
+        function setupSearch() {
+            const searchBoxes = document.querySelectorAll('.search-box');
+            searchBoxes.forEach(searchBox => {
+                searchBox.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const tableContainer = this.nextElementSibling;
+                    const table = tableContainer.querySelector('.table');
+                    
+                    if (table) {
+                        const rows = table.querySelectorAll('tbody tr');
+                        rows.forEach(row => {
+                            const text = row.textContent.toLowerCase();
+                            row.style.display = text.includes(searchTerm) ? '' : 'none';
+                        });
+                    }
+                });
+            });
+        }
+
+        // Modal Click Outside Close
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.5s ease-out reverse';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Form Submissions
+        function handleFormSubmit(formType) {
+            showNotification(`${formType} başarıyla eklendi!`, 'success');
+            // Close all modals
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey) {
+                switch(e.key) {
+                    case '1':
+                        e.preventDefault();
+                        showPage('dashboard');
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        showPage('vehicles');
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        showPage('customers');
+                        break;
+                    case '4':
+                        e.preventDefault();
+                        showPage('services');
+                        break;
+                }
+            }
+            
+            // Escape key closes modals and mobile menu
+            if (e.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+                closeMobileMenu();
+            }
+        });
+
+        // Window Resize Handler
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Initialize on DOM Load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDate();
+            setupSearch();
+            animateNumbers();
+            
+            // Update date every minute
+            setInterval(updateDate, 60000);
+            
+            // Welcome notification
+            setTimeout(() => {
+                showNotification('OtoServis Pro\'ya hoşgeldiniz! Sistem hazır.', 'success');
+            }, 1000);
+            
+            // Add button event listeners
+            document.querySelectorAll('.btn-success').forEach(btn => {
+                if (btn.textContent.includes('Ekle') || btn.textContent.includes('Oluştur')) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const modalContent = this.closest('.modal-content');
+                        if (modalContent) {
+                            const modalTitle = modalContent.querySelector('h2').textContent;
+                            handleFormSubmit(modalTitle);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Touch Events for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            const minSwipeDistance = 100;
+            
+            if (Math.abs(swipeDistance) < minSwipeDistance) return;
+            
+            if (swipeDistance > 0 && touchStartX < 50) {
+                // Swipe right from left edge - open menu
+                if (window.innerWidth <= 768) {
+                    const nav = document.getElementById('mobileNav');
+                    if (!nav.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                }
+            } else if (swipeDistance < 0) {
+                // Swipe left - close menu
+                closeMobileMenu();
+            }
+        }
+
+        // Progressive Web App Features
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Register service worker for offline functionality
+                console.log('PWA features ready');
+            });
+        }
+
+        // Auto-save functionality
+        function autoSave() {
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    // Save to localStorage for data persistence
+                    const key = `otoservis_${this.name || this.id}`;
+                    if (key !== 'otoservis_') {
+                        localStorage.setItem(key, this.value);
+                    }
+                });
+            });
+        }
+
+        // Data Export Functions
+        function exportData(type) {
+            showNotification(`${type} raporu indiriliyor...`, 'info');
+            // Simulate export delay
+            setTimeout(() => {
+                showNotification(`${type} raporu başarıyla indirildi!`, 'success');
+            }, 2000);
+        }
+
+        // Performance Monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Sayfa yükleme süresi: ${Math.round(loadTime)}ms`);
+            
+            if (loadTime > 3000) {
+                console.warn('Sayfa yavaş yüklendi, optimizasyon gerekebilir');
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OtoServis Pro - Profesyonel Oto Servis Yönetimi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            min-height: 100vh;
+            color: #ecf0f1;
+            overflow-x: hidden;
+        }
+
+        /* Header Image Section */
+        .header-image {
+            width: 100%;
+            height: 400px;
+            background: url('img/logo/furkatech75.svg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+       
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        
+
+        .header-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            animation: titlePulse 3s infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        .header-subtitle {
+            font-size: 1.5rem;
+            color: #bdc3c7;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: subtitleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Main Header */
+        .main-header {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #7f8c8d;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            animation: logoRotate 6s linear infinite;
+        }
+
+        @keyframes logoRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #bdc3c7;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #7f8c8d, #95a5a6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 18px;
+            animation: avatarBounce 3s infinite;
+        }
+
+        @keyframes avatarBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(127, 140, 141, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(127, 140, 141, 0.4);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: #ecf0f1;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: rgba(52, 73, 94, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 73px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+            color: #2c3e50;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, #95a5a6, #bdc3c7);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: #ecf0f1;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Content Area */
+        .content-area {
+            background: rgba(52, 73, 94, 0.9);
+            backdrop-filter: blur(15px);
+            margin: 2rem 1rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid #7f8c8d;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-area::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: patternMove 25s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
+        }
+
+        .page {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page.active {
+            display: block;
+            animation: pageSlideIn 0.8s ease-out;
+        }
+
+        @keyframes pageSlideIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 2.5rem;
+            color: #ecf0f1;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-title-icon {
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(10deg); }
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(127, 140, 141, 0.15), rgba(149, 165, 166, 0.1));
+            border: 2px solid #7f8c8d;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #7f8c8d, #95a5a6, #bdc3c7, #95a5a6, #7f8c8d);
+            background-size: 300% 100%;
+            animation: borderFlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border-color: #95a5a6;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: iconBounce 2s infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #ecf0f1;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: numberGlow 4s infinite;
+        }
+
+        @keyframes numberGlow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+            50% { text-shadow: 2px 2px 8px rgba(236, 240, 241, 0.3); }
+        }
+
+        .stat-label {
+            color: #bdc3c7;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.8), rgba(52, 73, 94, 0.6));
+            border: 2px solid #7f8c8d;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #7f8c8d, #95a5a6, #bdc3c7, #95a5a6, #7f8c8d);
+            background-size: 400% 400%;
+            border-radius: 15px;
+            z-index: -1;
+            animation: borderGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+        }
+
+        .dashboard-card h3 {
+            color: #ecf0f1;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: rgba(44, 62, 80, 0.8);
+            border: 2px solid #7f8c8d;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .table th {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .table th::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #7f8c8d, #95a5a6);
+        }
+
+        .table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #7f8c8d;
+            color: #bdc3c7;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .table tr:hover {
+            background: rgba(127, 140, 141, 0.1);
+            transform: scale(1.01);
+        }
+
+        .table tr:hover td {
+            color: #ecf0f1;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #ecf0f1;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #7f8c8d;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: rgba(52, 73, 94, 0.8);
+            color: #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #95a5a6;
+            box-shadow: 0 0 0 3px rgba(149, 165, 166, 0.2);
+            background: rgba(52, 73, 94, 0.9);
+        }
+
+        .form-group input::placeholder {
+            color: #7f8c8d;
+        }
+
+        /* Button Styles */
+        .btn {
+            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+            color: #2c3e50;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: badgePulse 3s infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .status-active { 
+            background: rgba(39, 174, 96, 0.2); 
+            color: #2ecc71; 
+            border: 1px solid #2ecc71;
+        }
+        .status-pending { 
+            background: rgba(243, 156, 18, 0.2); 
+            color: #f39c12; 
+            border: 1px solid #f39c12;
+        }
+        .status-completed { 
+            background: rgba(52, 152, 219, 0.2); 
+            color: #3498db; 
+            border: 1px solid #3498db;
+        }
+
+        /* Search Box */
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem 1.5rem;
+            border: 2px solid #7f8c8d;
+            border-radius: 25px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            background: rgba(52, 73, 94, 0.8);
+            color: #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #95a5a6;
+            box-shadow: 0 0 0 3px rgba(149, 165, 166, 0.2);
+        }
+
+        .search-box::placeholder {
+            color: #7f8c8d;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            margin: 2% auto;
+            padding: 2rem;
+            border: 2px solid #7f8c8d;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: modalSlide 0.5s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from { 
+                opacity: 0; 
+                transform: translateY(-100px) scale(0.8); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .close {
+            color: #7f8c8d;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ecf0f1;
+            transform: scale(1.2);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            background: rgba(127, 140, 141, 0.3);
+            border-radius: 10px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #7f8c8d, #95a5a6);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: progressShine 2.5s infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-image {
+                height: 250px;
+                background-attachment: scroll;
+            }
+            
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .main-header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo-icon {
+                font-size: 2rem;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                height: 100vh;
+                width: 280px;
+                background: rgba(44, 62, 80, 0.98);
+                backdrop-filter: blur(20px);
+                box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+                transition: left 0.4s ease;
+                z-index: 2000;
+                padding: 2rem 1rem;
+                border-right: 3px solid #7f8c8d;
+            }
+
+            .main-nav.active {
+                left: 0;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+                justify-content: flex-start;
+                padding-top: 2rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .content-area {
+                margin: 1rem 0.5rem;
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .table-container {
+                margin-top: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.8rem;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+
+            .content-area {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .dashboard-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #7f8c8d;
+            border-radius: 50%;
+            border-top-color: #ecf0f1;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Overlay */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            z-index: 3000;
+            animation: slideInRight 0.5s ease-out;
+            max-width: 300px;
+        }
+
+     
