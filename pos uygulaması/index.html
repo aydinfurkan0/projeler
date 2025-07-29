@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesyonel POS Sistemi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>POS Sistemi</h1>
+                <p>Profesyonel Çözüm</p>
+            </div>
+            <button class="sidebar-toggle" onclick="toggleSidebar()">‹</button>
+            <div class="menu-items">
+                <div class="menu-item active" onclick="showSection('dashboard')">
+                    <i class="fa-solid fa-home"></i>
+                    <span>Ana Sayfa</span>
+                </div>
+                <div class="menu-item" onclick="showSection('sales')">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                    <span>Satış</span>
+                </div>
+                <div class="menu-item" onclick="showSection('products')">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Ürün Yönetimi</span>
+                </div>
+                <div class="menu-item" onclick="showSection('customers')">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Müşteri Yönetimi</span>
+                </div>
+                <div class="menu-item" onclick="showSection('employees')">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Çalışan Yönetimi</span>
+                </div>
+                <div class="menu-item" onclick="showSection('tables')">
+                    <i class="fa-solid fa-table"></i>
+                    <span>Masa Yönetimi</span>
+                </div>
+                <div class="menu-item" onclick="showSection('discounts')">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>İndirim & Kampanya</span>
+                </div>
+                <div class="menu-item" onclick="showSection('reports')">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Raporlar</span>
+                </div>
+                <div class="menu-item" onclick="showSection('cash')">
+                    <i class="fa-solid fa-cash-register"></i>
+                    <span>Kasa Yönetimi</span>
+                </div>
+                <div class="menu-item" onclick="showSection('settings')">
+                    <i class="fa-solid fa-cog"></i>
+                    <span>Ayarlar</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h2 id="page-title">Ana Sayfa</h2>
+                <div class="header-right">
+                    <div class="notification-badge" id="lowStockAlert">3</div>
+                    <span>Düşük Stok Uyarısı</span>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Dashboard Section -->
+                <div class="content-section active" id="dashboard">
+                    <div class="dashboard-grid">
+                        <div class="stat-card blue">
+                            <h3>Bugünkü Satış</h3>
+                            <div class="value" id="todaySales">12</div>
+                            <div class="change">+8% önceki güne göre</div>
+                        </div>
+                        <div class="stat-card green">
+                            <h3>Günlük Ciro</h3>
+                            <div class="value" id="todayRevenue">1,234₺</div>
+                            <div class="change">+15% önceki güne göre</div>
+                        </div>
+                        <div class="stat-card purple">
+                            <h3>Aktif Müşteri</h3>
+                            <div class="value" id="activeCustomers">45</div>
+                            <div class="change">+3 yeni müşteri</div>
+                        </div>
+                        <div class="stat-card orange">
+                            <h3>Düşük Stok</h3>
+                            <div class="value" id="lowStockCount">3</div>
+                            <div class="change">Acil sipariş gerekli</div>
+                        </div>
+                    </div>
+
+                    <div class="data-table">
+                        <h3 style="padding: 20px; margin: 0; background: #f8f9fa; border-bottom: 2px solid #ecf0f1;">Son Satışlar</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Saat</th>
+                                    <th>Müşteri</th>
+                                    <th>Ürünler</th>
+                                    <th>Tutar</th>
+                                    <th>Ödeme</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentSales">
+                                <tr>
+                                    <td>14:30</td>
+                                    <td>Ahmet Yılmaz</td>
+                                    <td>Ekmek, Süt</td>
+                                    <td>12.25₺</td>
+                                    <td><span style="background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Nakit</span></td>
+                                </tr>
+                                <tr>
+                                    <td>14:25</td>
+                                    <td>Anonim</td>
+                                    <td>Hamburger</td>
+                                    <td>25.50₺</td>
+                                    <td><span style="background: #3498db; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Kart</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sales Section -->
+                <div class="content-section" id="sales">
+                    <div class="sales-container">
+                        <div class="products-section">
+                            <div class="search-bar">
+                                <input type="text" class="search-input" id="productSearch" placeholder="Ürün ara..." onkeyup="filterProducts()">
+                                <input type="text" class="barcode-input" id="barcodeInput" placeholder="Barkod okutun..." onkeypress="handleBarcodeEnter(event)">
+                                <button class="search-btn" onclick="searchByBarcode()"><i class="fa-solid fa-search"></i></button>
+                            </div>
+                            <div class="products-grid" id="productsGrid">
+                                <!-- Products will be loaded here -->
+                            </div>
+                        </div>
+
+                        <div class="cart-section">
+                            <div class="customer-selection">
+                                <select id="customerSelect">
+                                    <option value="">Müşteri Seç</option>
+                                    <!-- Options loaded dynamically -->
+                                </select>
+                                <select id="tableSelect">
+                                    <option value="">Masa Seç</option>
+                                    <!-- Options loaded dynamically -->
+                                </select>
+                            </div>
+
+                            <div class="cart-items" id="cartItems">
+                                <div style="text-align: center; color: #7f8c8d; padding: 20px;">
+                                    Sepet boş
+                                </div>
+                            </div>
+
+                            <div class="cart-summary">
+                                <div class="summary-row">
+                                    <span>Ara Toplam:</span>
+                                    <span id="subtotal">0.00₺</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>KDV (%18):</span>
+                                    <span id="tax">0.00₺</span>
+                                </div>
+                                <div class="summary-row" id="discountRow" style="display: none; color: #e74c3c;">
+                                    <span>İndirim:</span>
+                                    <span id="discount">-0.00₺</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Toplam:</span>
+                                    <span id="total">0.00₺</span>
+                                </div>
+                            </div>
+
+                            <button class="discount-btn" onclick="applyDiscount()"><i class="fa-solid fa-tags"></i> İndirim Uygula</button>
+
+                            <div class="payment-methods">
+                                <button class="payment-btn active" onclick="selectPaymentMethod('cash')" id="cashBtn"><i class="fa-solid fa-money-bill"></i> Nakit</button>
+                                <button class="payment-btn" onclick="selectPaymentMethod('card')" id="cardBtn"><i class="fa-solid fa-credit-card"></i> Kart</button>
+                            </div>
+
+                            <button class="checkout-btn" onclick="processPayment()" id="checkoutBtn" disabled>Ödeme Yap</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Section -->
+                <div class="content-section" id="products">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3>Ürün Yönetimi</h3>
+                        <button class="btn-primary" onclick="showProductModal()"><i class="fa-solid fa-plus"></i> Yeni Ürün</button>
+                    </div>
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <th>Barkod</th>
+                                    <th>Kategori</th>
+                                    <th>Fiyat</th>
+                                    <th>Stok</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable">
+                                <!-- Products table will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Customers Section -->
+                <div class="content-section" id="customers">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3>Müşteri Yönetimi</h3>
+                        <button class="btn-primary" onclick="showCustomerModal()"><i class="fa-solid fa-plus"></i> Yeni Müşteri</button>
+                    </div>
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ad Soyad</th>
+                                    <th>Telefon</th>
+                                    <th>E-posta</th>
+                                    <th>Puan</th>
+                                    <th>Toplam Harcama</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersTable">
+                                <!-- Customers table will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Other sections -->
+                <div class="content-section" id="employees">
+                    <h3>Çalışan Yönetimi</h3>
+                    <p>Çalışan yönetimi modülü geliştiriliyor...</p>
+                </div>
+
+                <div class="content-section" id="tables">
+                    <h3>Masa Yönetimi</h3>
+                    <div class="dashboard-grid">
+                        <div class="stat-card green">
+                            <h3>Masa 1</h3>
+                            <div class="value">Boş</div>
+                            <div class="change">4 kişilik</div>
+                        </div>
+                        <div class="stat-card orange">
+                            <h3>Masa 2</h3>
+                            <div class="value">Dolu</div>
+                            <div class="change">2 kişilik - 45.50₺</div>
+                        </div>
+                        <div class="stat-card purple">
+                            <h3>Masa 3</h3>
+                            <div class="value">Rezerve</div>
+                            <div class="change">6 kişilik</div>
+                        </div>
+                        <div class="stat-card green">
+                            <h3>Masa 4</h3>
+                            <div class="value">Boş</div>
+                            <div class="change">4 kişilik</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="discounts">
+                    <h3>İndirim & Kampanya Yönetimi</h3>
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Kampanya Adı</th>
+                                    <th>Tip</th>
+                                    <th>Değer</th>
+                                    <th>Koşul</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Happy Hour</td>
+                                    <td>Yüzde İndirim</td>
+                                    <td>%20</td>
+                                    <td>14:00-17:00</td>
+                                    <td><span style="background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Aktif</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2 Al 1 Öde</td>
+                                    <td>BOGO</td>
+                                    <td>İçecek</td>
+                                    <td>İçecek kategorisi</td>
+                                    <td><span style="background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Aktif</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-section" id="reports">
+                    <h3>Raporlar ve Analizler</h3>
+                    <div class="dashboard-grid">
+                        <div class="stat-card blue">
+                            <h3>Günlük Satış</h3>
+                            <div class="value">12</div>
+                            <div class="change">Toplam işlem sayısı</div>
+                        </div>
+                        <div class="stat-card green">
+                            <h3>Haftalık Ciro</h3>
+                            <div class="value">8,650₺</div>
+                            <div class="change">Bu hafta</div>
+                        </div>
+                        <div class="stat-card purple">
+                            <h3>En Çok Satan</h3>
+                            <div class="value">Ekmek</div>
+                            <div class="change">45 adet satıldı</div>
+                        </div>
+                        <div class="stat-card orange">
+                            <h3>Ortalama Sepet</h3>
+                            <div class="value">102₺</div>
+                            <div class="change">Müşteri başına</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="cash">
+                    <h3>Kasa Yönetimi</h3>
+                    <div class="dashboard-grid">
+                        <div class="stat-card green">
+                            <h3>Kasadaki Nakit</h3>
+                            <div class="value">2,350₺</div>
+                            <div class="change">Güncel tutar</div>
+                        </div>
+                        <div class="stat-card blue">
+                            <h3>Nakit Satışlar</h3>
+                            <div class="value">1,875₺</div>
+                            <div class="change">Bugün</div>
+                        </div>
+                        <div class="stat-card purple">
+                            <h3>Kart Satışlar</h3>
+                            <div class="value">3,245₺</div>
+                            <div class="change">Bugün</div>
+                        </div>
+                        <div class="stat-card orange">
+                            <h3>Giderler</h3>
+                            <div class="value">425₺</div>
+                            <div class="change">Bu hafta</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section" id="settings">
+                    <h3>Sistem Ayarları</h3>
+                    <div class="data-table">
+                        <h4 style="padding: 20px; margin: 0; background: #f8f9fa;">Genel Ayarlar</h4>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><strong>İşletme Adı</strong></td>
+                                    <td>Mağazam POS Sistemi</td>
+                                    <td><button class="btn-primary">Düzenle</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vergi Oranı</strong></td>
+                                    <td>%18 KDV</td>
+                                    <td><button class="btn-primary">Düzenle</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Para Birimi</strong></td>
+                                    <td>Türk Lirası (₺)</td>
+                                    <td><button class="btn-primary">Düzenle</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Yazıcı Durumu</strong></td>
+                                    <td>Bağlı</td>
+                                    <td><button class="btn-primary">Test Et</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h3 id="productModalTitle">Ürün Ekle/Düzenle</h3>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <label for="productName">Ad:</label>
+                <input type="text" id="productName" required><br>
+                <label for="productBarcode">Barkod:</label>
+                <input type="text" id="productBarcode" required><br>
+                <label for="productCategory">Kategori:</label>
+                <input type="text" id="productCategory" required><br>
+                <label for="productPrice">Fiyat:</label>
+                <input type="number" id="productPrice" step="0.01" required><br>
+                <label for="productCost">Maliyet:</label>
+                <input type="number" id="productCost" step="0.01" required><br>
+                <label for="productStock">Stok:</label>
+                <input type="number" id="productStock" required><br>
+                <label for="productMinStock">Min Stok:</label>
+                <input type="number" id="productMinStock" required><br>
+                <button type="submit">Kaydet</button>
+                <button type="button" onclick="closeModal('productModal')">İptal</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <h3 id="customerModalTitle">Müşteri Ekle/Düzenle</h3>
+            <form id="customerForm">
+                <input type="hidden" id="customerId">
+                <label for="customerName">Ad Soyad:</label>
+                <input type="text" id="customerName" required><br>
+                <label for="customerPhone">Telefon:</label>
+                <input type="text" id="customerPhone" required><br>
+                <label for="customerEmail">E-posta:</label>
+                <input type="email" id="customerEmail" required><br>
+                <label for="customerPoints">Puan:</label>
+                <input type="number" id="customerPoints" required><br>
+                <label for="customerTotalSpent">Toplam Harcama:</label>
+                <input type="number" id="customerTotalSpent" step="0.01" required><br>
+                <label for="customerVisits">Ziyaret Sayısı:</label>
+                <input type="number" id="customerVisits" required><br>
+                <button type="submit">Kaydet</button>
+                <button type="button" onclick="closeModal('customerModal')">İptal</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
