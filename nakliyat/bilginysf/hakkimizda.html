@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - Bilgin Nakliyat | 15 Yıllık Deneyim | Güvenilir Nakliyat</title>
+    <meta name="description" content="Bilgin Nakliyat - 15 yıllık deneyim ile İstanbul, Bağcılar, Güneşli, Sakarya, Sapanca, Düzce, Ankara nakliyat hizmeti. Güvenilir ve profesyonel ekip.">
+    <meta name="keywords" content="bilgin nakliyat hakkında, güvenilir nakliyat, profesyonel nakliyat, İstanbul nakliyat firması, deneyimli nakliyat">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Hakkımızda - Bilgin Nakliyat">
+    <meta property="og:description" content="15 yıllık deneyim ile güvenilir nakliyat hizmeti. Profesyonel ekibimiz ile eşyalarınızı güvenle taşıyoruz.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bilginnakliyat.com.tr/hakkimizda.html">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #e31e24;
+            --dark-red: #c41e3a;
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+            --shadow: rgba(227, 30, 36, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            z-index: 999;
+            transition: left 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu ul li {
+            margin: 2rem 0;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--light-gray);
+            transform: scale(1.1);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="about-pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M15,5 L25,15 L15,25 L5,15 Z" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23about-pattern)"/></svg>') repeat;
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(30px); }
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            z-index: 2;
+            position: relative;
+        }
+
+        .breadcrumb {
+            margin-top: 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .breadcrumb a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            opacity: 0.6;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-red);
+        }
+
+        .about-text p {
+            color: var(--dark-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .about-icon {
+            font-size: 12rem;
+            color: var(--primary-red);
+            opacity: 0.1;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stats-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-red);
+            transition: left 0.5s ease;
+        }
+
+        .value-card:hover::before {
+            left: 0;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.1);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .team-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-image i {
+            font-size: 4rem;
+            color: var(--white);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info p {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 5rem 0;
+            background: var(--light-gray);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary-red);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+            right: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            right: 0;
+            left: 55%;
+        }
+
+        .timeline-content {
+            position: relative;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-red);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 0 0 5px var(--light-gray);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Fixed Buttons */
+        .fixed-buttons {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .fixed-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: bounce 2s infinite;
+        }
+
+        .phone-btn {
+            background: var(--primary-red);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .search-btn {
+            background: var(--black);
+        }
+
+        .fixed-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--dark-gray);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--dark-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .about-icon {
+                font-size: 8rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                left: 50px;
+                right: 0;
+            }
+
+            .timeline-year {
+                left: 20px;
+                transform: translateY(-50%);
+            }
+
+            .fixed-buttons {
+                right: 1rem;
+                gap: 0.5rem;
+            }
+
+            .fixed-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Search Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-modal.active {
+            display: flex;
+        }
+
+        .search-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-red);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .close-search {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-truck-moving"></i>
+                Bilgin Nakliyat
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                <li><a href="hizmetler.html"><i class="fas fa-boxes"></i> Hizmetler</a></li>
+                <li><a href="hakkimizda.html" class="active"><i class="fas fa-users"></i> Hakkımızda</a></li>
+                <li><a href="iletisim.html"><i class="fas fa-phone"></i> İletişim</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+            <li><a href="hizmetler.html"><i class="fas fa-boxes"></i> Hizmetler</a></li>
+            <li><a href="hakkimizda.html"><i class="fas fa-users"></i> Hakkımızda</a></li>
+            <li><a href="iletisim.html"><i class="fas fa-phone"></i> İletişim</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-users"></i> Hakkımızda</h1>
+            <p>15 yıllık deneyimimiz ile İstanbul ve çevre illerde güvenilir nakliyat hizmeti sunuyoruz</p>
+            <div class="breadcrumb">
+                <a href="index.html">Ana Sayfa</a>
+                <span>/</span>
+                <span>Hakkımızda</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Bilgin Nakliyat Kimdir?</h2>
+                    <p>
+                        2010 yılından bu yana İstanbul ve çevre illerde faaliyet gösteren Bilgin Nakliyat, 
+                        güvenilir ve kaliteli hizmet anlayışı ile sektörde öncü konumdadır. 
+                        Özellikle Bağcılar ve Güneşli bölgelerinde yoğunlaşan hizmetlerimizi, 
+                        Sakarya, Sapanca, Düzce ve Ankara'ya kadar genişlettik.
+                    </p>
+                    <p>
+                        Müşteri memnuniyetini her şeyin üstünde tutan firmamız, 
+                        modern araç filosu ve deneyimli personeli ile eşyalarınızı 
+                        en güvenli şekilde taşıma garantisi vermektedir. 
+                        Sigorta kapsamında yapılan tüm taşımalarımızda %100 güvenlik sözü veriyoruz.
+                    </p>
+                    <p>
+                        Evden eve nakliyat, ofis taşımacılığı, kamyon kiralama ve 
+                        şehirlerarası nakliyat hizmetlerimiz ile her türlü ihtiyacınıza 
+                        uygun çözümler sunmaktayız. 7/24 hizmet veren ekibimizle 
+                        size en yakın zamanda ulaşıyoruz.
+                    </p>
+                </div>
+                <div class="about-visual">
+                    <div class="about-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <div class="stats-overlay">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Yıllık Deneyim</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Değerlerimiz</h2>
+                <p>Bilgin Nakliyat olarak hizmet verirken benimsediğimiz temel değerler</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Güvenilirlik</h3>
+                    <p>15 yıllık deneyimimiz ile müşterilerimize güvenilir hizmet sunuyoruz. 
+                    Eşyalarınız bizim sorumluluğumuzda güvende.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Zamanında Teslimat</h3>
+                    <p>Belirlenen tarih ve saatte teslim garantisi veriyoruz. 
+                    Programınızı bozmadan hızlı ve etkili çözümler sunuyoruz.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Müşteri Memnuniyeti</h3>
+                    <p>Müşteri memnuniyeti her şeyin üstündedir. Gülümseyen müşterilerimiz 
+                    bizim en büyük başarımızdır.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Kaliteli Hizmet</h3>
+                    <p>Modern araç filosu ve deneyimli personelimiz ile 
+                    sektörün en kaliteli hizmetini sunmaya devam ediyoruz.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Dürüstlük</h3>
+                    <p>Şeffaf fiyatlandırma ve dürüst iş ilişkileri ile 
+                    müşterilerimizle uzun vadeli ortaklıklar kuruyoruz.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>7/24 Destek</h3>
+                    <p>Hafta içi ve hafta sonu, gece gündüz her an ulaşabileceğiniz 
+                    destek hattımız ile yanınızdayız.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ekibimiz</h2>
+                <p>Profesyonel ve deneyimli ekibimiz ile hizmetinizdeyiz</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Mehmet Bilgin</h4>
+                        <p>Kurucu & Genel Müdür</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Operasyon Ekibi</h4>
+                        <p>Deneyimli Taşıma Uzmanları</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Müşteri Hizmetleri</h4>
+                        <p>7/24 Destek Ekibi</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user-hard-hat"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Saha Ekibi</h4>
+                        <p>Profesyonel Şoförler</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tarihçemiz</h2>
+                <p>Bilgin Nakliyat'ın bugünlere gelme hikayesi</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-content">
+                        <h4>Kuruluş</h4>
+                        <p>Bilgin Nakliyat İstanbul Bağcılar'da kuruldu. İlk yıl 100 müşteriye hizmet verdik.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">
+                        <h4>Büyüme</h4>
+                        <p>Araç filomuz genişledi. Güneşli bölgesinde ikinci ofisimizi açtık.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-content">
+                        <h4>Şehirlerarası Hizmet

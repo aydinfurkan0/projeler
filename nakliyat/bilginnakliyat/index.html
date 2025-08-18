@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstanbul Evden Eve Nakliyat | Bağcılar, Güneşli, Sakarya, Sapanca, Düzce, Ankara | Profesyonel Nakliye Hizmeti</title>
+    <meta name="description" content="İstanbul evden eve nakliyat hizmeti. Bağcılar, Güneşli, Sakarya, Sapanca, Düzce, Ankara nakliye. Güvenli, hızlı ve uygun fiyatlı kamyon, tır nakliyat çözümleri. 7/24 hizmet.">
+    <meta name="keywords" content="evden eve nakliyat, istanbul nakliyat, bağcılar nakliyat, güneşli nakliyat, sakarya nakliye, sapanca nakliyat, düzce nakliye, ankara nakliyat, kamyon nakliye, tır nakliye">
+    <meta property="og:title" content="İstanbul Evden Eve Nakliyat | Profesyonel Nakliye Hizmeti">
+    <meta property="og:description" content="İstanbul ve çevre illerde güvenilir evden eve nakliyat hizmeti. Bağcılar, Güneşli, Sakarya, Sapanca, Düzce, Ankara nakliye uzmanları.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.nakliyatpro.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="İstanbul Evden Eve Nakliyat | Profesyonel Nakliye Hizmeti">
+    <meta name="twitter:description" content="İstanbul ve çevre illerde güvenilir evden eve nakliyat hizmeti.">
+    <link rel="canonical" href="https://www.nakliyatpro.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-pink: #d11818;
+            --neon-cyan: #e6e9e9;
+            --neon-green: #f8fbf8;
+            --neon-yellow: #ffff00;
+            --dark-bg: #0a0a0a;
+            --grid-color: #1a1a2e;
+            --accent-purple: #ad0d0d;
+            --retro-orange: #ff6b35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: linear-gradient(45deg, var(--dark-bg) 25%, transparent 25%, transparent 75%, var(--dark-bg) 75%), 
+                        linear-gradient(45deg, var(--dark-bg) 25%, var(--grid-color) 25%, var(--grid-color) 75%, var(--dark-bg) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: var(--neon-cyan);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-pink);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--neon-green);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--neon-pink);
+            margin: 3px 0;
+            transition: 0.3s;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark-bg), var(--accent-purple));
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.5s ease;
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 2rem;
+            margin: 1rem 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 0 0 20px var(--neon-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+            transform: scale(1.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: var(--neon-pink);
+            cursor: pointer;
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px var(--neon-pink);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px var(--neon-pink));
+            }
+            to {
+                filter: drop-shadow(0 0 30px var(--neon-cyan));
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid;
+            background: transparent;
+            color: inherit;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .btn-primary {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .btn-secondary {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .btn-success {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px currentColor;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 4rem 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 20px var(--neon-yellow);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid var(--neon-cyan);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink);
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--neon-pink);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .service-card p {
+            color: var(--neon-cyan);
+        }
+
+        /* City Coverage */
+        .coverage {
+            padding: 4rem 0;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .coverage h2 {
+            text-align: center;
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .city-card {
+            background: rgba(106, 13, 173, 0.2);
+            border: 1px solid var(--neon-pink);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .city-card:hover {
+            box-shadow: 0 0 25px var(--neon-pink);
+            transform: scale(1.05);
+        }
+
+        .city-card h3 {
+            color: var(--neon-yellow);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .city-card p {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(57, 255, 20, 0.1));
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        .contact-item h3 {
+            color: var(--neon-yellow);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .contact-item p {
+            color: var(--neon-cyan);
+        }
+
+        /* Fixed Action Buttons */
+        .fixed-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid;
+            background: var(--dark-bg);
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .whatsapp-btn {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .phone-btn {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        .search-btn {
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px currentColor;
+        }
+
+        /* Search Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-modal.active {
+            display: flex;
+        }
+
+        .search-content {
+            background: var(--dark-bg);
+            border: 2px solid var(--neon-pink);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            border-top: 2px solid var(--neon-pink);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--grid-color);
+            color: var(--neon-green);
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid var(--neon-cyan);
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .page-nav h3 {
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .page-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .page-links a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--neon-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .page-links a:hover {
+            background: var(--neon-cyan);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fixed-actions {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .action-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .services,
+            .coverage {
+                padding: 2rem 0;
+            }
+
+            .service-card,
+            .city-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card,
+        .city-card {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* SEO Schema Markup */
+        .schema-markup {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json" class="schema-markup">
+    {
+      "@context": "https://schema.org",
+      "@type": "MovingCompany",
+      "name": "İstanbul Evden Eve Nakliyat",
+      "description": "İstanbul ve çevre illerde profesyonel evden eve nakliyat hizmeti",
+      "url": "https://www.nakliyatpro.com",
+      "telephone": "+90-212-555-0123",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nakliyat Caddesi No: 123",
+        "addressLocality": "İstanbul",
+        "addressCountry": "TR"
+      },
+      "areaServed": ["İstanbul", "Bağcılar", "Güneşli", "Sakarya", "Sapanca", "Düzce", "Ankara"],
+      "serviceType": ["Evden Eve Nakliyat", "Ofis Nakliyat", "Kamyon Nakliye", "Tır Nakliye"]
+    }
+    </script>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">BİLGİN NAKLİYAT</a>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="hizmetler.html">Hizmetler</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        
+        <div class="mobile-nav" id="mobileNav">
+            <span class="close-btn" onclick="toggleMobileMenu()">&times;</span>
+            <a href="#home" onclick="toggleMobileMenu()">Ana Sayfa</a>
+            <a href="hizmetler.html" onclick="toggleMobileMenu()">Hizmetler</a>
+            <a href="hakkimizda.html" onclick="toggleMobileMenu()">Hakkımızda</a>
+            <a href="iletisim.html" onclick="toggleMobileMenu()">İletişim</a>
+        </div>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <div class="container">
+                <h1>BİLGİN NAKLİYAT</h1>
+                <p>İstanbul ve Çevre İllerde Güvenilir Evden Eve Nakliyat Hizmeti</p>
+                <div class="cta-buttons">
+                    <a href="tel:+902125550123" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Hemen Ara
+                    </a>
+                    <a href="https://wa.me/902125550123" class="btn btn-success" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-truck"></i> Hizmetler
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-nav">
+            <div class="container">
+                <h3>Sayfalar Arası Navigasyon</h3>
+                <div class="page-links">
+                    <a href="hizmetler.html"><i class="fas fa-cogs"></i> Hizmetlerimiz</a>
+                    <a href="hakkimizda.html"><i class="fas fa-info-circle"></i> Hakkımızda</a>
+                    <a href="iletisim.html"><i class="fas fa-envelope"></i> İletişim</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="services" id="services">
+            <div class="container">
+                <h2>HİZMETLERİMİZ</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Evden Eve Nakliyat</h3>
+                        <p>Profesyonel ekibimizle evinizin eşyalarını güvenle taşıyoruz. İstanbul Bağcılar, Güneşli ve tüm ilçelerde hizmet.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-building"></i>
+                        <h3>Ofis Nakliyat</h3>
+                        <p>İş yerinizin taşınmasında uzman ekibimiz, minimum kesinti ile hızlı çözümler sunar.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-truck"></i>
+                        <h3>Kamyon Nakliye</h3>
+                        <p>Farklı boyutlarda kamyonlarımızla Sakarya, Sapanca, Düzce ve Ankara'ya nakliye hizmeti.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Tır Nakliye</h3>
+                        <p>Büyük hacimli yükleriniz için tır nakliye hizmeti. Şehirler arası güvenli taşımacılık.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="coverage">
+            <div class="container">
+                <h2>HİZMET VERDİĞİMİZ BÖLGELER</h2>
+                <div class="cities-grid">
+                    <div class="city-card">
+                        <h3>İSTANBUL - BAĞCILAR</h3>
+                        <p>Bağcılar evden eve nakliyat, mahalle arası taşımacılık</p>
+                    </div>
+                    <div class="city-card">
+                        <h3>İSTANBUL - GÜNEŞLİ</h3>
+                        <p>Güneşli nakliyat, komşu ilçelere hızlı nakliye</p>
+                    </div>
+                    <div class="city-card">
+                        <h3>İSTANBUL TÜM İLÇELER</h3>
+                        <p>34 plaka tüm ilçelerde nakliyat hizmeti</p>
+                    </div>
+                    <div class="city-card">
+                        <h3>SAKARYA</h3>
+                        <p>Sakarya ili nakliye, şehir içi ve şehirler arası</p>
+                    </div>
+                    <div class="city-card">
+                        <h3>SAPANCA</h3>
+                        <p>Sapanca nakliyat, göl çevresi taşımacılık hizmeti</p>
+                    </div>
+                    <div class="city-card">
+                        <h3>DÜZCE</h3>
+                        <p>Düzce ili evden eve nakliyat, güvenli taşıma</p>
+                    </div>
+                    <div class="city-card">
+                        <h3>ANKARA</h3>
+                        <p>Başkent Ankara nakliye, İstanbul-Ankara arası</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-info">
+            <div class="container">
+                <h2 style="color: var(--neon-pink); font-family: 'Orbitron', monospace; margin-bottom: 2rem; text-shadow: 0 0 20px var(--neon-pink);">7/24 İLETİŞİM</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Telefon</h3>
+                        <p>+90 212 555 01 23</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>+90 212 555 01 23</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>E-Mail</h3>
+                        <p>info@bilginnakliyat.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Çalışma Saatleri</h3>
+                        <p>7 Gün 24 Saat</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fixed Action Buttons -->
+    <div class="fixed-actions">
+        <a href="#" class="action-btn search-btn" onclick="openSearchModal()">
+            <i class="fas fa-search"></i>
+        </a>
+        <a href="https://wa.me/902125550123" class="action-btn whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+902125550123" class="action-btn phone-btn">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-content">
+            <h3 style="color: var(--neon-pink); margin-bottom: 1rem; font-family: 'Orbitron', monospace;">SİTE İÇİ ARAMA</h3>
+            <input type="text" class="search-input" placeholder="Arama yapın..." id="searchInput">
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button class="btn btn-primary" onclick="performSearch()">
+                    <i class="fas fa-search"></i> Ara
+                </button>
+                <button class="btn btn-secondary" onclick="closeSearchModal()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BİLGİN NAKLİYAT</h3>
+                    <p>İstanbul ve çevre illerde güvenilir nakliyat hizmeti veren profesyonel firmamız, modern teknoloji ile retro tasarımı harmanlayarak sizlere en iyi hizmeti sunmaktadır.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/retronakliyat" style="color: var(--neon-cyan);" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com/retronakliyat" style="color: var(--neon-pink);" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/retronakliyat" style="color: var(--neon-cyan);" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/902125550123" style="color: var(--neon-green);" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>HİZMETLER</h3>
+                    <a href="hizmetler.html">Evden Eve Nakliyat</a><br>
+                    <a href="hizmetler.html">Ofis Nakliyat</a><br>
+                    <a href="hizmetler.html">Kamyon Nakliye</a><br>
+                    <a href="hizmetler.html">Tır Nakliye</a><br>
+                    <a href="hizmetler.html">Ambalaj Hizmeti</a><br>
+                    <a href="hizmetler.html">Montaj-Demontaj</a>
+                </div>
+                <div class="footer-section">
+                    <h3>HİZMET BÖLGELERİ</h3>
+                    <a href="#">İstanbul Bağcılar</a><br>
+                    <a href="#">İstanbul Güneşli</a><br>
+                    <a href="#">İstanbul Tüm İlçeler</a><br>
+                    <a href="#">Sakarya Nakliye</a><br>
+                    <a href="#">Sapanca Nakliyat</a><br>
+                    <a href="#">Düzce Nakliye</a><br>
+                    <a href="#">Ankara Nakliyat</a>
+                </div>
+                <div class="footer-section">
+                    <h3>İLETİŞİM</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                    <p><i class="fas fa-phone"></i> +90 212 555 01 23</p>
+                    <p><i class="fas fa-envelope"></i> info@bilginnakliyat.com</p>
+                    <p><i class="fas fa-clock"></i> 7/24 Hizmet</p>
+                    <br>
+                    <a href="hakkimizda.html">Hakkımızda</a><br>
+                    <a href="iletisim.html">İletişim Formu</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bilgin Nakliyat. Tüm hakları saklıdır. | İstanbul Evden Eve Nakliyat | Bağcılar Güneşli Nakliye</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileNav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        // Search Modal Functions
+        function openSearchModal() {
+            document.getElementById('searchModal').classList.add('active');
+            document.getElementById('searchInput').focus();
+        }
+
+        function closeSearchModal() {
+            document.getElementById('searchModal').classList.remove('active');
+            document.getElementById('searchInput').value = '';
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (searchTerm.includes('hizmet') || searchTerm.includes('service')) {
+                window.location.href = 'hizmetler.html';
+            } else if (searchTerm.includes('iletişim') || searchTerm.includes('contact')) {
+                window.location.href = 'iletisim.html';
+            } else if (searchTerm.includes('hakkım') || searchTerm.includes('about')) {
+                window.location.href = 'hakkimizda.html';
+            } else if (searchTerm.includes('istanbul') || searchTerm.includes('bağcılar') || searchTerm.includes('güneşli')) {
+                document.querySelector('.coverage').scrollIntoView({ behavior: 'smooth' });
+                closeSearchModal();
+            } else if (searchTerm.includes('telefon') || searchTerm.includes('phone')) {
+                window.location.href = 'tel:+902125550123';
+            } else if (searchTerm.includes('whatsapp')) {
+                window.open('https://wa.me/902125550123', '_blank');
+            } else {
+                alert('Arama sonucu bulunamadı. Lütfen farklı bir terim deneyin.');
+            }
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Close search modal when clicking outside
+        document.getElementById('searchModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSearchModal();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate service cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards
+            document.querySelectorAll('.service-card, .city-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Add floating animation to action buttons
+            const actionButtons = document.querySelectorAll('.action-btn');
+            actionButtons.forEach((btn, index) => {
+                btn.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
+            });
+        });
+
+        // Add floating keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // SEO Enhancement - Track page interactions
+        function trackInteraction(action, element) {
+            // This would integrate with Google Analytics or other tracking
+            console.log(`User interaction: ${action} on ${element}`);
+        }
+
+        // Add click tracking to important elements
+        document.querySelectorAll('.btn, .service-card, .city-card').forEach(element => {
+            element.addEventListener('click', function() {
+                trackInteraction('click', this.className);
+            });
+        });
+    </script>
+</body>
+</html>

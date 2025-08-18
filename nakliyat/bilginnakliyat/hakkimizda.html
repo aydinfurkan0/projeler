@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda | İstanbul Evden Eve Nakliyat Firması | Bağcılar Güneşli Nakliye | Bilgin Nakliyat</title>
+    <meta name="description" content="İstanbul evden eve nakliyat konusunda uzman firmamız hakkında bilgi alın. Bağcılar, Güneşli, Sakarya, Sapanca, Düzce, Ankara nakliye deneyimimiz ve referanslarımız.">
+    <meta name="keywords" content="nakliyat firması hakkında, istanbul nakliyat şirketi, güvenilir nakliyat, nakliye deneyimi, bağcılar nakliyat firması">
+    <meta property="og:title" content="Hakkımızda | İstanbul Evden Eve Nakliyat Firması">
+    <meta property="og:description" content="İstanbul ve çevre illerde güvenilir nakliyat hizmeti veren deneyimli firmamız hakkında bilgi alın.">
+    <link rel="canonical" href="https://www.nakliyatpro.com/hakkimizda.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-pink: #ec0c0c;
+            --neon-cyan: #ffffff;
+            --neon-green: #a9a9a9;
+            --neon-yellow: #eb0505;
+            --dark-bg: #0a0a0a;
+            --grid-color: #1a1a2e;
+            --accent-purple: #ad0d0d;
+            --retro-orange: #e2e2e2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: linear-gradient(45deg, var(--dark-bg) 25%, transparent 25%, transparent 75%, var(--dark-bg) 75%), 
+                        linear-gradient(45deg, var(--dark-bg) 25%, var(--grid-color) 25%, var(--grid-color) 75%, var(--dark-bg) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: var(--neon-cyan);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-pink);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--neon-pink);
+            margin: 3px 0;
+            transition: 0.3s;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .page-header h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px var(--neon-pink);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px var(--neon-pink));
+            }
+            to {
+                filter: drop-shadow(0 0 30px var(--neon-cyan));
+            }
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid var(--neon-cyan);
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .page-nav h3 {
+            color: var(--neon-yellow);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .page-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .page-links a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--neon-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .page-links a:hover {
+            background: var(--neon-cyan);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* About Content */
+        .about-content {
+            padding: 3rem 0;
+        }
+
+        .about-section {
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid var(--neon-cyan);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .about-section:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 30px var(--neon-pink);
+            transform: translateY(-5px);
+        }
+
+        .about-section h2 {
+            color: var(--neon-pink);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-section h2 i {
+            font-size: 2rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .about-section p {
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(106, 13, 173, 0.2);
+            border: 2px solid var(--neon-yellow);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            box-shadow: 0 0 25px var(--neon-yellow);
+            transform: scale(1.05);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .stat-card h3 {
+            color: var(--neon-yellow);
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: var(--neon-cyan);
+        }
+
+        /* Team Section */
+        .team-section {
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            padding: 3rem 0;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            color: var(--neon-green);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--neon-cyan);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+
+        .team-member i {
+            font-size: 4rem;
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .team-member h3 {
+            color: var(--neon-yellow);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member h4 {
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+
+        .team-member p {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-item {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid var(--retro-orange);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            box-shadow: 0 0 25px var(--retro-orange);
+            transform: translateY(-5px);
+        }
+
+        .value-item i {
+            font-size: 2.5rem;
+            color: var(--retro-orange);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--retro-orange);
+        }
+
+        .value-item h3 {
+            color: var(--neon-yellow);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1rem;
+        }
+
+        .value-item p {
+            color: var(--neon-cyan);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            background: radial-gradient(circle at center, rgba(57, 255, 20, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-section h2 {
+            color: var(--neon-green);
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid;
+            background: transparent;
+            color: inherit;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+
+        .btn-success {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px currentColor;
+        }
+
+        /* Fixed Action Buttons */
+        .fixed-actions {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid;
+            background: var(--dark-bg);
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .whatsapp-btn {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .phone-btn {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        .home-btn {
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px currentColor;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            border-top: 2px solid var(--neon-pink);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--grid-color);
+            color: var(--neon-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid,
+            .team-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section {
+                padding: 1rem;
+            }
+
+            .fixed-actions {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .action-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">BİLGİN NAKLİYAT</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="hizmetler.html">Hizmetler</a></li>
+                <li><a href="hakkimizda.html" class="active">Hakkımızda</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>HAKKIMIZDA</h1>
+                <p>İstanbul'un Güvenilir Nakliyat Partneri</p>
+            </div>
+        </section>
+
+        <div class="page-nav">
+            <div class="container">
+                <h3>Diğer Sayfalar</h3>
+                <div class="page-links">
+                    <a href="index.html"><i class="fas fa-home"></i> Ana Sayfa</a>
+                    <a href="hizmetler.html"><i class="fas fa-cogs"></i> Hizmetler</a>
+                    <a href="iletisim.html"><i class="fas fa-envelope"></i> İletişim</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="about-content">
+            <div class="container">
+                <div class="about-section">
+                    <h2><i class="fas fa-rocket"></i> Firmamız Hakkında</h2>
+                    <p>Bilgin Nakliyat olarak, İstanbul ve çevre illerde evden eve nakliyat sektöründe faaliyet gösteren deneyimli bir firmayız. 2010 yılından bu yana Bağcılar, Güneşli başta olmak üzere İstanbul'un tüm ilçelerinde, ayrıca Sakarya, Sapanca, Düzce ve Ankara illerinde güvenilir nakliyat hizmeti vermekteyiz.</p>
+                    <p>Retro tasarım anlayışımızla modern teknolojini harmanlayan firmamız, geleneksel güvenilirlik değerleriyle çağdaş hizmet kalitesini bir araya getirmektedir. Müşteri memnuniyetini ön planda tutan yaklaşımımızla, her nakliyat işlemini adeta bir sanat eseri titizliğiyle gerçekleştiriyoruz.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2><i class="fas fa-award"></i> Deneyimimiz ve Uzmanlığımız</h2>
+                    <p>15 yıllık sektör deneyimimizle, evden eve nakliyat, ofis taşımacılığı, kamyon ve tır nakliye hizmetlerinde uzmanlaştık. Binlerce başarılı taşıma işlemi gerçekleştiren ekibimiz, her türlü nakliyat challenge'ında size en iyi çözümü sunar.</p>
+                    <p>Özellikle İstanbul'un karmaşık trafik yapısında ve dar sokaklarında nakliyat konusunda edindiğimiz tecrübe, bizi bu alanda lider konuma taşımıştır. Bağcılar ve Güneşli bölgelerindeki detaylı yerel bilgimiz sayesinde, müşterilerimize en hızlı ve en güvenli hizmeti sunmaktayız.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>5000+</h3>
+                        <p>Memnun Müşteri</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-truck"></i>
+                        <h3>15000+</h3>
+                        <p>Başarılı Taşıma</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar"></i>
+                        <h3>15</h3>
+                        <p>Yıl Deneyim</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <h3>4.9/5</h3>
+                        <p>Müşteri Puanı</p>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2><i class="fas fa-shield-alt"></i> Güvenlik ve Kalite</h2>
+                    <p>Eşyalarınızın güvenliği bizim için en önemli konudur. Tüm nakliyat işlemlerimizde sigorta güvencesi sağlıyor, profesyonel ambalaj malzemeleri kullanıyoruz. Modern araç filomuz düzenli bakımlardan geçirilmekte ve GPS takip sistemiyle donatılmıştır.</p>
+                    <p>Kalite standartlarımızı sürekli geliştiren firmamız, ISO kalite belgelerine sahiptir. Çevre dostu yaklaşımımızla, sürdürülebilir nakliyat çözümleri sunmaya odaklanmaktayız.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="container">
+                <h2>UZMAN EKİBİMİZ</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>MUSTAFA BİLGİN</h3>
+                        <h4>Genel Müdür</h4>
+                        <p>15 yıllık nakliyat sektörü deneyimi. İstanbul nakliyat pazarının derinlemesine bilgisi ve müşteri odaklı yönetim anlayışı.</p>
+                    </div>
+                    <div class="team-member">
+                        <i class="fas fa-user-cog"></i>
+                        <h3>YUSUF BİLGİN</h3>
+                        <h4>Operasyon Müdürü</h4>
+                        <p>Lojistik uzmanı, araç filomuzun yönetimi ve nakliyat süreçlerinin optimizasyonundan sorumlu deneyimli mühendis.</p>
+                    </div>
+                    <div class="team-member">
+                        <i class="fas fa-users"></i>
+                        <h3>Profesyonel Ekip</h3>
+                        <h4>15 Kişilik Deneyimli Kadro</h4>
+                        <p>Şoförler, taşıyıcılar, müşteri temsilcileri ve teknik personelden oluşan uzman ekibimiz 7/24 hizmetinizde.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-content">
+            <div class="container">
+                <div class="about-section">
+                    <h2><i class="fas fa-bullseye"></i> Değerlerimiz</h2>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Güvenilirlik</h3>
+                            <p>Sözümüzü tutmak ve müşterilerimizin güvenini kazanmak en temel değerimizdir.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-clock"></i>
+                            <h3>Zamanında Teslimat</h3>
+                            <p>Belirlenen sürede ve zamanında teslimat yapmak önceliğimizdir.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-heart"></i>
+                            <h3>Müşteri Memnuniyeti</h3>
+                            <p>Her müşterimizin memnuniyeti bizim için başarının göstergesidir.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Çevre Bilinci</h3>
+                            <p>Çevre dostu yaklaşımlarla sürdürülebilir nakliyat hizmeti sunuyoruz.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-tools"></i>
+                            <h3>Profesyonellik</h3>
+                            <p>İşimizi severek yapıyor, sürekli kendimizi geliştiriyoruz.</p>
+                        </div>
+                        <div class="value-item">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h3>Uygun Fiyat</h3>
+                            <p>Kaliteli hizmeti en uygun fiyatlarla sunmaya devam ediyoruz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>BİZİMLE ÇALIŞMAYA HAZIR MISINIZ?</h2>
+                <a href="tel:+902125550123" class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Hemen Arayın
+                </a>
+                <a href="https://wa.me/902125550123" class="btn btn-success" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp İletişim
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fixed Action Buttons -->
+    <div class="fixed-actions">
+        <a href="index.html" class="action-btn home-btn">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="https://wa.me/902125550123" class="action-btn whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+902125550123" class="action-btn phone-btn">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BİLGİN NAKLİYAT</h3>
+                    <p>İstanbul ve çevre illerde güvenilir nakliyat hizmeti veren profesyonel firmamız, modern teknoloji ile retro tasarımı harmanlayarak sizlere en iyi hizmeti sunmaktadır.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>HAKKIMIZDA</h3>
+                    <a href="#deneyim">Deneyimimiz</a><br>
+                    <a href="#ekip">Ekibimiz</a><br>
+                    <a href="#degerler">Değerlerimiz</a><br>
+                    <a href="#kalite">Kalite Politikamız</a><br>
+                    <a href="#referanslar">Referanslarımız</a><br>
+                    <a href="#sertifikalar">Sertifikalarımız</a>
+                </div>
+                <div class="footer-section">
+                    <h3>HİZMET BÖLGELERİ</h3>
+                    <a href="index.html">İstanbul Bağcılar</a><br>
+                    <a href="index.html">İstanbul Güneşli</a><br>
+                    <a href="index.html">İstanbul Tüm İlçeler</a><br>
+                    <a href="index.html">Sakarya Nakliye</a><br>
+                    <a href="index.html">Sapanca Nakliyat</a><br>
+                    <a href="index.html">Düzce Nakliye</a><br>
+                    <a href="index.html">Ankara Nakliyat</a>
+                </div>
+                <div class="footer-section">
+                    <h3>İLETİŞİM</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                    <p><i class="fas fa-phone"></i> +90 212 555 01 23</p>
+                    <p><i class="fas fa-envelope"></i> info@bilginnakliyat.com</p>
+                    <p><i class="fas fa-clock"></i> 7/24 Hizmet</p>
+                    <br>
+                    <a href="hizmetler.html">Hizmetlerimiz</a><br>
+                    <a href="iletisim.html">İletişim Formu</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bilgin Nakliyat. Tüm hakları saklıdır. | İstanbul Güvenilir Nakliyat Firması</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add floating animation to action buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const actionButtons = document.querySelectorAll('.action-btn');
+            actionButtons.forEach((btn, index) => {
+                btn.style.animation = `float 3s ease-in-out infinite ${index * 0.5}s`;
+            });
+
+            // Animate sections on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.about-section, .stat-card, .team-member, .value-item').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        });
+
+        // Add floating keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
