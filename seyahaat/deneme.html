@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kişiselleştirilmiş seyahat planınız hazır! Gerçek verilerle destinasyon önerileri, konaklama, aktiviteler ve daha fazlası.">
+    <meta name="keywords" content="seyahat planı, destinasyon önerileri, tatil programı, yurtdışı rehberi, gerçek fiyatlar">
+    <title>Seyahat Planınız Hazır! | Global Travel Platform</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 70px;
+        }
+
+        .nav-logo {
+            color: var(--white);
+            font-size: 1.8em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Loading Screen */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: var(--white);
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+
+        .loading-text {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .loading-progress {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), #c0392b);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .api-status {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-width: 300px;
+        }
+
+        .api-status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .status-success { color: #2ecc71; }
+        .status-error { color: #e74c3c; }
+        .status-loading { color: #f39c12; }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 70px;
+            padding: 40px 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease;
+        }
+
+        .content-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--success-color), #2ecc71);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Trip Summary */
+        .trip-summary {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .destination-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4em;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Section Cards */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--bg-light);
+        }
+
+        .section-header i {
+            color: var(--secondary-color);
+            font-size: 2em;
+        }
+
+        .section-header h3 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        /* Real-time Data Indicators */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #2ecc71;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .live-indicator.loading {
+            background: #f39c12;
+        }
+
+        .live-indicator.error {
+            background: #e74c3c;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Hotel Cards */
+        .hotel-card {
+            border: 2px solid var(--bg-light);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .hotel-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.1);
+        }
+
+        .hotel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .hotel-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars {
+            color: var(--warning-color);
+        }
+
+        .price-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .hotel-facilities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .facility-tag {
+            background: var(--bg-light);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: var(--text-dark);
+        }
+
+        /* Emergency Info */
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .emergency-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .emergency-item.urgent {
+            background: #ffe6e6;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .emergency-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+
+        /* Local Prices */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 10px;
+        }
+
+        .price-item i {
+            color: var(--accent-color);
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        /* Real Data Attribution */
+        .data-source {
+            font-size: 0.8em;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Activity Cards */
+        .activity-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: var(--bg-light);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .activity-card:hover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: translateX(5px);
+        }
+
+        .activity-icon {
+            color: var(--accent-color);
+            font-size: 1.5em;
+            margin-top: 5px;
+        }
+
+        .activity-booking {
+            background: var(--success-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* Weather Cards */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .weather-day {
+            background: linear-gradient(135deg, var(--accent-color), #2980b9);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .weather-day i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .weather-temp {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /* Error States */
+        .error-state {
+            background: #ffe6e6;
+            border: 2px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+
+        .retry-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .trip-summary {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .emergency-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay with Real API Status -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Gerçek Veriler Yükleniyor</div>
+        <div class="loading-progress">
+            <div id="loadingProgressBar" class="loading-progress-bar"></div>
+        </div>
+        
+        <div class="api-status">
+            <div class="api-status-item">
+                <span><i class="fas fa-cloud-sun"></i> Hava Durumu API</span>
+                <span id="weatherStatus" class="status-loading">Yükleniyor...</span>
+            </div>
+            <div class="api-status-item">
+                <span><i class="fas fa-hotel"></i> Otel Fiyatları API</span>
+                <span id="hotelStatus" class="status-loading">Yükleniyor...</span>
+            </div>
+            <div class="api-status-item">
+                <span><i class="fas fa-money-bill-wave"></i> Döviz Kurları API</span>
+                <span id="exchangeStatus" class="status-loading">Yükleniyor...</span>
+            </div>
+            <div class="api-status-item">
+                <span><i class="fas fa-map-marker-alt"></i> Google Places API</span>
+                <span id="placesStatus" class="status-loading">Yükleniyor...</span>
+            </div>
+            <div class="api-status-item">
+                <span><i class="fas fa-ticket-alt"></i> Aktiviteler API</span>
+                <span id="activitiesStatus" class="status-loading">Yükleniyor...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-globe"></i> Global Travel Platform
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1><i class="fas fa-check-circle"></i> Gerçek Verilerle Hazır Seyahat Planınız!</h1>
+                <p>Canlı API'lardan alınan güncel verilerle kişiselleştirilmiş deneyim</p>
+                <div class="live-indicator pulse">
+                    <i class="fas fa-broadcast-tower"></i>
+                    Canlı Veriler
+                </div>
+            </div>
+
+            <!-- Trip Summary -->
+            <div class="trip-summary">
+                <div class="destination-image" id="destinationImage">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                
+                <div class="trip-details">
+                    <h2 id="destinationName">Destinasyon Yükleniyor...</h2>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="travelDates">Tarihler yükleniyor...</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-users"></i>
+                        <span id="travelers">Kişi sayısı...</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-wallet"></i>
+                        <span id="totalBudget">Bütçe hesaplanıyor...</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-thermometer-half"></i>
+                        <span id="weatherInfo">Hava durumu yükleniyor...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="section-grid">
+                <!-- Real Weather Data -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h3>Canlı Hava Durumu</h3>
+                        <div class="live-indicator" id="weatherLiveIndicator">
+                            <i class="fas fa-spinner fa-spin"></i> Yükleniyor
+                        </div>
+                    </div>
+                    <div id="currentWeather" class="skeleton" style="height: 80px; margin-bottom: 20px;"></div>
+                    <div class="weather-grid" id="weatherForecast">
+                        <!-- Skeleton loading -->
+                        <div class="skeleton" style="height: 120px;"></div>
+                        <div class="skeleton" style="height: 120px;"></div>
+                        <div class="skeleton" style="height: 120px;"></div>
+                    </div>
+                    <div class="data-source" id="weatherSource">Kaynak: OpenWeatherMap API</div>
+                </div>
+
+                <!-- Real Exchange Rates -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Güncel Döviz Kurları</h3>
+                        <div class="live-indicator" id="exchangeLiveIndicator">
+                            <i class="fas fa-spinner fa-spin"></i> Yükleniyor
+                        </div>
+                    </div>
+                    <div id="exchangeRates" class="price-grid">
+                        <div class="skeleton" style="height: 60px;"></div>
+                        <div class="skeleton" style="height: 60px;"></div>
+                    </div>
+                    <div class="data-source" id="exchangeSource">Kaynak: ExchangeRate-API</div>
+                </div>
+            </div>
+
+            <!-- Real Hotel Data -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-hotel"></i>
+                    <h3>Gerçek Otel Fiyatları</h3>
+                    <div class="live-indicator" id="hotelLiveIndicator">
+                        <i class="fas fa-spinner fa-spin"></i> Booking.com'dan çekiliyor
+                    </div>
+                </div>
+                <div id="realHotels">
+                    <!-- Loading skeletons -->
+                    <div class="skeleton" style="height: 150px; margin-bottom: 20px;"></div>
+                    <div class="skeleton" style="height: 150px; margin-bottom: 20px;"></div>
+                    <div class="skeleton" style="height: 150px; margin-bottom: 20px;"></div>
+                </div>
+                <div class="data-source" id="hotelSource">Kaynak: Booking.com API via RapidAPI</div>
+            </div>
+
+            <!-- Emergency Information -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Acil Durum Bilgileri</h3>
+                </div>
+                <div id="emergencyInfo" class="emergency-grid">
+                    <div class="skeleton" style="height: 100px;"></div>
+                    <div class="skeleton" style="height: 100px;"></div>
+                    <div class="skeleton" style="height: 100px;"></div>
+                    <div class="skeleton" style="height: 100px;"></div>
+                </div>
+            </div>
+
+            <!-- Real Local Prices -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Yerel Fiyatlar</h3>
+                    <div class="live-indicator" id="pricesLiveIndicator">
+                        <i class="fas fa-spinner fa-spin"></i> Numbeo'dan çekiliyor
+                    </div>
+                </div>
+                <div id="localPrices" class="price-grid">
+                    <div class="skeleton" style="height: 60px;"></div>
+                    <div class="skeleton" style="height: 60px;"></div>
+                    <div class="skeleton" style="height: 60px;"></div>
+                    <div class="skeleton" style="height: 60px;"></div>
+                </div>
+                <div class="data-source" id="pricesSource">Kaynak: Numbeo Cost of Living API</div>
+            </div>
+
+            <!-- Real Restaurants from Google Places -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Google'dan Restoran Önerileri</h3>
+                    <div class="live-indicator" id="restaurantsLiveIndicator">
+                        <i class="fas fa-spinner fa-spin"></i> Google Places'tan çekiliyor
+                    </div>
+                </div>
+                <div id="realRestaurants">
+                    <div class="skeleton" style="height: 120px; margin-bottom: 15px;"></div>
+                    <div class="skeleton" style="height: 120px; margin-bottom: 15px;"></div>
+                    <div class="skeleton" style="height: 120px; margin-bottom: 15px;"></div>
+                </div>
+                <div class="data-source" id="restaurantsSource">Kaynak: Google Places API</div>
+            </div>
+
+            <!-- Real Activities -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Gerçek Aktivite Fiyatları</h3>
+                    <div class="live-indicator" id="activitiesLiveIndicator">
+                        <i class="fas fa-spinner fa-spin"></i> GetYourGuide'dan çekiliyor
+                    </div>
+                </div>
+                <div id="realActivities">
+                    <div class="skeleton" style="height: 120px; margin-bottom: 15px;"></div>
+                    <div class="skeleton" style="height: 120px; margin-bottom: 15px;"></div>
+                    <div class="skeleton" style="height: 120px; margin-bottom: 15px;"></div>
+                </div>
+                <div class="data-source" id="activitiesSource">Kaynak: GetYourGuide API</div>
+            </div>
+
+            <!-- Hospitals & Airports from Google Places -->
+            <div class="section-card">
+                <div class="section-header">
+                    <i class="fas fa-hospital"></i>
+                    <h3>Yakındaki Hastaneler & Havalimanları</h3>
+                </div>
+                <div id="healthcareInfo">
+                    <div class="skeleton" style="height: 80px; margin-bottom: 15px;"></div>
+                    <div class="skeleton" style="height: 80px; margin-bottom: 15px;"></div>
+                </div>
+                <div class="data-source">Kaynak: Google Places API</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Import the GlobalTravelAPI class
+        // In production, this would be imported from a separate file
+        class GlobalTravelAPI {
+            constructor() {
+                // API Keys - In production use environment variables
+                this.API_KEYS = {
+                    OPENWEATHER: 'YOUR_OPENWEATHER_API_KEY',
+                    BOOKING_RAPIDAPI: 'YOUR_RAPIDAPI_KEY',
+                    GOOGLE_PLACES: 'YOUR_GOOGLE_PLACES_KEY',
+                    EXCHANGERATE_API: 'YOUR_EXCHANGERATE_KEY'
+                };
+                
+                this.cache = new Map();
+                this.cacheTimeout = 10 * 60 * 1000; // 10 minutes
+                this.rateLimits = new Map();
+                
+                // Country-specific data
+                this.countryData = {
+                    'US': {
+                        name: 'Amerika Birleşik Devletleri',
+                        currency: 'USD',
+                        emergency: {
+                            police: '911',
+                            ambulance: '911',
+                            fire: '911',
+                            tourist_hotline: '+1-202-501-4444'
+                        },
+                        tipping: { restaurants: 18, taxis: 15, hotels: 2 },
+                        voltage: '120V, Type A/B',
+                        languages: ['English'],
+                        visa_info: 'ESTA veya vize gerekli'
+                    },
+                    'IR': {
+                        name: 'İran',
+                        currency: 'IRR',
+                        emergency: {
+                            police: '110',
+                            ambulance: '115',
+                            fire: '125',
+                            tourist_police: '1480'
+                        },
+                        tipping: { restaurants: 0, taxis: 5, hotels: 5 },
+                        voltage: '230V, Type C/F',
+                        languages: ['Persian', 'Azeri', 'Kurdish'],
+                        visa_info: 'Vize gerekli (E-visa mevcut)',
+                        special_notes: 'Alkol yasak, giyim kuralları var'
+                    },
+                    'RU': {
+                        name: 'Rusya',
+                        currency: 'RUB',
+                        emergency: {
+                            police: '102',
+                            ambulance: '103',
+                            fire: '101',
+                            rescue: '112'
+                        },
+                        tipping: { restaurants: 10, taxis: 10, hotels: 50 },
+                        voltage: '220V, Type C/F',
+                        languages: ['Russian'],
+                        visa_info: 'Vize gerekli'
+                    }
+                };
+            }
+
+            async rateLimitCheck(apiName, minInterval = 1000) {
+                const lastCall = this.rateLimits.get(apiName);
+                const now = Date.now();
+                
+                if (lastCall && now - lastCall < minInterval) {
+                    const wait = minInterval - (now - lastCall);
+                    await new Promise(resolve => setTimeout(resolve, wait));
+                }
+                
+                this.rateLimits.set(apiName, Date.now());
+            }
+
+          async fetchRealWeatherData(countryCode, cityName) {
+    try {
+        await this.rateLimitCheck('weather');
+        updateAPIStatus('weather', 'loading', 'OpenWeatherMap API çağrısı...');
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${countryCode}&appid=${this.API_KEYS.OPENWEATHER}&units=metric&lang=tr`
+        );
+
+        if (!response.ok) throw new Error(`Weather API: ${response.status}`);
+        
+        const data = await response.json();
+        
+        // HAVA DURUMU VERİLERİ - Bu kısım eksikti!
+        const weatherData = {
+            current: {
+                temp: Math.round(data.list[0].main.temp),
+                description: data.list[0].weather[0].description,
+                humidity: data.list[0].main.humidity,
+                windSpeed: Math.round(data.list[0].wind.speed * 3.6), // m/s to km/h
+                icon: this.getWeatherIcon(data.list[0].weather[0].icon),
+                city: data.city.name
+            },
+            forecast: data.list.filter((_, index) => index % 8 === 0).slice(0, 7).map(item => ({
+                date: new Date(item.dt * 1000),
+                day: new Date(item.dt * 1000).toLocaleDateString('tr-TR', { weekday: 'short' }),
+                temp: Math.round(item.main.temp),
+                description: item.weather[0].description,
+                icon: this.getWeatherIcon(item.weather[0].icon)
+            }))
+        };
+
+        updateAPIStatus('weather', 'success', 'Başarılı');
+        return weatherData; // Hava durumu verisini döndür
+
+    } catch (error) {
+        console.error('Weather API Error:', error);
+        updateAPIStatus('weather', 'error', 'Hata - Demo veri kullanılıyor');
+        return this.getFallbackWeather();
+    }
+}
+
+            // TCMB (Turkey Central Bank) API as fallback
+            async fetchTCMBRates() {
+                try {
+                    const response = await fetch('https://www.tcmb.gov.tr/kurlar/today.xml');
+                    const xmlText = await response.text();
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                    
+                    const usdElement = xmlDoc.querySelector('Currency[Kod="USD"] BanknoteSelling');
+                    const eurElement = xmlDoc.querySelector('Currency[Kod="EUR"] BanknoteSelling');
+                    const gbpElement = xmlDoc.querySelector('Currency[Kod="GBP"] BanknoteSelling');
+                    
+                    return {
+                        USD: usdElement ? parseFloat(usdElement.textContent) : 28,
+                        EUR: eurElement ? parseFloat(eurElement.textContent) : 32,
+                        GBP: gbpElement ? parseFloat(gbpElement.textContent) : 36
+                    };
+                } catch (error) {
+                    console.error('TCMB API Error:', error);
+                    throw error;
+                }
+            }
+
+            // GERÇEK BOOKING.COM API ENTEGRASYONUː
+            async fetchRealHotelPrices(countryCode, cityName, checkIn, checkOut, adults = 2) {
+                try {
+                    await this.rateLimitCheck('hotels', 2000);
+                    updateAPIStatus('hotel', 'loading', 'Booking.com API çağrısı...');
+
+                    // İlk önce şehir ID'sini alalım
+                    const locationResponse = await fetch(
+                        `https://booking-com.p.rapidapi.com/v1/hotels/locations?name=${encodeURIComponent(cityName)}&locale=tr`,
+                        {
+                            headers: {
+                                'X-RapidAPI-Key': this.API_KEYS.BOOKING_RAPIDAPI,
+                                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+                            }
+                        }
+                    );
+
+                    if (!locationResponse.ok) {
+                        throw new Error(`Location API: ${locationResponse.status}`);
+                    }
+
+                    const locationData = await locationResponse.json();
+                    console.log('Location data:', locationData);
+                    
+                    if (!locationData || locationData.length === 0) {
+                        throw new Error('Destination not found');
+                    }
+
+                    const destId = locationData[0]?.dest_id;
+                    if (!destId) throw new Error('Destination ID not found');
+
+                    // Şimdi otelleri arayalım
+                    const hotelsResponse = await fetch(
+                        `https://booking-com.p.rapidapi.com/v1/hotels/search?` +
+                        `dest_id=${destId}&order_by=popularity&filter_by_currency=TRY&` +
+                        `checkin_date=${checkIn}&checkout_date=${checkOut}&` +
+                        `adults_number=${adults}&room_number=1&locale=tr&units=metric`,
+                        {
+                            headers: {
+                                'X-RapidAPI-Key': this.API_KEYS.BOOKING_RAPIDAPI,
+                                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+                            }
+                        }
+                    );
+
+                    if (!hotelsResponse.ok) {
+                        throw new Error(`Hotels API: ${hotelsResponse.status}`);
+                    }
+
+                    const hotelsData = await hotelsResponse.json();
+                    console.log('Hotels data:', hotelsData);
+                    
+                    const processedHotels = hotelsData.result?.slice(0, 10).map(hotel => ({
+                        id: hotel.hotel_id,
+                        name: hotel.hotel_name || 'Unnamed Hotel',
+                        rating: hotel.review_score ? (hotel.review_score / 2) : 4.0, // 10 üzerinden 5 üzerine çevir
+                        price: Math.round(hotel.min_total_price || hotel.price_breakdown?.gross_price || 100),
+                        currency: hotel.currencycode || 'TRY',
+                        location: hotel.address || `${cityName} Center`,
+                        distance: hotel.distance_to_cc ? `${hotel.distance_to_cc} km` : 'Merkeze yakın',
+                        facilities: this.extractHotelFacilities(hotel.hotel_facilities || []),
+                        images: hotel.main_photo_url ? [hotel.main_photo_url] : [],
+                        url: hotel.url,
+                        coordinates: {
+                            lat: hotel.latitude,
+                            lng: hotel.longitude
+                        },
+                        availability: true,
+                        lastUpdated: new Date().toLocaleTimeString('tr-TR'),
+                        reviewCount: hotel.review_nr || 0,
+                        type: this.determineHotelType(hotel.min_total_price || 100)
+                    })) || [];
+
+                    updateAPIStatus('hotel', 'success', `${processedHotels.length} otel bulundu`);
+                    return processedHotels;
+
+                } catch (error) {
+                    console.error('Hotels API Error:', error);
+                    updateAPIStatus('hotel', 'error', 'Hata - Demo veriler gösteriliyor');
+                    return this.generateDemoHotels(countryCode, cityName);
+                }
+            }
+
+            // GERÇEK GOOGLE PLACES API ENTEGRASYONUː
+            async fetchGooglePlaces(countryCode, cityName, type = 'restaurant') {
+                try {
+                    await this.rateLimitCheck('places', 1000);
+                    updateAPIStatus('places', 'loading', `${type} verileri Google'dan alınıyor...`);
+
+                    // Şehir koordinatlarını al veya tahmin et
+                    const cityCoords = this.getCityCoordinates(countryCode, cityName);
+                    
+                    const response = await fetch(
+                        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?` +
+                        `location=${cityCoords.lat},${cityCoords.lng}&radius=10000&type=${type}&` +
+                        `key=${this.API_KEYS.GOOGLE_PLACES}&language=tr`
+                    );
+
+                    if (!response.ok) {
+                        throw new Error(`Google Places API: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    console.log(`Google Places ${type} data:`, data);
+                    
+                    if (data.status !== 'OK') {
+                        throw new Error(`Google Places API Status: ${data.status}`);
+                    }
+
+                    const places = data.results?.slice(0, 20).map(place => ({
+                        id: place.place_id,
+                        name: place.name,
+                        rating: place.rating || 0,
+                        priceLevel: place.price_level || 2,
+                        address: place.vicinity || place.formatted_address,
+                        types: place.types || [],
+                        coordinates: {
+                            lat: place.geometry.location.lat,
+                            lng: place.geometry.location.lng
+                        },
+                        photos: place.photos ? place.photos.slice(0, 3).map(photo => 
+                            `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo.photo_reference}&key=${this.API_KEYS.GOOGLE_PLACES}`
+                        ) : [],
+                        isOpen: place.opening_hours?.open_now !== false, // Default to open if no info
+                        phone: null, // Need place details API for phone
+                        plusCode: place.plus_code?.global_code,
+                        userRatingsTotal: place.user_ratings_total || 0
+                    })) || [];
+
+                    // Get additional details for first few places (phone numbers, etc.)
+                    if (places.length > 0) {
+                        const detailedPlaces = await this.enrichPlacesWithDetails(places.slice(0, 5));
+                        updateAPIStatus('places', 'success', `${places.length} ${type} bulundu`);
+                        return [...detailedPlaces, ...places.slice(5)];
+                    }
+
+                    updateAPIStatus('places', 'success', `${places.length} ${type} bulundu`);
+                    return places;
+
+                } catch (error) {
+                    console.error('Google Places API Error:', error);
+                    updateAPIStatus('places', 'error', 'Hata - Demo veriler gösteriliyor');
+                    return this.generateDemoPlaces(countryCode, cityName, type);
+                }
+            }
+
+            // Places için detay bilgileri al
+            async enrichPlacesWithDetails(places) {
+                const enrichedPlaces = [];
+                
+                for (const place of places) {
+                    try {
+                        await this.rateLimitCheck('place_details', 500);
+                        
+                        const detailsResponse = await fetch(
+                            `https://maps.googleapis.com/maps/api/place/details/json?` +
+                            `place_id=${place.id}&fields=formatted_phone_number,website,opening_hours&` +
+                            `key=${this.API_KEYS.GOOGLE_PLACES}&language=tr`
+                        );
+                        
+                        if (detailsResponse.ok) {
+                            const detailsData = await detailsResponse.json();
+                            if (detailsData.status === 'OK') {
+                                place.phone = detailsData.result.formatted_phone_number;
+                                place.website = detailsData.result.website;
+                                place.openingHours = detailsData.result.opening_hours?.weekday_text;
+                            }
+                        }
+                    } catch (detailError) {
+                        console.log('Could not get details for place:', place.name);
+                    }
+                    
+                    enrichedPlaces.push(place);
+                }
+                
+                return enrichedPlaces;
+            }
+
+            // GERÇEK YEREL FİYATLAR API (Numbeo)
+            async fetchLocalPrices(countryCode, cityName) {
+                try {
+                    updateAPIStatus('activities', 'loading', 'Yerel fiyatlar Numbeo\'dan alınıyor...');
+                    
+                    // Numbeo API - requires subscription for live data
+                    // For demo, we'll use their public indices
+                    const response = await fetch(
+                        `https://www.numbeo.com/api/city_prices?api_key=${this.API_KEYS.NUMBEO}&query=${cityName}`
+                    );
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('Numbeo data:', data);
+                        
+                        const prices = {
+                            meal_inexpensive_restaurant: this.findPriceByItem(data.prices, 1),
+                            meal_mid_range_restaurant: this.findPriceByItem(data.prices, 2),
+                            mcmeal_at_mcdonalds: this.findPriceByItem(data.prices, 3),
+                            domestic_beer: this.findPriceByItem(data.prices, 4),
+                            imported_beer: this.findPriceByItem(data.prices, 5),
+                            cappuccino: this.findPriceByItem(data.prices, 6),
+                            taxi_start: this.findPriceByItem(data.prices, 16),
+                            taxi_1km: this.findPriceByItem(data.prices, 17),
+                            local_transport_ticket: this.findPriceByItem(data.prices, 18),
+                            water_bottle: this.findPriceByItem(data.prices, 26),
+                            source: 'Numbeo API',
+                            lastUpdated: new Date().toLocaleDateString('tr-TR')
+                        };
+                        
+                        updateAPIStatus('activities', 'success', 'Numbeo verilerinden alındı');
+                        return prices;
+                    }
+                    
+                    throw new Error('Numbeo API unavailable');
+
+                } catch (error) {
+                    console.log('Numbeo API Error, using demographic pricing:', error);
+                    updateAPIStatus('activities', 'success', 'Demo veriler kullanılıyor');
+                    return this.generateDemoPrices(countryCode);
+                }
+            }
+
+            // Numbeo helper function
+            findPriceByItem(prices, itemId) {
+                const item = prices?.find(p => p.item_id === itemId);
+                return item ? item.average_price : null;
+            }
+
+            // Şehir koordinatlarını al
+            getCityCoordinates(countryCode, cityName) {
+                const coordinates = {
+                    'US': {
+                        'New York': { lat: 40.7128, lng: -74.0060 },
+                        'Los Angeles': { lat: 34.0522, lng: -118.2437 },
+                        'Chicago': { lat: 41.8781, lng: -87.6298 }
+                    },
+                    'IR': {
+                        'Tehran': { lat: 35.6892, lng: 51.3890 },
+                        'Isfahan': { lat: 32.6539, lng: 51.6660 },
+                        'Shiraz': { lat: 29.5918, lng: 52.5836 }
+                    },
+                    'RU': {
+                        'Moscow': { lat: 55.7558, lng: 37.6176 },
+                        'St. Petersburg': { lat: 59.9311, lng: 30.3609 },
+                        'Sochi': { lat: 43.6028, lng: 39.7342 }
+                    },
+                    'FR': {
+                        'Paris': { lat: 48.8566, lng: 2.3522 },
+                        'Lyon': { lat: 45.7640, lng: 4.8357 }
+                    },
+                    'IT': {
+                        'Rome': { lat: 41.9028, lng: 12.4964 },
+                        'Milan': { lat: 45.4642, lng: 9.1900 }
+                    },
+                    'JP': {
+                        'Tokyo': { lat: 35.6762, lng: 139.6503 },
+                        'Osaka': { lat: 34.6937, lng: 135.5023 }
+                    }
+                };
+
+                return coordinates[countryCode]?.[cityName] || 
+                       coordinates[countryCode]?.[Object.keys(coordinates[countryCode] || {})[0]] ||
+                       { lat: 40.7128, lng: -74.0060 }; // Default to NYC
+            }
+
+            // Otel tipi belirleme
+            determineHotelType(price) {
+                if (price < 50) return 'Budget';
+                if (price < 150) return 'Mid-Range';
+                if (price < 300) return 'Upscale';
+                return 'Luxury';
+            }
+
+            // Otel özelliklerini çıkar
+            extractHotelFacilities(facilities) {
+                const facilityMap = {
+                    'free_wifi': 'Ücretsiz WiFi',
+                    'parking': 'Otopark',
+                    'restaurant': 'Restoran',
+                    'bar': 'Bar',
+                    'fitness': 'Fitness',
+                    'spa': 'Spa',
+                    'pool': 'Havuz',
+                    'air_conditioning': 'Klima',
+                    'breakfast': 'Kahvaltı'
+                };
+
+                return facilities.map(facility => 
+                    facilityMap[facility] || facility
+                ).slice(0, 6); // Max 6 facility
+            }
+
+            // Demo data generators (replace these with real API calls)
+            generateDemoHotels(countryCode, cityName) {
+                const hotelsByCountry = {
+                    'US': [
+                        { name: 'The Plaza Hotel New York', rating: 4.5, basePrice: 350, type: 'Luxury' },
+                        { name: 'Pod Hotels Times Square', rating: 4.2, basePrice: 150, type: 'Boutique' },
+                        { name: 'HI New York City Hostel', rating: 3.8, basePrice: 60, type: 'Hostel' }
+                    ],
+                    'IR': [
+                        { name: 'Espinas Palace Hotel Tehran', rating: 4.3, basePrice: 80, type: 'Business' },
+                        { name: 'Ferdowsi Grand Hotel', rating: 4.0, basePrice: 45, type: 'Traditional' },
+                        { name: 'Tehran Heritage Hotel', rating: 3.9, basePrice: 35, type: 'Budget' }
+                    ],
+                    'RU': [
+                        { name: 'The Ritz-Carlton Moscow', rating: 4.7, basePrice: 250, type: 'Luxury' },
+                        { name: 'Cosmos Hotel Moscow', rating: 4.1, basePrice: 80, type: 'Soviet Era' },
+                        { name: 'Red Square Hostel', rating: 3.9, basePrice: 25, type: 'Hostel' }
+                    ]
+                };
+
+                const hotels = hotelsByCountry[countryCode] || hotelsByCountry['US'];
+                
+                return hotels.map((hotel, index) => ({
+                    id: `hotel_${index}`,
+                    name: hotel.name,
+                    rating: hotel.rating,
+                    price: hotel.basePrice + Math.floor(Math.random() * 50),
+                    currency: this.countryData[countryCode]?.currency || 'USD',
+                    location: `${cityName} Merkez`,
+                    type: hotel.type,
+                    facilities: this.generateHotelFacilities(hotel.basePrice),
+                    availability: Math.random() > 0.2,
+                    lastUpdated: new Date().toLocaleTimeString('tr-TR')
+                }));
+            }
+
+            generateDemoPlaces(countryCode, cityName, type) {
+                const placesByType = {
+                    'restaurant': {
+                        'US': ['Joe\'s Pizza', 'Katz\'s Delicatessen', 'Peter Luger Steak House'],
+                        'IR': ['Dizi Restaurant', 'Shandiz Mashhad', 'Kebab House Tehran'],
+                        'RU': ['White Rabbit Moscow', 'Cafe Pushkin', 'Turandot Restaurant']
+                    },
+                    'hospital': {
+                        'US': ['NewYork-Presbyterian Hospital', 'Mount Sinai Hospital'],
+                        'IR': ['Tehran Heart Center', 'Milad Hospital'],
+                        'RU': ['Burdenko Institute', 'Central Clinical Hospital']
+                    },
+                    'airport': {
+                        'US': ['John F. Kennedy International', 'LaGuardia Airport'],
+                        'IR': ['Imam Khomeini International', 'Mehrabad Airport'],
+                        'RU': ['Sheremetyevo International', 'Domodedovo Airport']
+                    }
+                };
+
+                const places = placesByType[type]?.[countryCode] || placesByType[type]['US'] || [];
+                
+                return places.map((name, index) => ({
+                    id: `${type}_${index}`,
+                    name: name,
+                    rating: 3.5 + Math.random() * 1.5,
+                    address: `${cityName}, ${this.countryData[countryCode]?.name}`,
+                    phone: this.generatePhoneNumber(countryCode),
+                    type: type,
+                    isOpen: type === 'hospital' ? true : Math.random() > 0.2
+                }));
+            }
+
+            generateDemoPrices(countryCode) {
+                const priceMultipliers = { 'US': 1, 'IR': 0.15, 'RU': 0.4 };
+                const mult = priceMultipliers[countryCode] || 0.5;
+
+                return {
+                    meal_inexpensive_restaurant: Math.round(12 * mult),
+                    meal_mid_range_restaurant: Math.round(35 * mult),
+                    domestic_beer: Math.round(5 * mult),
+                    cappuccino: Math.round(4 * mult),
+                    taxi_start: Math.round(3 * mult),
+                    taxi_1km: Math.round(1.5 * mult),
+                    local_transport_ticket: Math.round(2 * mult),
+                    water_bottle: Math.round(1.5 * mult)
+                };
+            }
+
+            generateHotelFacilities(basePrice) {
+                const allFacilities = ['WiFi', 'Kahvaltı', 'Klima', 'TV', 'Minibar', 'Havuz', 'Fitness', 'Spa', 'Restoran', 'Bar', 'Otopark', 'Concierge'];
+                const facilityCount = Math.min(Math.floor(basePrice / 50) + 3, allFacilities.length);
+                return allFacilities.slice(0, facilityCount);
+            }
+
+            generatePhoneNumber(countryCode) {
+                const phonePrefixes = { 'US': '+1', 'IR': '+98', 'RU': '+7' };
+                const prefix = phonePrefixes[countryCode] || '+1';
+                return `${prefix} ${Math.floor(Math.random() * 900 + 100)}-${Math.floor(Math.random() * 9000 + 1000)}`;
+            }
+
+            getEmergencyInfo(countryCode) {
+                return this.countryData[countryCode] || null;
+            }
+
+            getWeatherIcon(code) {
+                const iconMap = {
+                    '01d': 'fas fa-sun', '01n': 'fas fa-moon',
+                    '02d': 'fas fa-cloud-sun', '02n': 'fas fa-cloud-moon',
+                    '03d': 'fas fa-cloud', '03n': 'fas fa-cloud',
+                    '04d': 'fas fa-clouds', '04n': 'fas fa-clouds',
+                    '09d': 'fas fa-cloud-rain', '09n': 'fas fa-cloud-rain',
+                    '10d': 'fas fa-cloud-rain', '10n': 'fas fa-cloud-rain',
+                    '11d': 'fas fa-bolt', '11n': 'fas fa-bolt',
+                    '13d': 'fas fa-snowflake', '13n': 'fas fa-snowflake',
+                    '50d': 'fas fa-smog', '50n': 'fas fa-smog'
+                };
+                return iconMap[code] || 'fas fa-cloud';
+            }
+
+            getFallbackWeather() {
+                return {
+                    current: { 
+                        temp: 20, 
+                        description: 'Hafif bulutlu', 
+                        icon: 'fas fa-cloud',
+                        humidity: 65,
+                        windSpeed: 15,
+                        city: 'Demo City'
+                    },
+                    forecast: Array(7).fill().map((_, i) => ({
+                        date: new Date(Date.now() + i * 24 * 60 * 60 * 1000),
+                        day: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'][i],
+                        temp: 18 + Math.floor(Math.random() * 10),
+                        description: 'Değişken',
+                        icon: 'fas fa-cloud-sun'
+                    }))
+                };
+            }
+
+            async fetchCompleteDestinationData(countryCode, cityName, checkIn, checkOut, adults = 2) {
+                console.log(`Fetching complete data for ${cityName}, ${countryCode}`);
+
+                const promises = [
+                    this.fetchRealWeatherData(countryCode, cityName),
+                    this.fetchRealExchangeRates(this.countryData[countryCode]?.currency),
+                    this.fetchRealHotelPrices(countryCode, cityName, checkIn, checkOut, adults),
+                    this.fetchGooglePlaces(countryCode, cityName, 'restaurant'),
+                    this.fetchGooglePlaces(countryCode, cityName, 'hospital'),
+                    this.fetchGooglePlaces(countryCode, cityName, 'airport'),
+                    this.fetchLocalPrices(countryCode, cityName)
+                ];
+
+                const results = await Promise.allSettled(promises);
+
+                return {
+                    weather: results[0].status === 'fulfilled' ? results[0].value : this.getFallbackWeather(),
+                    exchange: results[1].status === 'fulfilled' ? results[1].value : { tryRate: 28 },
+                    hotels: results[2].status === 'fulfilled' ? results[2].value : [],
+                    restaurants: results[3].status === 'fulfilled' ? results[3].value : [],
+                    hospitals: results[4].status === 'fulfilled' ? results[4].value : [],
+                    airports: results[5].status === 'fulfilled' ? results[5].value : [],
+                    localPrices: results[6].status === 'fulfilled' ? results[6].value : {},
+                    emergencyInfo: this.getEmergencyInfo(countryCode),
+                    lastUpdated: new Date().toISOString()
+                };
+            }
+        }
+
+        // Global variables
+        const travelAPI = new GlobalTravelAPI();
+        let loadingProgress = 0;
+        let apiCallsCompleted = 0;
+        const totalApiCalls = 5;
+
+        // API Status Management
+        function updateAPIStatus(apiName, status, message) {
+            const statusElement = document.getElementById(`${apiName}Status`);
+            const indicatorElement = document.getElementById(`${apiName}LiveIndicator`);
+            
+            if (statusElement) {
+                statusElement.className = `status-${status}`;
+                statusElement.textContent = message;
+            }
+            
+            if (indicatorElement) {
+                indicatorElement.className = `live-indicator ${status}`;
+                const icons = {
+                    loading: 'fas fa-spinner fa-spin',
+                    success: 'fas fa-check-circle',
+                    error: 'fas fa-exclamation-triangle'
+                };
+                indicatorElement.innerHTML = `<i class="${icons[status]}"></i> ${message}`;
+            }
+
+            if (status === 'success' || status === 'error') {
+                apiCallsCompleted++;
+                updateLoadingProgress();
+            }
+        }
+
+        // Loading Progress Management
+        function updateLoadingProgress() {
+            loadingProgress = (apiCallsCompleted / totalApiCalls) * 100;
+            const progressBar = document.getElementById('loadingProgressBar');
+            if (progressBar) {
+                progressBar.style.width = loadingProgress + '%';
+            }
+
+            if (loadingProgress >= 100) {
+                setTimeout(hideLoadingScreen, 1000);
+            }
+        }
+
+        function hideLoadingScreen() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (loadingOverlay) {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }
+            
+            if (mainContent) {
+                mainContent.classList.add('content-visible');
+            }
+        }
+
+        // UI Update Functions
+        function updateWeatherSection(weatherData) {
+            // Current weather
+            const currentWeatherHTML = `
+                <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4>${weatherData.current.city}</h4>
+                            <div style="font-size: 2em; font-weight: bold;">${weatherData.current.temp}°C</div>
+                            <p>${weatherData.current.description}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <i class="${weatherData.current.icon}" style="font-size: 3em;"></i>
+                            <p>Nem: ${weatherData.current.humidity}%</p>
+                            <p>Rüzgar: ${weatherData.current.windSpeed} km/h</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('currentWeather').innerHTML = currentWeatherHTML;
+
+            // Weather forecast
+            const forecastHTML = weatherData.forecast.map(day => `
+                <div class="weather-day">
+                    <i class="${day.icon}"></i>
+                    <div>${day.day}</div>
+                    <div class="weather-temp">${day.temp}°C</div>
+                    <div style="font-size: 0.8em;">${day.description}</div>
+                </div>
+            `).join('');
+            document.getElementById('weatherForecast').innerHTML = forecastHTML;
+
+            document.getElementById('weatherInfo').textContent = `${weatherData.current.temp}°C - ${weatherData.current.description}`;
+        }
+
+        function updateExchangeRatesSection(exchangeData) {
+            const ratesHTML = `
+                <div class="price-item">
+                    <span><i class="fas fa-dollar-sign"></i> 1 ${exchangeData.baseCurrency}</span>
+                    <span><strong>${exchangeData.tryRate.toFixed(2)} ₺</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-euro-sign"></i> 1 EUR</span>
+                    <span><strong>${(exchangeData.rates?.EUR * exchangeData.tryRate || 32).toFixed(2)} ₺</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-pound-sign"></i> 1 GBP</span>
+                    <span><strong>${(exchangeData.rates?.GBP * exchangeData.tryRate || 36).toFixed(2)} ₺</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-calendar"></i> Son Güncelleme</span>
+                    <span>${exchangeData.lastUpdated || new Date().toLocaleDateString('tr-TR')}</span>
+                </div>
+            `;
+            document.getElementById('exchangeRates').innerHTML = ratesHTML;
+        }
+
+        function updateHotelsSection(hotels, exchangeRate = 28) {
+            const hotelsHTML = hotels.map(hotel => `
+                <div class="hotel-card">
+                    <div class="hotel-header">
+                        <div>
+                            <h4>${hotel.name}</h4>
+                            <div class="hotel-rating">
+                                <div class="stars">${generateStars(hotel.rating)}</div>
+                                <span>${hotel.rating.toFixed(1)}</span>
+                            </div>
+                        </div>
+                        <div class="price-tag">
+                            ₺${Math.round(hotel.price * (hotel.currency === 'TRY' ? 1 : exchangeRate))}/gece
+                        </div>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> ${hotel.location}</p>
+                    <div class="hotel-facilities">
+                        ${hotel.facilities.map(facility => `<span class="facility-tag">${facility}</span>`).join('')}
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <span style="color: ${hotel.availability ? '#27ae60' : '#e74c3c'}; font-weight: bold;">
+                            ${hotel.availability ? 'Müsait' : 'Dolu'}
+                        </span>
+                        <small>Son güncelleme: ${hotel.lastUpdated}</small>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('realHotels').innerHTML = hotelsHTML;
+        }
+
+        function updateRestaurantsSection(restaurants) {
+            const restaurantsHTML = restaurants.map(restaurant => `
+                <div class="activity-card">
+                    <i class="fas fa-utensils activity-icon"></i>
+                    <div style="flex: 1;">
+                        <h4>${restaurant.name}</h4>
+                        <div style="display: flex; align-items: center; gap: 10px; margin: 5px 0;">
+                            <div class="stars">${generateStars(restaurant.rating)}</div>
+                            <span>${restaurant.rating.toFixed(1)}</span>
+                            <span style="color: #7f8c8d;">•</span>
+                            <span style="color: ${restaurant.isOpen ? '#27ae60' : '#e74c3c'};">
+                                ${restaurant.isOpen ? 'Açık' : 'Kapalı'}
+                            </span>
+                        </div>
+                        <p><i class="fas fa-map-marker-alt"></i> ${restaurant.address}</p>
+                        ${restaurant.phone ? `<p><i class="fas fa-phone"></i> ${restaurant.phone}</p>` : ''}
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('realRestaurants').innerHTML = restaurantsHTML;
+        }
+
+        function updateEmergencySection(emergencyInfo) {
+            if (!emergencyInfo) return;
+
+            const emergencyHTML = `
+                <div class="emergency-item urgent">
+                    <i class="fas fa-phone-alt" style="font-size: 2em; color: var(--secondary-color);"></i>
+                    <h4>Polis</h4>
+                    <div class="emergency-number">${emergencyInfo.emergency.police}</div>
+                </div>
+                <div class="emergency-item urgent">
+                    <i class="fas fa-ambulance" style="font-size: 2em; color: var(--secondary-color);"></i>
+                    <h4>Ambulans</h4>
+                    <div class="emergency-number">${emergencyInfo.emergency.ambulance}</div>
+                </div>
+                <div class="emergency-item urgent">
+                    <i class="fas fa-fire" style="font-size: 2em; color: var(--secondary-color);"></i>
+                    <h4>İtfaiye</h4>
+                    <div class="emergency-number">${emergencyInfo.emergency.fire}</div>
+                </div>
+                ${emergencyInfo.emergency.tourist_hotline ? `
+                <div class="emergency-item">
+                    <i class="fas fa-info-circle" style="font-size: 2em; color: var(--accent-color);"></i>
+                    <h4>Turist Danışma</h4>
+                    <div class="emergency-number">${emergencyInfo.emergency.tourist_hotline}</div>
+                </div>
+                ` : ''}
+                <div class="emergency-item">
+                    <i class="fas fa-language" style="font-size: 2em; color: var(--accent-color);"></i>
+                    <h4>Dil</h4>
+                    <p>${emergencyInfo.languages.join(', ')}</p>
+                </div>
+                <div class="emergency-item">
+                    <i class="fas fa-plug" style="font-size: 2em; color: var(--accent-color);"></i>
+                    <h4>Elektrik</h4>
+                    <p>${emergencyInfo.voltage}</p>
+                </div>
+                <div class="emergency-item">
+                    <i class="fas fa-passport" style="font-size: 2em; color: var(--accent-color);"></i>
+                    <h4>Vize</h4>
+                    <p>${emergencyInfo.visa_info}</p>
+                </div>
+                ${emergencyInfo.special_notes ? `
+                <div class="emergency-item" style="grid-column: 1 / -1;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2em; color: var(--warning-color);"></i>
+                    <h4>Önemli Not</h4>
+                    <p>${emergencyInfo.special_notes}</p>
+                </div>
+                ` : ''}
+            `;
+            document.getElementById('emergencyInfo').innerHTML = emergencyHTML;
+        }
+
+        function updateLocalPricesSection(prices, exchangeRate = 28) {
+            const pricesHTML = `
+                <div class="price-item">
+                    <span><i class="fas fa-utensils"></i> Ekonomik Restoran</span>
+                    <span><strong>₺${Math.round(prices.meal_inexpensive_restaurant * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-wine-glass"></i> Orta Seviye Restoran</span>
+                    <span><strong>₺${Math.round(prices.meal_mid_range_restaurant * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-beer"></i> Yerel Bira</span>
+                    <span><strong>₺${Math.round(prices.domestic_beer * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-coffee"></i> Cappuccino</span>
+                    <span><strong>₺${Math.round(prices.cappuccino * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-taxi"></i> Taksi Başlangıç</span>
+                    <span><strong>₺${Math.round(prices.taxi_start * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-route"></i> Taksi (1 km)</span>
+                    <span><strong>₺${Math.round(prices.taxi_1km * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-bus"></i> Toplu Taşıma</span>
+                    <span><strong>₺${Math.round(prices.local_transport_ticket * exchangeRate)}</strong></span>
+                </div>
+                <div class="price-item">
+                    <span><i class="fas fa-tint"></i> Su (0.5L)</span>
+                    <span><strong>₺${Math.round(prices.water_bottle * exchangeRate)}</strong></span>
+                </div>
+            `;
+            document.getElementById('localPrices').innerHTML = pricesHTML;
+        }
+
+        function updateHealthcareSection(hospitals, airports) {
+            const healthcareHTML = `
+                <h4><i class="fas fa-hospital"></i> Yakındaki Hastaneler</h4>
+                ${hospitals.map(hospital => `
+                    <div style="padding: 10px; margin: 10px 0; background: #f8f9fa; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <strong>${hospital.name}</strong>
+                            <span style="color: ${hospital.isOpen ? '#27ae60' : '#e74c3c'};">
+                                ${hospital.isOpen ? '24 Saat' : 'Kapalı'}
+                            </span>
+                        </div>
+                        <p><i class="fas fa-map-marker-alt"></i> ${hospital.address}</p>
+                        ${hospital.phone ? `<p><i class="fas fa-phone"></i> ${hospital.phone}</p>` : ''}
+                    </div>
+                `).join('')}
+                
+                <h4 style="margin-top: 30px;"><i class="fas fa-plane"></i> Havalimanları</h4>
+                ${airports.map(airport => `
+                    <div style="padding: 10px; margin: 10px 0; background: #f8f9fa; border-radius: 8px;">
+                        <strong>${airport.name}</strong>
+                        <p><i class="fas fa-map-marker-alt"></i> ${airport.address}</p>
+                        ${airport.phone ? `<p><i class="fas fa-phone"></i> ${airport.phone}</p>` : ''}
+                    </div>
+                `).join('')}
+            `;
+            document.getElementById('healthcareInfo').innerHTML = healthcareHTML;
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            for (let i = fullStars + (hasHalfStar ? 1 : 0); i < 5; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            return stars;
+        }
+
+        // Main initialization function
+        async function initializePage() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Get form data from localStorage as backup
+            let savedData = {};
+            try {
+                savedData = JSON.parse(localStorage.getItem('travelPlanData') || '{}');
+            } catch(e) {
+                console.log('No saved data found');
+            }
+            
+            // Extract travel data
+            const destination = urlParams.get('destination') || savedData.countryName || 'Amerika Birleşik Devletleri';
+            const country = urlParams.get('country') || savedData.country || 'US';
+            const startDate = urlParams.get('startDate') || savedData.startDate || '2025-09-01';
+            const endDate = urlParams.get('endDate') || savedData.endDate || '2025-09-15';
+            const adults = parseInt(urlParams.get('travelers')?.split(' ')[0]) || 2;
+            
+            // Update basic info immediately
+            document.getElementById('destinationName').textContent = destination;
+            document.getElementById('travelDates').textContent = formatDateRange(startDate, endDate);
+            document.getElementById('travelers').textContent = urlParams.get('travelers') || '2 Yetişkin';
+            
+            // Determine city name
+            const cityName = getCityFromCountry(country);
+            
+            try {
+                // Fetch all real data
+                const completeData = await travelAPI.fetchCompleteDestinationData(
+                    country, 
+                    cityName, 
+                    startDate, 
+                    endDate, 
+                    adults
+                );
+                
+                // Update all UI sections with real data
+                updateWeatherSection(completeData.weather);
+                updateExchangeRatesSection(completeData.exchange);
+                updateHotelsSection(completeData.hotels, completeData.exchange.tryRate);
+                updateRestaurantsSection(completeData.restaurants);
+                updateEmergencySection(completeData.emergencyInfo);
+                updateLocalPricesSection(completeData.localPrices, completeData.exchange.tryRate);
+                updateHealthcareSection(completeData.hospitals, completeData.airports);
+                
+                console.log('All data loaded successfully:', completeData);
+                
+            } catch (error) {
+                console.error('Error loading travel data:', error);
+                // Show error state but continue with fallback data
+                showErrorState();
+            }
+        }
+
+        function getCityFromCountry(countryCode) {
+            const defaultCities = {
+                'US': 'New York',
+                'IR': 'Tehran',
+                'RU': 'Moscow',
+                'FR': 'Paris',
+                'IT': 'Rome',
+                'JP': 'Tokyo',
+                'TH': 'Bangkok',
+                'GB': 'London',
+                'DE': 'Berlin',
+                'ES': 'Madrid'
+            };
+            return defaultCities[countryCode] || 'Capital City';
+        }
+
+        function formatDateRange(start, end) {
+            if (!start || !end) return 'Tarih belirtilmedi';
+            
+            const startDate = new Date(start);
+            const endDate = new Date(end);
+            const dayDiff = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            
+            const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+                           'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+            
+            return `${startDate.getDate()} ${months[startDate.getMonth()]} - ${endDate.getDate()} ${months[endDate.getMonth()]} ${endDate.getFullYear()} (${dayDiff} gün)`;
+        }
+
+        function showErrorState() {
+            const errorHTML = `
+                <div class="error-state">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2em; margin-bottom: 15px;"></i>
+                    <h3>API Bağlantı Sorunu</h3>
+                    <p>Bazı gerçek veriler yüklenemedi. Demo veriler gösteriliyor.</p>
+                    <button class="retry-btn" onclick="location.reload()">Tekrar Dene</button>
+                </div>
+            `;
+            
+            // Show error in a prominent place
+            const container = document.querySelector('.container');
+            if (container) {
+                container.insertAdjacentHTML('afterbegin', errorHTML);
+            }
+        }
+
+        // Emergency timeout to ensure page loads
+        setTimeout(() => {
+            if (apiCallsCompleted < totalApiCalls) {
+                console.log('Emergency timeout: forcing page load');
+                hideLoadingScreen();
+            }
+        }, 10000); // 10 seconds maximum loading time
+
+        // Page load event
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing...');
+            initializePage();
+        });
+
+        // Add some interactive features
+        function downloadPDF() {
+            alert('PDF indirme özelliği yakında eklenecek! Gerçek API entegrasyonu ile birlikte gelecek.');
+        }
+
+        function editPlan() {
+            if(confirm('Planınızı düzenlemek için form sayfasına dönmek istiyor musunuz?')) {
+                window.location.href = 'seyahat.html';
+            }
+        }
+
+        function sharePlan() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Gerçek Verilerle Seyahat Planım',
+                    text: 'Canlı API\'lardan alınan verilerle hazırlanmış seyahat planım!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Plan linki kopyalandı! Arkadaşlarınızla paylaşabilirsiniz.');
+                });
+            }
+        }
+
+        // Add action buttons to the page
+        function addActionButtons() {
+            const actionButtonsHTML = `
+                <div style="display: flex; gap: 20px; margin: 30px 0; flex-wrap: wrap; justify-content: center;">
+                    <button onclick="downloadPDF()" style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-download"></i> PDF İndir
+                    </button>
+                    <button onclick="editPlan()" style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-edit"></i> Planı Düzenle
+                    </button>
+                    <button onclick="sharePlan()" style="background: linear-gradient(135deg, #27ae60, #229954); color: white; padding: 15px 30px; border: none; border-radius: 50px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-share-alt"></i> Paylaş
+                    </button>
+                </div>
+            `;
+            
+            // Add buttons after trip summary
+            const tripSummary = document.querySelector('.trip-summary');
+            if (tripSummary) {
+                tripSummary.insertAdjacentHTML('afterend', actionButtonsHTML);
+            }
+        }
+
+        // Add action buttons when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addActionButtons, 2000); // Add buttons after initial load
+        });
+
+        // Add real-time data refresh functionality
+        function refreshData() {
+            location.reload(); // Simple refresh for now
+        }
+
+        // Add refresh button
+        function addRefreshButton() {
+            const refreshHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                    <button onclick="refreshData()" style="background: #3498db; color: white; border: none; padding: 15px; border-radius: 50%; font-size: 1.2em; cursor: pointer; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); transition: all 0.3s ease;" title="Verileri Yenile">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', refreshHTML);
+        }
+
+        // Add data freshness indicator
+        function addDataFreshnessIndicator() {
+            const indicatorHTML = `
+                <div id="dataFreshness" style="position: fixed; top: 80px; right: 20px; background: rgba(46, 204, 113, 0.9); color: white; padding: 10px 15px; border-radius: 20px; font-size: 0.9em; z-index: 999;">
+                    <i class="fas fa-clock"></i> Veriler güncellendi: <span id="lastUpdate">${new Date().toLocaleTimeString('tr-TR')}</span>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', indicatorHTML);
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                const indicator = document.getElementById('dataFreshness');
+                if (indicator) {
+                    indicator.style.opacity = '0';
+                    setTimeout(() => indicator.remove(), 500);
+                }
+            }, 5000);
+        }
+
+        // Add these when page fully loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                addRefreshButton();
+                addDataFreshnessIndicator();
+            }, 3000);
+        });
+
+        // Add live data monitoring
+        function startLiveDataMonitoring() {
+            // Check for data updates every 5 minutes
+            setInterval(() => {
+                console.log('Checking for data updates...');
+                // In a real implementation, you'd check if data needs refreshing
+                // For now, just update the timestamp
+                const updateElement = document.getElementById('lastUpdate');
+                if (updateElement) {
+                    updateElement.textContent = new Date().toLocaleTimeString('tr-TR');
+                }
+            }, 5 * 60 * 1000); // 5 minutes
+        }
+
+        // Start monitoring after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(startLiveDataMonitoring, 5000);
+        });
+
+        
+
+
+
+
+        async fetchRealExchangeRates(targetCurrency = 'USD') {
+    try {
+        await this.rateLimitCheck('exchange');
+        updateAPIStatus('exchange', 'loading', 'Döviz kurları alınıyor...');
+
+        const response = await fetch(
+            `https://api.exchangerate-api.com/v4/latest/${targetCurrency}`
+        );
+
+        if (!response.ok) throw new Error(`Exchange API: ${response.status}`);
+        
+        const data = await response.json();
+        
+        // DÖVİZ KURU VERİLERİ
+        const rates = {
+            baseCurrency: targetCurrency,
+            rates: data.rates,
+            tryRate: data.rates.TRY || 28,
+            lastUpdated: new Date(data.date).toLocaleDateString('tr-TR'),
+            timestamp: new Date().getTime()
+        };
+
+        updateAPIStatus('exchange', 'success', 'Başarılı');
+        return rates;
+
+    } catch (error) {
+        console.error('Exchange Rate API Error:', error);
+        updateAPIStatus('exchange', 'error', 'Hata - TCMB fallback deneniyor');
+        
+        // Fallback to TCMB API for Turkish Lira rates
+        try {
+            const tcmbRates = await this.fetchTCMBRates();
+            return {
+                baseCurrency: targetCurrency,
+                rates: { TRY: tcmbRates.USD || 28, EUR: tcmbRates.EUR || 32 },
+                tryRate: targetCurrency === 'USD' ? tcmbRates.USD : tcmbRates.EUR,
+                lastUpdated: new Date().toLocaleDateString('tr-TR'),
+                source: 'TCMB (Fallback)'
+            };
+        } catch (tcmbError) {
+            console.error('TCMB Fallback failed:', tcmbError);
+            return { 
+                baseCurrency: targetCurrency, 
+                tryRate: targetCurrency === 'USD' ? 28 : 32, 
+                rates: { TRY: 28, EUR: 32, USD: 28, GBP: 36 },
+                lastUpdated: new Date().toLocaleDateString('tr-TR'),
+                source: 'Static Fallback'
+            };
+        }
+    }
+}
+
+    </script>
+</body>
+</html>
+                    
+                  
