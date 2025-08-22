@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yurtdışı seyahat rehberi ve planlama platformu. En iyi destinasyonları keşfedin, bütçenizi planlayın.">
+    <meta name="keywords" content="yurtdışı seyahat, tatil planlama, seyahat rehberi, destinasyon, turizm">
+    <meta name="author" content="Furkatech Teknoloji">
+    <meta property="og:title" content="Yurtdışı Hayatı - Seyahat Planlama">
+    <meta property="og:description" content="Hayalinizdeki yurtdışı seyahatini planlayın">
+    <meta property="og:type" content="website">
+    <title>Yurtdışı Hayatı | Furkatech Teknoloji</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 70px;
+        }
+
+        .nav-logo {
+            color: var(--white);
+            font-size: 1.8em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            padding-top: 50px;
+            transition: var(--transition);
+            list-style: none;
+        }
+
+        .nav-menu.active {
+            left: 0;
+        }
+
+        .nav-menu li {
+            margin: 15px 0;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2em;
+            transition: var(--transition);
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover {
+            background: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 70px;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .form-container {
+            padding: 50px 40px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+            font-weight: 600;
+        }
+
+        .section-title i {
+            color: var(--secondary-color);
+            font-size: 1.2em;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 1.05em;
+        }
+
+        input, select, textarea {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .budget-container {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .budget-input-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .budget-display {
+            background: linear-gradient(135deg, var(--accent-color), #2980b9);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .checkbox-item:hover {
+            background: #e9ecef;
+            border-color: var(--accent-color);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        .checkbox-item.checked {
+            background: rgba(52, 152, 219, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
+            color: var(--white);
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 40px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        .submit-btn i {
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .form-container {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .budget-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .budget-input-group {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 40px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .form-container {
+                padding: 25px 15px;
+            }
+
+            .section-title {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1200px;
+            }
+
+            .form-container {
+                padding: 60px 50px;
+            }
+        }
+
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-globe"></i> Yurtdışı Hayatı
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#"><i class="fas fa-home"></i> Ana Sayfa</a></li>
+                <li><a href="#"><i class="fas fa-map-marked-alt"></i> Destinasyonlar</a></li>
+                <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                <li><a href="#"><i class="fas fa-phone"></i> İletişim</a></li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-plane"></i> Seyahat Planlayıcı</h1>
+                <p>Hayalinizdeki yurtdışı deneyimini planlayın</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="travelForm">
+                    <!-- Kişisel Bilgiler -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-users"></i>
+                            Kişisel Bilgiler
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="adults">Yetişkin Sayısı</label>
+                                <select id="adults" name="adults" required>
+                                    <option value="">Yetişkin sayısını seçin</option>
+                                    <option value="1">1 Yetişkin</option>
+                                    <option value="2">2 Yetişkin</option>
+                                    <option value="3">3 Yetişkin</option>
+                                    <option value="4">4 Yetişkin</option>
+                                    <option value="5+">5+ Yetişkin</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="children">Çocuk Sayısı (0-17 yaş)</label>
+                                <select id="children" name="children">
+                                    <option value="0">Çocuk yok</option>
+                                    <option value="1">1 Çocuk</option>
+                                    <option value="2">2 Çocuk</option>
+                                    <option value="3">3 Çocuk</option>
+                                    <option value="4+">4+ Çocuk</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destinasyon -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Destinasyon
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="continent">Kıta</label>
+                                <select id="continent" name="continent" required onchange="updateCountries()">
+                                    <option value="">Kıta seçin</option>
+                                    <option value="europe">Avrupa</option>
+                                    <option value="asia">Asya</option>
+                                    <option value="america">Amerika</option>
+                                    <option value="africa">Afrika</option>
+                                    <option value="oceania">Okyanusya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="country">Ülke</label>
+                                <select id="country" name="country" required onchange="updateCities()">
+                                    <option value="">Önce kıta seçin</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="city">Şehir (Opsiyonel)</label>
+                                <select id="city" name="city">
+                                    <option value="">Genel tur (Tüm ülke)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarih -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-calendar-alt"></i>
+                            Seyahat Tarihi
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="startDate">Başlangıç Tarihi</label>
+                                <input type="date" id="startDate" name="startDate" required onchange="calculateDays()">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="endDate">Bitiş Tarihi</label>
+                                <input type="date" id="endDate" name="endDate" required onchange="calculateDays()">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Toplam Süre</label>
+                                <div id="totalDays" style="padding: 15px; background: var(--bg-light); border-radius: 8px; font-weight: bold; color: var(--primary-color);">
+                                    <i class="fas fa-clock"></i> Tarih seçin
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bütçe -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-wallet"></i>
+                            Bütçe (Kişi Başı)
+                        </div>
+                        
+                        <div class="budget-container">
+                            <div class="budget-input-group">
+                                <div class="form-group" style="flex: 1;">
+                                    <label for="budgetRange">Bütçe Aralığı</label>
+                                    <input type="range" id="budgetRange" name="budgetRange" min="2000" max="100000" value="15000" step="1000" oninput="updateBudgetFromRange()">
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label for="budgetInput">Bütçe (TL)</label>
+                                    <input type="number" id="budgetInput" name="budgetInput" min="2000" max="100000" value="15000" oninput="updateBudgetFromInput()">
+                                </div>
+                            </div>
+                            <div class="budget-display" id="budgetDisplay">₺15.000</div>
+                        </div>
+                    </div>
+
+                    <!-- Konaklama -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-bed"></i>
+                            Konaklama Tercihleri
+                        </div>
+                        
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item" onclick="toggleCheckbox('hotel')">
+                                <input type="checkbox" id="hotel" name="accommodation" value="hotel">
+                                <label for="hotel"><i class="fas fa-hotel"></i> Otel</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('hostel')">
+                                <input type="checkbox" id="hostel" name="accommodation" value="hostel">
+                                <label for="hostel"><i class="fas fa-home"></i> Hostel</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('camping')">
+                                <input type="checkbox" id="camping" name="accommodation" value="camping">
+                                <label for="camping"><i class="fas fa-campground"></i> Kamp</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('airbnb')">
+                                <input type="checkbox" id="airbnb" name="accommodation" value="airbnb">
+                                <label for="airbnb"><i class="fas fa-house-user"></i> Airbnb</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('resort')">
+                                <input type="checkbox" id="resort" name="accommodation" value="resort">
+                                <label for="resort"><i class="fas fa-umbrella-beach"></i> Resort</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('boutique')">
+                                <input type="checkbox" id="boutique" name="accommodation" value="boutique">
+                                <label for="boutique"><i class="fas fa-gem"></i> Butik Otel</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- İlgi Alanları -->
+                    <div class="form-section">
+                        <div class="section-title">
+                            <i class="fas fa-heart"></i>
+                            İlgi Alanları
+                        </div>
+                        
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item" onclick="toggleCheckbox('culture')">
+                                <input type="checkbox" id="culture" name="interests" value="culture">
+                                <label for="culture"><i class="fas fa-university"></i> Kültür & Tarih</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('nature')">
+                                <input type="checkbox" id="nature" name="interests" value="nature">
+                                <label for="nature"><i class="fas fa-tree"></i> Doğa</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('food')">
+                                <input type="checkbox" id="food" name="interests" value="food">
+                                <label for="food"><i class="fas fa-utensils"></i> Yemek & İçecek</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('nightlife')">
+                                <input type="checkbox" id="nightlife" name="interests" value="nightlife">
+                                <label for="nightlife"><i class="fas fa-moon"></i> Gece Hayatı</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('adventure')">
+                                <input type="checkbox" id="adventure" name="interests" value="adventure">
+                                <label for="adventure"><i class="fas fa-mountain"></i> Macera Sporları</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('beach')">
+                                <input type="checkbox" id="beach" name="interests" value="beach">
+                                <label for="beach"><i class="fas fa-sun"></i> Plaj & Deniz</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('shopping')">
+                                <input type="checkbox" id="shopping" name="interests" value="shopping">
+                                <label for="shopping"><i class="fas fa-shopping-bag"></i> Alışveriş</label>
+                            </div>
+                            <div class="checkbox-item" onclick="toggleCheckbox('art')">
+                                <input type="checkbox" id="art" name="interests" value="art">
+                                <label for="art"><i class="fas fa-palette"></i> Sanat & Müze</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-rocket"></i>
+                        Seyahat Planımı Oluştur
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3><i class="fas fa-code"></i> Furkatech Teknoloji</h3>
+            <p>Yurtdışı hayallerinizi gerçekleştirmenin en kolay yolu</p>
+            <p style="margin-top: 15px; opacity: 0.7;">© 2025 Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        const destinations = {
+            europe: {
+                name: 'Avrupa',
+                countries: {
+                    'albania': { name: 'Arnavutluk', cities: ['Tiran', 'Durrës', 'Vlorë', 'Shkodër'] },
+                    'austria': { name: 'Avusturya', cities: ['Viyana', 'Salzburg', 'Innsbruck', 'Graz'] },
+                    'belgium': { name: 'Belçika', cities: ['Brüksel', 'Antwerp', 'Gent', 'Charleroi'] },
+                    'bosnia': { name: 'Bosna Hersek', cities: ['Saraybosna', 'Banja Luka', 'Tuzla'] },
+                    'bulgaria': { name: 'Bulgaristan', cities: ['Sofya', 'Plovdiv', 'Varna', 'Burgas'] },
+                    'croatia': { name: 'Hırvatistan', cities: ['Zagreb', 'Split', 'Rijeka', 'Osijek'] },
+                    'czech': { name: 'Çek Cumhuriyeti', cities: ['Prag', 'Brno', 'Ostrava', 'Plzen'] },
+                    'denmark': { name: 'Danimarka', cities: ['Kopenhag', 'Aarhus', 'Odense', 'Aalborg'] },
+                    'estonia': { name: 'Estonya', cities: ['Tallinn', 'Tartu', 'Narva', 'Pärnu'] },
+                    'finland': { name: 'Finlandiya', cities: ['Helsinki', 'Espoo', 'Tampere', 'Vantaa'] },
+                    'france': { name: 'Fransa', cities: ['Paris', 'Lyon', 'Marsilya', 'Nizza', 'Bordeaux'] },
+                    'germany': { name: 'Almanya', cities: ['Berlin', 'Münih', 'Hamburg', 'Köln', 'Frankfurt'] },
+                    'greece': { name: 'Yunanistan', cities: ['Atina', 'Selanik', 'Santorini', 'Mykonos'] },
+                    'hungary': { name: 'Macaristan', cities: ['Budapeşte', 'Debrecen', 'Szeged', 'Miskolc'] },
+                    'iceland': { name: 'İzlanda', cities: ['Reykjavik', 'Kópavogur', 'Hafnarfjörður'] },
+                    'ireland': { name: 'İrlanda', cities: ['Dublin', 'Cork', 'Limerick', 'Galway'] },
+                    'italy': { name: 'İtalya', cities: ['Roma', 'Milano', 'Venedik', 'Floransa', 'Napoli'] },
+                    'latvia': { name: 'Letonya', cities: ['Riga', 'Daugavpils', 'Liepāja', 'Jelgava'] },
+                    'lithuania': { name: 'Litvanya', cities: ['Vilnius', 'Kaunas', 'Klaipėda', 'Šiauliai'] },
+                    'luxembourg': { name: 'Lüksemburg', cities: ['Lüksemburg', 'Esch-sur-Alzette'] },
+                    'malta': { name: 'Malta', cities: ['Valletta', 'Birkirkara', 'Mosta', 'Qormi'] },
+                    'moldova': { name: 'Moldova', cities: ['Kişinev', 'Tiraspol', 'Bălți', 'Bender'] },
+                    'montenegro': { name: 'Karadağ', cities: ['Podgorica', 'Nikšić', 'Pljevlja'] },
+                    'netherlands': { name: 'Hollanda', cities: ['Amsterdam', 'Rotterdam', 'Lahey', 'Utrecht'] },
+                    'northmacedonia': { name: 'Kuzey Makedonya', cities: ['Üsküp', 'Bitola', 'Kumanovo'] },
+                    'norway': { name: 'Norveç', cities: ['Oslo', 'Bergen', 'Trondheim', 'Stavanger'] },
+                    'poland': { name: 'Polonya', cities: ['Varşova', 'Krakow', 'Łódź', 'Wrocław'] },
+                    'portugal': { name: 'Portekiz', cities: ['Lizbon', 'Porto', 'Vila Nova de Gaia'] },
+                    'romania': { name: 'Romanya', cities: ['Bükreş', 'Cluj-Napoca', 'Timișoara'] },
+                    'serbia': { name: 'Sırbistan', cities: ['Belgrad', 'Novi Sad', 'Niš', 'Kragujevac'] },
+                    'slovakia': { name: 'Slovakya', cities: ['Bratislava', 'Košice', 'Prešov'] },
+                    'slovenia': { name: 'Slovenya', cities: ['Ljubljana', 'Maribor', 'Celje'] },
+                    'spain': { name: 'İspanya', cities: ['Madrid', 'Barselona', 'Sevilla', 'Valencia'] },
+                    'sweden': { name: 'İsveç', cities: ['Stockholm', 'Göteborg', 'Malmö', 'Uppsala'] },
+                    'switzerland': { name: 'İsviçre', cities: ['Zürih', 'Cenevre', 'Basel', 'Bern'] },
+                    'uk': { name: 'İngiltere', cities: ['Londra', 'Manchester', 'Edinburgh', 'Liverpool'] },
+                    'ukraine': { name: 'Ukrayna', cities: ['Kiev', 'Kharkiv', 'Odessa', 'Dnipro'] }
+                }
+            },
+            asia: {
+                name: 'Asya',
+                countries: {
+                    'afghanistan': { name: 'Afganistan', cities: ['Kabil', 'Kandahar', 'Herat', 'Mazar-i Sharif'] },
+                    'armenia': { name: 'Ermenistan', cities: ['Erivan', 'Gyumri', 'Vanadzor'] },
+                    'azerbaijan': { name: 'Azerbaycan', cities: ['Bakü', 'Gəncə', 'Sumqayıt'] },
+                    'bahrain': { name: 'Bahreyn', cities: ['Manama', 'Riffa', 'Muharraq'] },
+                    'bangladesh': { name: 'Bangladeş', cities: ['Dakka', 'Chittagong', 'Khulna'] },
+                    'bhutan': { name: 'Butan', cities: ['Thimphu', 'Phuntsholing', 'Punakha'] },
+                    'brunei': { name: 'Brunei', cities: ['Bandar Seri Begawan', 'Kuala Belait'] },
+                    'cambodia': { name: 'Kamboçya', cities: ['Phnom Penh', 'Siem Reap', 'Battambang'] },
+                    'china': { name: 'Çin', cities: ['Pekin', 'Şangay', 'Guangzhou', 'Shenzhen'] },
+                    'cyprus': { name: 'Kıbrıs', cities: ['Lefkoşa', 'Limassol', 'Larnaca'] },
+                    'georgia': { name: 'Gürcistan', cities: ['Tiflis', 'Kutaisi', 'Batumi'] },
+                    'india': { name: 'Hindistan', cities: ['Delhi', 'Mumbai', 'Bangalore', 'Kolkata'] },
+                    'indonesia': { name: 'Endonezya', cities: ['Jakarta', 'Surabaya', 'Bandung'] },
+                    'iran': { name: 'İran', cities: ['Tahran', 'Meşhed', 'Isfahan', 'Karaj'] },
+                    'iraq': { name: 'Irak', cities: ['Bağdat', 'Basra', 'Mosul', 'Erbil'] },
+                    'israel': { name: 'İsrail', cities: ['Tel Aviv', 'Kudüs', 'Haifa'] },
+                    'japan': { name: 'Japonya', cities: ['Tokyo', 'Osaka', 'Kyoto', 'Hiroshima'] },
+                    'jordan': { name: 'Ürdün', cities: ['Amman', 'Zarqa', 'Irbid'] },
+                    'kazakhstan': { name: 'Kazakistan', cities: ['Nur-Sultan', 'Almaty', 'Shymkent'] },
+                    'kuwait': { name: 'Kuveyt', cities: ['Kuwait City', 'Al Ahmadi', 'Hawalli'] },
+                    'kyrgyzstan': { name: 'Kırgızistan', cities: ['Bişkek', 'Osh', 'Jalal-Abad'] },
+                    'laos': { name: 'Laos', cities: ['Vientiane', 'Savannakhet', 'Pakse'] },
+                    'lebanon': { name: 'Lübnan', cities: ['Beyrut', 'Tripoli', 'Sidon'] },
+                    'malaysia': { name: 'Malezya', cities: ['Kuala Lumpur', 'George Town', 'Ipoh'] },
+                    'maldives': { name: 'Maldivler', cities: ['Male', 'Addu City'] },
+                    'mongolia': { name: 'Moğolistan', cities: ['Ulaanbaatar', 'Erdenet', 'Darkhan'] },
+                    'myanmar': { name: 'Myanmar', cities: ['Yangon', 'Mandalay', 'Naypyidaw'] },
+                    'nepal': { name: 'Nepal', cities: ['Katmandu', 'Pokhara', 'Lalitpur'] },
+                    'northkorea': { name: 'Kuzey Kore', cities: ['Pyongyang', 'Hamhung', 'Chongjin'] },
+                    'oman': { name: 'Umman', cities: ['Muscat', 'Seeb', 'Salalah'] },
+                    'pakistan': { name: 'Pakistan', cities: ['Karachi', 'Lahore', 'Faisalabad'] },
+                    'palestine': { name: 'Filistin', cities: ['Gaza', 'Ramallah', 'Nablus'] },
+                    'philippines': { name: 'Filipinler', cities: ['Manila', 'Quezon City', 'Davao'] },
+                    'qatar': { name: 'Katar', cities: ['Doha', 'Al Rayyan', 'Umm Salal'] },
+                    'russia': { name: 'Rusya', cities: ['Moskova', 'St. Petersburg', 'Novosibirsk'] },
+                    'saudiarabia': { name: 'Suudi Arabistan', cities: ['Riyad', 'Jeddah', 'Mecca'] },
+                    'singapore': { name: 'Singapur', cities: ['Singapur'] },
+                    'southkorea': { name: 'Güney Kore', cities: ['Seul', 'Busan', 'Incheon'] },
+                    'srilanka': { name: 'Sri Lanka', cities: ['Colombo', 'Kandy', 'Galle'] },
+                    'syria': { name: 'Suriye', cities: ['Damascus', 'Aleppo', 'Homs'] },
+                    'tajikistan': { name: 'Tacikistan', cities: ['Dushanbe', 'Khujand', 'Kulob'] },
+                    'thailand': { name: 'Tayland', cities: ['Bangkok', 'Phuket', 'Chiang Mai'] },
+                    'turkey': { name: 'Türkiye', cities: ['İstanbul', 'Ankara', 'İzmir', 'Antalya'] },
+                    'turkmenistan': { name: 'Türkmenistan', cities: ['Ashgabat', 'Turkmenbashi'] },
+                    'uae': { name: 'BAE', cities: ['Dubai', 'Abu Dhabi', 'Sharjah'] },
+                    'uzbekistan': { name: 'Özbekistan', cities: ['Taşkent', 'Samarkand', 'Namangan'] },
+                    'vietnam': { name: 'Vietnam', cities: ['Ho Chi Minh', 'Hanoi', 'Hai Phong'] },
+                    'yemen': { name: 'Yemen', cities: ['Sanaa', 'Aden', 'Taiz'] }
+                }
+            },
+            america: {
+                name: 'Amerika',
+                countries: {
+                    'antigua': { name: 'Antigua ve Barbuda', cities: ['St. Johns', 'All Saints'] },
+                    'argentina': { name: 'Arjantin', cities: ['Buenos Aires', 'Córdoba', 'Rosario'] },
+                    'bahamas': { name: 'Bahamalar', cities: ['Nassau', 'Freeport', 'West End'] },
+                    'barbados': { name: 'Barbados', cities: ['Bridgetown', 'Speightstown'] },
+                    'belize': { name: 'Belize', cities: ['Belize City', 'San Ignacio'] },
+                    'bolivia': { name: 'Bolivya', cities: ['La Paz', 'Santa Cruz', 'Cochabamba'] },
+                    'brazil': { name: 'Brezilya', cities: ['São Paulo', 'Rio de Janeiro', 'Salvador'] },
+                    'canada': { name: 'Kanada', cities: ['Toronto', 'Montreal', 'Vancouver'] },
+                    'chile': { name: 'Şili', cities: ['Santiago', 'Valparaíso', 'Concepción'] },
+                    'colombia': { name: 'Kolombiya', cities: ['Bogotá', 'Medellín', 'Cali'] },
+                    'costarica': { name: 'Kosta Rika', cities: ['San José', 'Cartago'] },
+                    'cuba': { name: 'Küba', cities: ['Havana', 'Santiago', 'Camagüey'] },
+                    'dominica': { name: 'Dominika', cities: ['Roseau', 'Portsmouth'] },
+                    'dominicanrep': { name: 'Dominik Cumhuriyeti', cities: ['Santo Domingo', 'Santiago'] },
+                    'ecuador': { name: 'Ekvador', cities: ['Quito', 'Guayaquil', 'Cuenca'] },
+                    'elsalvador': { name: 'El Salvador', cities: ['San Salvador', 'Santa Ana'] },
+                    'grenada': { name: 'Grenada', cities: ['St. Georges', 'Gouyave'] },
+                    'guatemala': { name: 'Guatemala', cities: ['Guatemala City', 'Mixco'] },
+                    'guyana': { name: 'Guyana', cities: ['Georgetown', 'Linden'] },
+                    'haiti': { name: 'Haiti', cities: ['Port-au-Prince', 'Cap-Haïtien'] },
+                    'honduras': { name: 'Honduras', cities: ['Tegucigalpa', 'San Pedro Sula'] },
+                    'jamaica': { name: 'Jamaika', cities: ['Kingston', 'Spanish Town'] },
+                    'mexico': { name: 'Meksika', cities: ['Mexico City', 'Guadalajara', 'Monterrey'] },
+                    'nicaragua': { name: 'Nikaragua', cities: ['Managua', 'León', 'Masaya'] },
+                    'panama': { name: 'Panama', cities: ['Panama City', 'San Miguelito'] },
+                    'paraguay': { name: 'Paraguay', cities: ['Asunción', 'Ciudad del Este'] },
+                    'peru': { name: 'Peru', cities: ['Lima', 'Arequipa', 'Trujillo'] },
+                    'saintkitts': { name: 'Saint Kitts ve Nevis', cities: ['Basseterre'] },
+                    'saintlucia': { name: 'Saint Lucia', cities: ['Castries', 'Bisee'] },
+                    'saintvincent': { name: 'Saint Vincent ve Grenadinler', cities: ['Kingstown'] },
+                    'suriname': { name: 'Surinam', cities: ['Paramaribo', 'Lelydorp'] },
+                    'trinidadtobago': { name: 'Trinidad ve Tobago', cities: ['Port of Spain'] },
+                    'usa': { name: 'Amerika Birleşik Devletleri', cities: ['New York', 'Los Angeles', 'Chicago'] },
+                    'uruguay': { name: 'Uruguay', cities: ['Montevideo', 'Salto'] },
+                    'venezuela': { name: 'Venezuela', cities: ['Caracas', 'Maracaibo', 'Valencia'] }
+                }
+            },
+            africa: {
+                name: 'Afrika',
+                countries: {
+                    'algeria': { name: 'Cezayir', cities: ['Cezayir', 'Oran', 'Constantine'] },
+                    'angola': { name: 'Angola', cities: ['Luanda', 'Huambo', 'Lobito'] },
+                    'benin': { name: 'Benin', cities: ['Porto-Novo', 'Cotonou'] },
+                    'botswana': { name: 'Botsvana', cities: ['Gaborone', 'Francistown'] },
+                    'burkinafaso': { name: 'Burkina Faso', cities: ['Ouagadougou', 'Bobo-Dioulasso'] },
+                    'burundi': { name: 'Burundi', cities: ['Gitega', 'Bujumbura'] },
+                    'cameroon': { name: 'Kamerun', cities: ['Yaoundé', 'Douala'] },
+                    'capeverde': { name: 'Yeşil Burun Adaları', cities: ['Praia', 'Mindelo'] },
+                    'car': { name: 'Orta Afrika Cumhuriyeti', cities: ['Bangui', 'Bimbo'] },
+                    'chad': { name: 'Çad', cities: ['NDjamena', 'Moundou'] },
+                    'comoros': { name: 'Komorlar', cities: ['Moroni', 'Mutsamudu'] },
+                    'drc': { name: 'Demokratik Kongo Cumhuriyeti', cities: ['Kinshasa', 'Lubumbashi'] },
+                    'djibouti': { name: 'Cibuti', cities: ['Cibuti', 'Ali Sabieh'] },
+                    'egypt': { name: 'Mısır', cities: ['Kahire', 'İskenderiye', 'Luxor'] },
+                    'equatorialguinea': { name: 'Ekvator Ginesi', cities: ['Malabo', 'Bata'] },
+                    'eritrea': { name: 'Eritre', cities: ['Asmara', 'Keren'] },
+                    'eswatini': { name: 'Eswatini', cities: ['Mbabane', 'Manzini'] },
+                    'ethiopia': { name: 'Etiyopya', cities: ['Addis Ababa', 'Dire Dawa'] },
+                    'gabon': { name: 'Gabon', cities: ['Libreville', 'Port-Gentil'] },
+                    'gambia': { name: 'Gambiya', cities: ['Banjul', 'Serekunda'] },
+                    'ghana': { name: 'Gana', cities: ['Accra', 'Kumasi'] },
+                    'guinea': { name: 'Gine', cities: ['Conakry', 'Nzérékoré'] },
+                    'guineabissau': { name: 'Gine-Bissau', cities: ['Bissau', 'Gabu'] },
+                    'ivorycoast': { name: 'Fildişi Sahili', cities: ['Abidjan', 'Bouaké'] },
+                    'kenya': { name: 'Kenya', cities: ['Nairobi', 'Mombasa'] },
+                    'lesotho': { name: 'Lesotho', cities: ['Maseru', 'Teyateyaneng'] },
+                    'liberia': { name: 'Liberya', cities: ['Monrovia', 'Gbarnga'] },
+                    'libya': { name: 'Libya', cities: ['Tripoli', 'Benghazi'] },
+                    'madagascar': { name: 'Madagaskar', cities: ['Antananarivo', 'Toamasina'] },
+                    'malawi': { name: 'Malavi', cities: ['Lilongwe', 'Blantyre'] },
+                    'mali': { name: 'Mali', cities: ['Bamako', 'Sikasso'] },
+                    'mauritania': { name: 'Moritanya', cities: ['Nouakchott', 'Nouadhibou'] },
+                    'mauritius': { name: 'Mauritius', cities: ['Port Louis', 'Beau Bassin'] },
+                    'morocco': { name: 'Fas', cities: ['Casablanca', 'Rabat', 'Fez'] },
+                    'mozambique': { name: 'Mozambik', cities: ['Maputo', 'Matola'] },
+                    'namibia': { name: 'Namibya', cities: ['Windhoek', 'Rundu'] },
+                    'niger': { name: 'Nijer', cities: ['Niamey', 'Zinder'] },
+                    'nigeria': { name: 'Nijerya', cities: ['Lagos', 'Kano'] },
+                    'rwanda': { name: 'Ruanda', cities: ['Kigali', 'Butare'] },
+                    'saotome': { name: 'São Tomé ve Príncipe', cities: ['São Tomé'] },
+                    'senegal': { name: 'Senegal', cities: ['Dakar', 'Thiès'] },
+                    'seychelles': { name: 'Seyşeller', cities: ['Victoria'] },
+                    'sierraleone': { name: 'Sierra Leone', cities: ['Freetown', 'Bo'] },
+                    'somalia': { name: 'Somali', cities: ['Mogadishu', 'Hargeisa'] },
+                    'southafrica': { name: 'Güney Afrika', cities: ['Cape Town', 'Johannesburg'] },
+                    'southsudan': { name: 'Güney Sudan', cities: ['Juba', 'Malakal'] },
+                    'sudan': { name: 'Sudan', cities: ['Hartum', 'Omdurman'] },
+                    'tanzania': { name: 'Tanzanya', cities: ['Dar es Salaam', 'Mwanza'] },
+                    'togo': { name: 'Togo', cities: ['Lomé', 'Sokodé'] },
+                    'tunisia': { name: 'Tunus', cities: ['Tunus', 'Sfax'] },
+                    'uganda': { name: 'Uganda', cities: ['Kampala', 'Gulu'] },
+                    'zambia': { name: 'Zambiya', cities: ['Lusaka', 'Kitwe'] },
+                    'zimbabwe': { name: 'Zimbabve', cities: ['Harare', 'Bulawayo'] }
+                }
+            },
+            oceania: {
+                name: 'Okyanusya',
+                countries: {
+                    'australia': { name: 'Avustralya', cities: ['Sydney', 'Melbourne', 'Brisbane'] },
+                    'fiji': { name: 'Fiji', cities: ['Suva', 'Nadi'] },
+                    'kiribati': { name: 'Kiribati', cities: ['Tarawa', 'Betio'] },
+                    'marshallislands': { name: 'Marshall Adaları', cities: ['Majuro', 'Ebeye'] },
+                    'micronesia': { name: 'Mikronezya', cities: ['Palikir', 'Weno'] },
+                    'nauru': { name: 'Nauru', cities: ['Yaren', 'Baiti'] },
+                    'newzealand': { name: 'Yeni Zelanda', cities: ['Auckland', 'Wellington'] },
+                    'palau': { name: 'Palau', cities: ['Ngerulmud', 'Koror'] },
+                    'papuanewguinea': { name: 'Papua Yeni Gine', cities: ['Port Moresby', 'Lae'] },
+                    'samoa': { name: 'Samoa', cities: ['Apia', 'Asau'] },
+                    'solomonislands': { name: 'Solomon Adaları', cities: ['Honiara', 'Auki'] },
+                    'tonga': { name: 'Tonga', cities: ['Nukualofa', 'Neiafu'] },
+                    'tuvalu': { name: 'Tuvalu', cities: ['Funafuti', 'Asau'] },
+                    'vanuatu': { name: 'Vanuatu', cities: ['Port Vila', 'Luganville'] }
+                }
+            }
+        };
+
+        // Hamburger menu
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Kıta değiştiğinde ülkeleri güncelle
+        function updateCountries() {
+            const continentSelect = document.getElementById('continent');
+            const countrySelect = document.getElementById('country');
+            const citySelect = document.getElementById('city');
+            
+            const selectedContinent = continentSelect.value;
+            
+            countrySelect.innerHTML = '<option value="">Ülke seçin</option>';
+            citySelect.innerHTML = '<option value="">Genel tur (Tüm ülke)</option>';
+            
+            if (selectedContinent && destinations[selectedContinent]) {
+                Object.keys(destinations[selectedContinent].countries).forEach(countryKey => {
+                    const country = destinations[selectedContinent].countries[countryKey];
+                    const option = document.createElement('option');
+                    option.value = countryKey;
+                    option.textContent = country.name;
+                    countrySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Ülke değiştiğinde şehirleri güncelle
+        function updateCities() {
+            const continentSelect = document.getElementById('continent');
+            const countrySelect = document.getElementById('country');
+            const citySelect = document.getElementById('city');
+            
+            const selectedContinent = continentSelect.value;
+            const selectedCountry = countrySelect.value;
+            
+            citySelect.innerHTML = '<option value="">Genel tur (Tüm ülke)</option>';
+            
+            if (selectedContinent && selectedCountry && destinations[selectedContinent] && destinations[selectedContinent].countries[selectedCountry]) {
+                const cities = destinations[selectedContinent].countries[selectedCountry].cities;
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.toLowerCase().replace(/\s+/g, '-');
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+
+        // Tarih değiştiğinde gün sayısını hesapla
+        function calculateDays() {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const totalDaysDiv = document.getElementById('totalDays');
+            
+            if (startDate && endDate) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+                const timeDiff = end.getTime() - start.getTime();
+                const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                
+                if (dayDiff > 0) {
+                    totalDaysDiv.innerHTML = `<i class="fas fa-clock"></i> ${dayDiff} gün`;
+                    totalDaysDiv.style.color = 'var(--secondary-color)';
+                } else {
+                    totalDaysDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Geçersiz tarih aralığı';
+                    totalDaysDiv.style.color = '#e74c3c';
+                }
+            } else {
+                totalDaysDiv.innerHTML = '<i class="fas fa-clock"></i> Tarih seçin';
+                totalDaysDiv.style.color = 'var(--primary-color)';
+            }
+        }
+
+        // Bütçe slider'dan güncelle
+        function updateBudgetFromRange() {
+            const rangeValue = document.getElementById('budgetRange').value;
+            const inputValue = document.getElementById('budgetInput');
+            const displayValue = document.getElementById('budgetDisplay');
+            
+            inputValue.value = rangeValue;
+            displayValue.textContent = '₺' + parseInt(rangeValue).toLocaleString('tr-TR');
+        }
+
+        // Bütçe input'tan güncelle
+        function updateBudgetFromInput() {
+            const inputValue = document.getElementById('budgetInput').value;
+            const rangeValue = document.getElementById('budgetRange');
+            const displayValue = document.getElementById('budgetDisplay');
+            
+            if (inputValue >= 2000 && inputValue <= 100000) {
+                rangeValue.value = inputValue;
+                displayValue.textContent = '₺' + parseInt(inputValue).toLocaleString('tr-TR');
+            }
+        }
+
+        // Checkbox toggle fonksiyonu
+        function toggleCheckbox(id) {
+            const checkbox = document.getElementById(id);
+            const checkboxItem = checkbox.parentElement;
+            
+            checkbox.checked = !checkbox.checked;
+            
+            if (checkbox.checked) {
+                checkboxItem.classList.add('checked');
+            } else {
+                checkboxItem.classList.remove('checked');
+            }
+        }
+
+        // Form gönderme
+        document.getElementById('travelForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            const accommodations = [];
+            const interests = [];
+            
+            document.querySelectorAll('input[name="accommodation"]:checked').forEach(cb => {
+                accommodations.push(cb.value);
+            });
+            
+            document.querySelectorAll('input[name="interests"]:checked').forEach(cb => {
+                interests.push(cb.value);
+            });
+            
+            data.accommodation = accommodations.join(',');
+            data.interests = interests.join(',');
+            
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            if (startDate && endDate) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+                const dayDiff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
+                data.totalDays = dayDiff;
+            }
+            
+            // Ülke adını al
+            const continentSelect = document.getElementById('continent').value;
+            const countrySelect = document.getElementById('country').value;
+            if (continentSelect && countrySelect && destinations[continentSelect] && destinations[continentSelect].countries[countrySelect]) {
+                data.countryName = destinations[continentSelect].countries[countrySelect].name;
+            }
+            
+            // Kişi sayısını formatla
+            const adults = data.adults || '2';
+            const children = data.children || '0';
+            let travelerText = adults + ' Yetişkin';
+            if (children !== '0') {
+                travelerText += ', ' + children + ' Çocuk';
+            }
+            data.travelerText = travelerText;
+            
+            console.log('Form Verileri:', data);
+            
+            // Verileri localStorage'a kaydet
+            localStorage.setItem('travelPlanData', JSON.stringify(data));
+            
+            // URL parametreleri oluştur
+            const params = new URLSearchParams({
+                destination: data.countryName || 'İtalya',
+                startDate: data.startDate || '',
+                endDate: data.endDate || '',
+                budget: data.budgetInput || '15000',
+                travelers: data.travelerText || '2 Yetişkin',
+                totalDays: data.totalDays || '7',
+                continent: data.continent || '',
+                country: data.country || '',
+                city: data.city || '',
+                accommodation: data.accommodation || '',
+                interests: data.interests || ''
+            });
+            
+            // Sonuç sayfasına yönlendir
+            window.location.href = 'sonuc.html?' + params.toString();
+        });
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('startDate').setAttribute('min', today);
+            document.getElementById('endDate').setAttribute('min', today);
+            
+            document.getElementById('startDate').addEventListener('change', function() {
+                const startDate = this.value;
+                document.getElementById('endDate').setAttribute('min', startDate);
+                calculateDays();
+            });
+            
+            document.getElementById('endDate').addEventListener('change', calculateDays);
+        });
+    </script>
+</body>
+</html>
