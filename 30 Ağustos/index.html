@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Ağustos Zafer Bayramı</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- İstiklal Marşı Full Screen -->
+    <div class="istiklal-fullscreen" id="istiklalFullscreen">
+        <div class="istiklal-overlay">
+            <div class="istiklal-text">30 ağustos zafer bayramımız kutlu olsun</div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <img src="türkbayrak.png" alt="Türk Bayrağı" class="modal-flag-img" onerror="this.style.display='none'">
+            <h2>30 AĞUSTOS ZAFER BAYRAMI</h2>
+            <p>Türk Milletinin bağımsızlık mücadelesinin zafere ulaştığı kutsal günümüz kutlu olsun</p>
+            
+            <button class="modal-button" onclick="startExperience()">SİTEYE GİR VE MÜZİK BAŞLAT</button>
+        </div>
+    </div>
+
+    <!-- Final Animation -->
+    <div class="final-animation" id="finalAnimation">
+        <div class="fireworks">
+            <div class="firework" style="top: 15%; left: 15%; animation-delay: 0s;"></div>
+            <div class="firework" style="top: 25%; left: 85%; animation-delay: 0.5s;"></div>
+            <div class="firework" style="top: 65%; left: 10%; animation-delay: 1s;"></div>
+            <div class="firework" style="top: 75%; left: 90%; animation-delay: 1.5s;"></div>
+            <div class="firework" style="top: 45%; left: 50%; animation-delay: 0.8s;"></div>
+            <div class="firework" style="top: 30%; left: 30%; animation-delay: 1.2s;"></div>
+            <div class="firework" style="top: 60%; left: 70%; animation-delay: 0.3s;"></div>
+        </div>
+        <div class="final-flags">
+            <img src="türkbayrak.png" alt="Türk Bayrağı" class="final-flag-img" style="animation-delay: 0s;" onerror="this.style.display='none'">
+            <img src="türkbayrak.png" alt="Türk Bayrağı" class="final-flag-img" style="animation-delay: 0.3s;" onerror="this.style.display='none'">
+            <img src="türkbayrak.png" alt="Türk Bayrağı" class="final-flag-img" style="animation-delay: 0.6s;" onerror="this.style.display='none'">
+        </div>
+        <div class="final-text">
+            ATATÜRK ÜN ÖNDERLİĞİNDE Kİ ZAFERİMİZ <br>
+             30 AĞUSTOS ZAFER BAYRAMI<br>
+            TÜRK MİLLETİNE ARMAĞAN VE<br>
+            KUTLU OLSUN
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center;">
+                
+                <img src="türkbayrak.png" alt="Türk Bayrağı" class="turkish-flag-header" onerror="this.style.display='none'">
+            <div class="logo"> 30 AĞUSTOS ZAFER BAYRAMI</div>
+        </div>
+            <div class="music-info" id="musicInfo">🎵 Müzik Hazır</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Slider -->
+        <section class="slider-container">
+            <div class="slider" id="slider">
+                <!-- Slide 1: Atatürk Fotoğrafı -->
+                <div class="slide" style="background-image: url('atatürkimam.jpg');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">MUSTAFA KEMAL ATATÜRK</h1>
+                        <div class="slide-subtitle">GAZİ VE BAŞKOMUTAN</div>
+                        <p class="slide-description">"Ordular, ilk hedefiniz Akdeniz'dir, ileri!" - Bu emir ile tarihin en büyük zaferlerinden biri başladı.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Savaş Alanı -->
+                <div class="slide" style="background-image: url('atatürk.webp');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">BÜYÜK TAARRUZ</h1>
+                        <div class="slide-subtitle">30 AĞUSTOS 1922</div>
+                        <p class="slide-description">Dumlupınar'da düşman ordular bozguna uğradı. Türk milleti bağımsızlığına kavuştu.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Türk Bayrağı -->
+                <div class="slide" style="background-image: url('türkbayrak.png');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">AL SANCAK</h1>
+                        <div class="slide-subtitle">ŞANLI TÜRK BAYRAĞI</div>
+                        <p class="slide-description">Hilal ve yıldızlı al sancağımız, zaferden sonra tüm Anadolu'da gururla dalgalandı.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Zafer Kutlaması -->
+                <div class="slide" style="background-image: url('millikurtuluş.jpg');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1 class="slide-title">BÜYÜK ZAFER</h1>
+                        <div class="slide-subtitle">MİLLİ KURTULUŞ</div>
+                        <p class="slide-description">Türk milleti dünya tarihine altın harflerle yazdığı bu destanla özgürlüğüne kavuştu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-arrows prev" onclick="prevSlide()">❮</button>
+            <button class="slider-arrows next" onclick="nextSlide()">❯</button>
+
+            <div class="slider-nav" id="slider-nav">
+                <div class="nav-dot active" onclick="goToSlide(0)"></div>
+                <div class="nav-dot" onclick="goToSlide(1)"></div>
+                <div class="nav-dot" onclick="goToSlide(2)"></div>
+                <div class="nav-dot" onclick="goToSlide(3)"></div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="history-section">
+            <div class="history-container">
+                <h2 class="section-title">BÜYÜK TAARRUZ TARİHÇESİ</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">26 AĞUSTOS</div>
+                            <div class="timeline-title">Taarruz Hazırlıkları</div>
+                            <div class="timeline-text">Mustafa Kemal Paşa, Büyük Taarruz planlarını son kez gözden geçirdi. Ordular gizlice mevzilenmeye başladı. Düşman cephelerindeki zayıf noktalar tespit edildi ve son hazırlıklar tamamlandı.</div>
+                        </div>
+                        <div class="timeline-marker"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">30 AĞUSTOS</div>
+                            <div class="timeline-title">Büyük Taarruz Başladı</div>
+                            <div class="timeline-text">Sabah saat 04:30'da topçu ateşi ile başlayan taarruz, Afyon-Kocatepe hattında düşman mevzilerini paramparça etti. "Ordular, ilk hedefiniz Akdeniz'dir, ileri!" emri ile tarih yazıldı.</div>
+                        </div>
+                        <div class="timeline-marker"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">30 AĞUSTOS</div>
+                            <div class="timeline-title">Dumlupınar Zaferi</div>
+                            <div class="timeline-text">Türk ordusu, düşman savunma hatlarını yardıktan sonra Dumlupınar'da büyük bir zafer kazandı. Yunan Başkomutanı Trikopis ve kolordu komutanları esir alındı. Bu zafer, savaşın kaderini belirledi.</div>
+                        </div>
+                        <div class="timeline-marker"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">9 EYLÜL</div>
+                            <div class="timeline-title">İzmir'in Kurtuluşu</div>
+                            <div class="timeline-text">Büyük Taarruz'un devamında, 9 Eylül 1922'de İzmir düşman işgalinden kurtarıldı. Bu olay, Kurtuluş Savaşı'nın fiilen sona ermesi anlamına geliyordu.</div>
+                        </div>
+                        <div class="timeline-marker"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">11 EKİM</div>
+                            <div class="timeline-title">Mudanya Ateşkesi</div>
+                            <div class="timeline-text">30 Ağustos zaferinin ardından imzalanan Mudanya Ateşkesi ile düşman ordular Anadolu'yu terk etmeyi kabul etti. Türkiye'nin tam bağımsızlığı sağlandı.</div>
+                        </div>
+                        <div class="timeline-marker"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">GÜN SÜREN SAVAŞ</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200.000</div>
+                    <div class="stat-label">TÜRK ASKERİ</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">KOLORDU KOMUTANI ESİR</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1922</div>
+                    <div class="stat-label">ZAFER YILI</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="https://hukuk.ktb.gov.tr/TR-137640/turk-bayragi-ve-istiklal-marsi.html" alt="Türk Bayrağı" class="footer-flag-img" onerror="this.style.display='none'">
+        <p>30 AĞUSTOS ZAFER BAYRAMI KUTLU OLSUN</p>
+        <p>CUMHURİYET'İN EBEDİ NÖBETÇİLERİ</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
