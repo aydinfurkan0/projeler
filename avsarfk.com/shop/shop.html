@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVŞARSPOR FK MAĞAZA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="shortcut icon" href="/img/logo/avsarfk.svg" type="image/x-icon">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <img src="/img/logo/avsarfk.svg" alt="AVŞARSPOR">
+        </div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="shop-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="navigateTo('home')">
+                    <img src="/img/logo/avsarfk.svg" alt="AVŞARSPOR">
+                    <div>
+                        <h1>AVŞARSPOR</h1>
+                        <p>Resmi Mağaza</p>
+                    </div>
+                </div>
+
+                <nav class="main-nav">
+                    <a onclick="navigateTo('home')" class="nav-link active">Ürünler</a>
+                    <a onclick="navigateTo('admin')" class="nav-link" id="adminNav" style="display:none;">Admin Panel</a>
+                    <a href="../index.html" class="nav-link">Ana Sayfa</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Sepetim</h3>
+            <button onclick="toggleCart()" class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Toplam:</span>
+                <span id="cartTotal">0 ₺</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">
+                <i class="fas fa-check-circle"></i> Sepeti Onayla
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page - Products -->
+        <div id="home" class="page active">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Ürünlerimiz</h2>
+                    <div class="filters">
+                        <select id="categoryFilter" onchange="filterProducts()">
+                            <option value="">Tüm Kategoriler</option>
+                            <option value="forma">Forma</option>
+                            <option value="esofman">Eşofman</option>
+                            <option value="aksesuar">Aksesuar</option>
+                            <option value="ayakkabi">Ayakkabı</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGrid"></div>
+            </div>
+        </div>
+
+        <!-- Admin Page -->
+        <div id="admin" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2><i class="fas fa-lock"></i> Admin Paneli</h2>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" onclick="showAdminSection('products')">
+                        <i class="fas fa-box"></i> Ürünler
+                    </button>
+                    <button class="admin-tab-btn" onclick="showAdminSection('payment')">
+                        <i class="fas fa-credit-card"></i> Ödeme Bilgileri
+                    </button>
+                </div>
+
+                <!-- Products Admin -->
+                <div id="admin-products" class="admin-section active">
+                    <h3>Ürün Ekle/Düzenle</h3>
+                    <form id="productForm" class="admin-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Ürün Adı *</label>
+                                <input type="text" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Kategori *</label>
+                                <select name="category" required>
+                                    <option value="forma">Forma</option>
+                                    <option value="esofman">Eşofman</option>
+                                    <option value="aksesuar">Aksesuar</option>
+                                    <option value="ayakkabi">Ayakkabı</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Fiyat (₺) *</label>
+                                <input type="number" name="price" required min="0" step="0.01">
+                            </div>
+                            <div class="form-group">
+                                <label>Stok *</label>
+                                <input type="number" name="stock" required min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Fotoğraf URL *</label>
+                                <input type="url" name="image" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Bedenler (virgülle ayırın)</label>
+                                <input type="text" name="sizes" placeholder="XS, S, M, L, XL">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            <textarea name="description" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Kaydet
+                        </button>
+                    </form>
+
+                    <h3 style="margin-top: 40px;">Ürün Listesi</h3>
+                    <div class="products-admin-grid" id="productsAdminGrid"></div>
+                </div>
+                </div>
+
+                <!-- Payment Settings Admin -->
+                <div id="admin-payment" class="admin-section">
+                    <h3 style="padding: 40px;">Ödeme Bilgilerini Düzenle</h3>
+                    <form id="paymentSettingsForm" class="admin-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Banka Adı *</label>
+                                <input type="text" name="bankName" required placeholder="Örn: Ziraat Bankası">
+                            </div>
+                            <div class="form-group">
+                                <label>Hesap Adı *</label>
+                                <input type="text" name="accountName" required placeholder="Örn: AVŞARSPOR FUTBOL KULÜBÜ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>IBAN *</label>
+                            <input type="text" name="iban" required placeholder="TR00 0000 0000 0000 0000 0000 00" maxlength="32">
+                            <small style="color: var(--gray); display: block; margin-top: 5px;">
+                                IBAN numaranızı boşluksuz veya boşluklu girebilirsiniz
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>QR Kod URL (Opsiyonel)</label>
+                            <input type="url" name="qrCode" placeholder="https://example.com/qr-code.png">
+                            <small style="color: var(--gray); display: block; margin-top: 5px;">
+                                QR kod fotoğrafınızın linkini girin. Boş bırakabilirsiniz.
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>WhatsApp Numarası *</label>
+                            <input type="text" name="whatsappNumber" required placeholder="905551234567" pattern="[0-9]{12}">
+                            <small style="color: var(--gray); display: block; margin-top: 5px;">
+                                90 ile başlayan 12 haneli numara (Örn: 905551234567)
+                            </small>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Ödeme Bilgilerini Kaydet
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('paymentModal')">&times;</button>
+            <h3>Sipariş Özeti & Ödeme</h3>
+            
+            <div class="order-summary">
+                <h4>Sipariş Detayları</h4>
+                <div id="checkoutItems"></div>
+                <div class="summary-total">
+                    <span>Toplam:</span>
+                    <span id="checkoutTotal">0 ₺</span>
+                </div>
+            </div>
+
+            <div id="paymentInfo"></div>
+
+            <button class="btn-primary full-width" onclick="sendToWhatsApp()" style="margin-top: 20px;">
+                <i class="fab fa-whatsapp"></i> WhatsApp'tan Sipariş Gönder
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('productModal')">&times;</button>
+            <div id="productDetail"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo" onclick="showAdminLogin()" title="Admin Paneline Git" style="cursor: pointer;">
+                        <div class="footer-logo-icon">
+                            <img src="/img/logo/avsarfk.svg" alt="">
+                        </div>
+                        <div class="footer-logo-text">
+                            <h4 style="color: #fff;">AVŞARSPOR</h4>
+                            <p>Futbol Kulübü</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        1977 yılından bu yana Türk futbolunun köklü takımlarından biri olan AVŞARSPOR, başarılı geçmişi ve parlak geleceğiyle gururla yoluna devam ediyor.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61580350177801&sk=photos" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/avsarspor_fk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@avsarspor1736?si=z9ClWBLruTNF-zaO" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hızlı Erişim</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="navigateTo('home')"><i class="fas fa-chevron-right"></i> Mağaza</a></li>
+                        <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
+                        <li><a href="../index.html#news"><i class="fas fa-chevron-right"></i> Haberler</a></li>
+                        <li><a href="../index.html#squad"><i class="fas fa-chevron-right"></i> Kadro</a></li>
+                        <li><a href="../index.html#fixtures"><i class="fas fa-chevron-right"></i> Fikstür</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>İletişim Bilgileri</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #fff;">Adres:</strong><br>
+                            <span style="color: #94a3b8;">AVŞARSPOR Stadyumu<br>Atatürk Bulvarı No: 123<br>İstanbul, Türkiye</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #fff;">Telefon:</strong><br>
+                            <span style="color: #94a3b8;">+90 555 123 45 67</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #fff;">E-posta:</strong><br>
+                            <span style="color: #94a3b8;">info@avsarspor.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AVŞARSPOR Futbol Kulübü. Tüm hakları saklıdır.</p> <br>
+                <p class="footer-copyright">
+                    <a href="https://furkatechyazilim.net/">
+                        <img src="/img/logo/furkatech75.svg" alt="Furkatech Logo" class="furkatech-logo"/>
+                        <span class="furkatech">FURKATECH</span>
+                        <span class="tecnology">TECNOLOGY</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="shop.js"></script>
+</body>
+</html>

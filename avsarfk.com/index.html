@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVŞARSPOR FK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo/avsarfk.svg" type="image/x-icon">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">
+            <img src="img/logo/avsarfk.svg" alt="">
+        </div>
+        
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +90 555 123 45 67</span>
+                <span><i class="fas fa-envelope"></i> info@avsarspor.com</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61580350177801&sk=photos"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/avsarspor_fk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@avsarspor1736?si=z9ClWBLruTNF-zaO"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo" onclick="navigateTo('home')">
+                <div class="logo-icon">
+                    <img src="img/logo/avsarfk.svg" alt="">
+                </div>
+                <div class="logo-text">
+                    <h1>AVŞARSPOR</h1>
+                    <p>Futbol Kulübü</p>
+                </div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="navigateTo('home')" class="nav-link active">Ana Sayfa</a></li>
+                <li><a onclick="navigateTo('news')" class="nav-link">Haberler</a></li>
+                <li><a onclick="navigateTo('squad')" class="nav-link">Kadro</a></li>
+                <li><a onclick="navigateTo('fixtures')" class="nav-link">Fikstür</a></li>
+                <li><a onclick="navigateTo('gallery')" class="nav-link">Galeri</a></li>
+                <li><a href="shop/shop.html" class="nav-link">Mağaza</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-trophy"></i> 2024-2025 Sezonu
+                </div>
+                <h1>AVŞARSPOR</h1>
+                <p>Gücümüz Birliğimiz, Hedefimiz Şampiyonluk!</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-ticket-alt"></i> Bilet Al
+                    </a>
+                    <a href="#memberForm" class="btn btn-secondary" onclick="event.preventDefault(); document.getElementById('memberForm').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-users"></i> Üye Ol
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Slider -->
+        <section class="home-news-slider">
+            <div class="section-title">
+                <h2>Son Dakika Haberleri</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="slider-container">
+                <div class="slider-wrapper" id="newsSlider"></div>
+                <div class="slider-controls">
+                    <button class="slider-btn" onclick="slideNews(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn" onclick="slideNews(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Slider -->
+        <section class="sponsors">
+            <div class="sponsors-container">
+                <div class="section-title">
+                    <h2>Sponsorlarımız</h2>
+                    <div class="underline"></div>
+                </div>
+                <div class="sponsors-slider">
+                    <div class="sponsor-item">
+                        <img src="https://st-hummel.mncdn.com/Content/img/hummel-logo-desktop.svg" alt="HUMMEL">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Beko_logo.svg/320px-Beko_logo.svg.png" alt="Beko">
+                    </div>
+                    <div class="sponsor-item">
+                        <a href="https://furkatechyazilim.net/"><img src="img/logo/500x200.png" alt="Furkatech Technology & Software"></a>
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png" alt="Samsung">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Siemens-logo.svg/320px-Siemens-logo.svg.png" alt="Siemens">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/320px-Adidas_Logo.svg.png" alt="Adidas">
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="sponsor-item">
+                        <a href="https://hummel.com.tr/"><img src="https://st-hummel.mncdn.com/Content/img/hummel-logo-desktop.svg" alt="HUMMEL"></a>
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Beko_logo.svg/320px-Beko_logo.svg.png" alt="Beko">
+                    </div>
+                    <div class="sponsor-item">
+                        <a href="https://furkatechyazilim.net/"><img src="img/logo/500x200.png" alt="Furkatech"></a>
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png" alt="Samsung">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Siemens-logo.svg/320px-Siemens-logo.svg.png" alt="Siemens">
+                    </div>
+                    <div class="sponsor-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/320px-Adidas_Logo.svg.png" alt="Adidas">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Member Form -->
+        <section class="member-section" id="memberForm">
+            <div class="member-container">
+                <h2>AVŞARSPOR FK Ailesine Katıl!</h2>
+                <p>Formu doldurun, taraftarımız olun ve tüm ayrıcalıklardan yararlanın.</p>
+                <form class="member-form" id="membershipForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Ad Soyad *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon *</label>
+                            <input type="tel" name="phone" required placeholder="+90 5XX XXX XX XX">
+                        </div>
+                        <div class="form-group">
+                            <label>Doğum Tarihi *</label>
+                            <input type="date" name="birthdate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Adres *</label>
+                        <textarea name="address" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-user-plus"></i> Üyelik Başvurusu Yap
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- NEWS PAGE -->
+    <div id="news" class="page">
+        <section class="content-page">
+            <div class="section-title">
+                <h2>Haberler & Duyurular</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="news-grid" id="newsGrid"></div>
+        </section>
+    </div>
+
+    <!-- SQUAD PAGE -->
+    <div id="squad" class="page">
+        <section class="content-page">
+            <div class="section-title">
+                <h2>Oyuncu Kadromuz</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="squad-grid" id="squadGrid"></div>
+        </section>
+    </div>
+
+    <!-- FIXTURES PAGE -->
+    <div id="fixtures" class="page">
+        <section class="content-page">
+            <div class="section-title">
+                <h2>Maç Fikstürü</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="fixtures-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tarih</th>
+                            <th>Ev Sahibi</th>
+                            <th style="text-align: center;">Skor</th>
+                            <th>Deplasman</th>
+                            <th>Lig</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fixturesBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="page">
+        <section class="content-page">
+            <div class="section-title">
+                <h2>Galeri</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+    </div>
+
+    <!-- ADMIN PAGE -->
+    <div id="admin" class="page">
+        <section class="admin-page">
+            <div class="section-title">
+                <h2><i class="fas fa-lock"></i> Admin Paneli</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" onclick="showAdminSection('players')">
+                    <i class="fas fa-users"></i> Oyuncular
+                </button>
+                <button class="admin-tab-btn" onclick="showAdminSection('news')">
+                    <i class="fas fa-newspaper"></i> Haberler
+                </button>
+                <button class="admin-tab-btn" onclick="showAdminSection('fixtures')">
+                    <i class="fas fa-calendar"></i> Fikstür
+                </button>
+                <button class="admin-tab-btn" onclick="showAdminSection('gallery')">
+                    <i class="fas fa-images"></i> Galeri
+                </button>
+                <button class="admin-tab-btn" onclick="showAdminSection('members')">
+                    <i class="fas fa-user-check"></i> Üye Başvuruları
+                </button>
+            </div>
+
+            <!-- Players Section -->
+            <div id="admin-players" class="admin-section active">
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Oyuncu Ekle</h3>
+                <form class="admin-form" id="playerForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Oyuncu Adı *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Forma No *</label>
+                            <input type="number" name="number" required min="1" max="99">
+                        </div>
+                        <div class="form-group">
+                            <label>Pozisyon *</label>
+                            <select name="position" required>
+                                <option value="">Seçiniz</option>
+                                <option value="Kaleci">Kaleci</option>
+                                <option value="Defans">Defans</option>
+                                <option value="Orta Saha">Orta Saha</option>
+                                <option value="Forvet">Forvet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Yaş *</label>
+                            <input type="number" name="age" required min="16" max="45">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fotoğraf URL (opsiyonel)</label>
+                        <input type="url" name="photo" placeholder="https://example.com/photo.jpg">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Oyuncu Ekle
+                    </button>
+                </form>
+                <h3 style="margin: 40px 0 20px;"><i class="fas fa-list"></i> Oyuncu Listesi</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Ad Soyad</th>
+                                <th>Pozisyon</th>
+                                <th>Yaş</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- News Section -->
+            <div id="admin-news" class="admin-section">
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Haber/Duyuru Ekle</h3>
+                <form class="admin-form" id="newsForm">
+                    <div class="form-group">
+                        <label>Başlık *</label>
+                        <input type="text" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tür *</label>
+                        <select name="type" required>
+                            <option value="news">Haber</option>
+                            <option value="transfer">Transfer Haberi</option>
+                            <option value="announcement">Duyuru</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>İçerik *</label>
+                        <textarea name="content" required rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Haber Ekle
+                    </button>
+                </form>
+                <h3 style="margin: 40px 0 20px;"><i class="fas fa-list"></i> Haber Listesi</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Tür</th>
+                                <th>Tarih</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Fixtures Section -->
+            <div id="admin-fixtures" class="admin-section">
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Maç Ekle</h3>
+                <form class="admin-form" id="fixtureForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Tarih *</label>
+                            <input type="datetime-local" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ev Sahibi *</label>
+                            <input type="text" name="home" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Deplasman *</label>
+                            <input type="text" name="away" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Lig *</label>
+                            <input type="text" name="league" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Skor (opsiyonel)</label>
+                            <input type="text" name="score" placeholder="Örn: 2-1">
+                        </div>
+                        <div class="form-group">
+                            <label>Durum *</label>
+                            <select name="status" required>
+                                <option value="Gelecek">Gelecek</option>
+                                <option value="Canlı">Canlı</option>
+                                <option value="Bitti">Bitti</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Maç Ekle
+                    </button>
+                </form>
+                <h3 style="margin: 40px 0 20px;"><i class="fas fa-list"></i> Maç Listesi</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Ev Sahibi</th>
+                                <th>Skor</th>
+                                <th>Deplasman</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fixturesAdminTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div id="admin-gallery" class="admin-section">
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Galeri Fotoğrafı Ekle</h3>
+                <form class="admin-form" id="galleryForm">
+                    <div class="form-group">
+                        <label>Fotoğraf Başlığı *</label>
+                        <input type="text" name="caption" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fotoğraf URL *</label>
+                        <input type="url" name="imageUrl" required placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea name="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Fotoğraf Ekle
+                    </button>
+                </form>
+                <h3 style="margin: 40px 0 20px;"><i class="fas fa-list"></i> Galeri Listesi</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>Tarih</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="galleryAdminTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Members Section -->
+            <div id="admin-members" class="admin-section">
+                <h3 style="margin-bottom: 20px;"><i class="fas fa-user-check"></i> Üye Başvuruları</h3>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>E-posta</th>
+                                <th>Telefon</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="membersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Düzenle</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo" onclick="navigateTo('admin')" title="Admin Paneline Git" style="cursor: pointer;">
+                        <div class="footer-logo-icon">
+                            <img src="img/logo/avsarfk.svg" alt="">
+                        </div>
+                        <div class="footer-logo-text">
+                            <h4 style="color: #fff;">AVŞARSPOR</h4>
+                            <p>Futbol Kulübü</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        1977 yılından bu yana Türk futbolunun köklü takımlarından biri olan AVŞARSPOR, başarılı geçmişi ve parlak geleceğiyle gururla yoluna devam ediyor.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61580350177801&sk=photos" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/avsarspor_fk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@avsarspor1736?si=z9ClWBLruTNF-zaO" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Hızlı Erişim</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="navigateTo('home')"><i class="fas fa-chevron-right"></i> Ana Sayfa</a></li>
+                        <li><a onclick="navigateTo('news')"><i class="fas fa-chevron-right"></i> Haberler</a></li>
+                        <li><a onclick="navigateTo('squad')"><i class="fas fa-chevron-right"></i> Kadro</a></li>
+                        <li><a onclick="navigateTo('fixtures')"><i class="fas fa-chevron-right"></i> Fikstür</a></li>
+                        <li><a onclick="navigateTo('gallery')"><i class="fas fa-chevron-right"></i> Galeri</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>İletişim Bilgileri</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #fff;">Adres:</strong><br>
+                            <span style="color: #94a3b8;">AVŞARSPOR Stadyumu<br>Atatürk Bulvarı No: 123<br>İstanbul, Türkiye</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #fff;">Telefon:</strong><br>
+                            <span style="color: #94a3b8;">+90 555 123 45 67</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #fff;">E-posta:</strong><br>
+                            <span style="color: #94a3b8;">info@avsarspor.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AVŞARSPOR Futbol Kulübü. Tüm hakları saklıdır.</p> <br>
+                <p class="footer-copyright">
+                    <a href="https://furkatechyazilim.net/">
+                        <img src="img/logo/furkatech75.svg" alt="Furkatech Logo" class="furkatech-logo"/>
+                        <span class="furkatech">FURKATECH</span>
+                        <span class="tecnology">TECNOLOGY</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase ve Script - ÖNEMLİ: type="module" ekleyin -->
+    <script type="module" src="script.js"></script>
+</body>   
+</html>
