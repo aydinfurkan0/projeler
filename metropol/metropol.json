@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "metropoldogalgaz-fcdb0",
+  "private_key_id": "8cc8b1582aaf9c7516cbef790319f3bc1b5639c0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCi+3LqsYcUut0p\nlMgejjRhG6ftCnbu3tCW2ie8sQx7+/avbny/ReAtyzLqNi8CG9loaCcsEFHQl4bu\n3sz9zGqkfXF65BZhFqW3Jd22CxVLldXs2Ta0FHqQedi3iFM0GbzoevNYhY1t1CKl\n4Ukfk5tt7ALtKQ0BEcNR9Hh4vexp7uyrMktLVlni7f3lh1t+mLZu2kkykFB55EP4\nblzbKNEdbPU5uyOaMGz2HAQXI+ElEiGwN2rVRpvMy96ORUJxmD+A0ynIUGtzx/6C\ngq8xePOHvAdzC3OWiAKmlMJjeIq14kV9kpUjG53x6msJIcc7StGuCrWETZz1ziZn\nwAtseilRAgMBAAECggEAAJKN72GBdI/JEeNSGW4tPh+tvrk04vC10ag66YCQGnaV\n6D0LUFSus+dGnehkA+FH9mqFo+b7kpYyeCMgnAE2Aq8aHfD9KLwlB6t1x7TqqNUb\ns9t53YOqgCVqOHYD7M2GV1hPNulix/1g92CYmo7KX5MSDSk1JxYCSW01Z+v3qThj\n/Xa/xdw2DGD4i+XUiJXeZkVcf2NUeY4TCJ79UU/6dXqhtOdEZbkYskVsXOAXOCON\ncVW+1t98VVtVMCsN11IpB710EvTjp5237Rd5oImqFEKjnh/jS2OUxfakMPP+3yzs\nXMWjrDtFS5+HByu6OMHHO3mC5cy4Wl+PluJR1nJ+0QKBgQDNnF7zbyUqpvp6Zqvg\nVSfbwfA96k/4jajatemzS+s32hBYR4n+oK8giKAA8o/FdFCr8Zl/3xigFR7JjTXf\n2WzQWn4NdzbXjNqtSWy1taniTjDvHgBkZRUTXIhU1DTWsns4TZIEQWTwAo08LPcR\nhIKaSVmNRQsyf4+esrOIDEAazQKBgQDK7KQmeTwvPtI8BhydLI1XEpoCcSUjj4qa\nh6nftysrjG+Ix0t/9BARTRnjrDFAIjgHG2CPTlbminPCmSUr6HXGcocjbEZ+NeoL\nmIAoLTHNBuxtHOCOjTjtIHDJpUxZhb5Osasbz/u1nX1gWW+quMisUy8TN3SDC82V\nq10dUvTQlQKBgHwkCowuMiGDeb4HWYTzxUIA4V1wqGIonaeXqAeSMe2h4rZ6Uw4C\n1FnvQ7Puv/F23fJCx+wVtheJSPJmKP4Dl5hg2rSkot8X8zwnFdTMX0r87Lyiv5fe\nFBCBkOquyUxLrOv8ocmh9iCXWdDYUUApYnVnDgOmiTEvJXaq7Iya4OWNAoGARosz\nmYhl6sq9DU7WnbFCRXXbAmRRE+avuX7WCEbGBDKjB3q4/XdcKpeSG3rd+DytG5Nh\n4w/J2AVjrs/Mg1Iht2ZTInZenzug7H0MeGsVt//jKx9x1Ty1AIJZk1AalbiP6w2K\nvXV1PLLORjNxRXlNkdKtN9H8eB4fTxuumCYho20CgYEAtlQxJREUKetlVHyE614H\ny7qQLpdULxL/Xl/Cfe/XxPJhE1rCNfSpYhvVnmbg84AU1sl3aYhGQyYjKW7qiald\nKrAUrYkMiTiryB7hRq3+Ng2vAZX76XP4nAwpqH8VkPpliNrsxXytOTQq8h1yZZSz\nsukjJAeF8d//BGneJSvz/kk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@metropoldogalgaz-fcdb0.iam.gserviceaccount.com",
+  "client_id": "115238803891676816629",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40metropoldogalgaz-fcdb0.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

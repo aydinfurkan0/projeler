@@ -1,0 +1,1131 @@
+/* =================================
+   MOBİL GÖRÜNÜM CSS (300px ve üzeri)
+   ================================= */
+
+/* Masaüstünde Sosyal Medya Ayarları */
+@media (min-width: 769px) {
+  /* Masaüstünde navbar'daki sosyal medyaları göster */
+  .nav-center {
+    display: flex !important;
+  }
+  
+  .contact-buttons {
+    display: flex !important;
+  }
+  
+  /* Masaüstünde mobil menüdeki sosyal medyaları gizle */
+  .mobile-contact-buttons {
+    display: none !important;
+  }
+}
+
+/* Genel Mobil Ayarlar */
+@media (max-width: 768px) {
+  /* Root Variables - Mobil için optimize */
+  :root {
+    --mobile-padding: 1rem;
+    --mobile-header-height: 70px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  /* =================================
+     MOBİL NAVBAR
+     ================================= */
+  .navbar {
+    padding: 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .navbar-container {
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Logo Mobil */
+  .logo {
+    z-index: 1002;
+  }
+
+  .logo-img {
+    width: 100px;
+    height: 50px;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  /* İletişim Butonları - Navbar'dan kaldır */
+  .nav-center {
+    display: none !important;
+  }
+  
+  .contact-buttons {
+    display: none !important;
+  }
+  
+  .contact-btn {
+    display: none !important;
+  }
+
+  /* Hamburger Menü */
+  .hamburger {
+    width: 28px;
+    height: 22px;
+    position: relative;
+    z-index: 1002;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger span {
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    display: block;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .hamburger span:nth-child(1) {
+    transform-origin: center center;
+  }
+
+  .hamburger span:nth-child(2) {
+    transform-origin: center center;
+  }
+
+  .hamburger span:nth-child(3) {
+    transform-origin: center center;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+    background: var(--primary);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+    background: var(--primary);
+  }
+
+  /* Mobil Menü - Tam Ekran */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: 100px 2rem 2rem;
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1001;
+    overflow-y: auto;
+  }
+
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  /* Mobil Menü İçeriği */
+  .mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 2rem;
+  }
+
+  .mobile-menu nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-menu nav a:before {
+    content: "→";
+    font-size: 1.6rem;
+    transition: transform 0.3s;
+  }
+
+  .mobile-menu nav a:hover,
+  .mobile-menu nav a:active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+  }
+
+  .mobile-menu nav a:hover:before {
+    transform: translateX(5px);
+  }
+
+  /* Mobil Menüde İletişim Butonları */
+  .mobile-contact-buttons {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .mobile-contact-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 1rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+    color: var(--white);
+  }
+
+  .mobile-contact-buttons .whatsapp-btn {
+    background: #25d366;
+  }
+
+  .mobile-contact-buttons .instagram-btn {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+
+  .mobile-contact-buttons .phone-btn {
+    background: var(--secondary);
+  }
+
+  .mobile-contact-buttons a:active {
+    transform: scale(0.95);
+  }
+
+  /* Menü Overlay */
+  .menu-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+  }
+
+  /* =================================
+     MOBİL HERO SECTION
+     ================================= */
+  .hero {
+    margin-top: var(--mobile-header-height);
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  /* =================================
+     MOBİL SERVICES SECTION
+     ================================= */
+  .services-section {
+    padding: 3rem 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .service-card {
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* =================================
+     MOBİL ABOUT PREVIEW
+     ================================= */
+  .about-preview {
+    padding: 3rem 1rem;
+  }
+
+  .about-preview-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-preview-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-preview-text p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-stats-preview {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .stat-preview {
+    padding: 1.2rem;
+  }
+
+  .stat-preview-number {
+    font-size: 2rem;
+  }
+
+  .stat-preview-label {
+    font-size: 0.9rem;
+  }
+
+  .read-more-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .about-preview-image {
+    height: 300px;
+  }
+
+  /* =================================
+     MOBİL CONTACT PREVIEW
+     ================================= */
+  .contact-preview {
+    padding: 3rem 1rem;
+  }
+
+  .contact-preview-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-preview-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-methods {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-method {
+    padding: 1.5rem;
+  }
+
+  .contact-method-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-method h3 {
+    font-size: 1.2rem;
+  }
+
+  .contact-method a {
+    font-size: 1rem;
+  }
+
+  .contact-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* =================================
+     MOBİL PAGES (PROJECTS & PRODUCTS)
+     ================================= */
+  .page-container {
+    padding: calc(var(--mobile-header-height) + 2rem) 1rem 3rem;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .content-card {
+    border-radius: 4px;
+  }
+
+  .content-media {
+    height: 220px;
+  }
+
+  .content-info {
+    padding: 1.5rem;
+  }
+
+  .content-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .content-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* =================================
+     MOBİL ABOUT PAGE
+     ================================= */
+  .about-card {
+    padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-card p {
+    font-size: 1rem;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .stat-item {
+    padding: 2rem 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+  }
+
+  .about-features {
+    padding: 2rem 1.5rem;
+  }
+
+  .about-features h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .feature-item {
+    padding: 1rem;
+  }
+
+  .feature-item i {
+    font-size: 1.3rem;
+  }
+
+  .feature-item span {
+    font-size: 0.95rem;
+  }
+
+  /* =================================
+     MOBİL CONTACT PAGE
+     ================================= */
+  .contact-info-section {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-info-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-info-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-info-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-info-card a {
+    font-size: 1.1rem;
+  }
+
+  .contact-info-card p {
+    font-size: 0.95rem;
+  }
+
+  .contact-map-section {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-map-section h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-cta {
+    padding: 3rem 2rem;
+  }
+
+  .contact-cta h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* =================================
+     MOBİL MODAL
+     ================================= */
+  .modal {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-height: 95vh;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .modal-close {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .modal-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .modal-image-container {
+    height: 250px;
+    border-radius: 4px;
+  }
+
+  .modal-info h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-info p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-features h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .feature-icon {
+    width: 35px;
+  }
+
+  .feature-icon i {
+    font-size: 1rem;
+  }
+
+  .feature-text {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.3rem;
+  }
+
+  /* =================================
+     MOBİL ADMIN PANEL
+     ================================= */
+  .admin-panel {
+    padding: 0;
+  }
+
+  .admin-header {
+    padding: 1.2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .admin-header h2 {
+    font-size: 1.3rem;
+    text-align: left;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .admin-header h2 i {
+    font-size: 1.1rem;
+  }
+
+  .admin-header .btn {
+    width: auto;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    white-space: nowrap;
+    min-width: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .admin-header .btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .admin-content {
+    padding: 1.5rem 1rem;
+    background: var(--light);
+  }
+
+  /* Admin Tabs - Mobil */
+  .admin-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    border-bottom: none;
+    background: var(--white);
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .admin-tab {
+    padding: 1rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 0;
+    background: transparent;
+    text-align: center;
+    font-weight: 600;
+    color: var(--gray);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .admin-tab i {
+    font-size: 1.4rem;
+  }
+
+  .admin-tab.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Admin Form - Mobil */
+  .admin-form {
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+  }
+
+  .admin-form h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
+  }
+
+  .admin-form h3 i {
+    font-size: 1.2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.3rem;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
+    color: var(--dark);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .form-group label:before {
+    content: "●";
+    color: var(--primary);
+    font-size: 0.6rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 1rem;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    background: var(--light);
+    transition: all 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--primary);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.1);
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+  }
+
+  .form-group small {
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.6rem;
+    padding: 0.7rem;
+    background: rgba(0, 86, 179, 0.05);
+    border-radius: 4px;
+    border-left: 3px solid var(--primary);
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+    justify-content: center;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+
+  .btn i {
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  /* Admin List Header */
+  .admin-content > h3 {
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-size: 1.3rem;
+    padding: 1rem;
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Admin List - Mobil */
+  .admin-list {
+    gap: 1rem;
+  }
+
+  .admin-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 4px;
+    background: var(--white);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary);
+    transition: all 0.3s;
+  }
+
+  .admin-item:active {
+    transform: scale(0.98);
+  }
+
+  .admin-item-info {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light);
+  }
+
+  .admin-item-info strong {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    color: var(--primary);
+    display: block;
+    line-height: 1.4;
+  }
+
+  .admin-item-info p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--gray);
+    margin-top: 0.5rem;
+  }
+
+  .admin-item-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .admin-item-actions .btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .admin-item-actions .btn-primary {
+    background: var(--primary);
+  }
+
+  .admin-item-actions .btn-danger {
+    background: #dc3545;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+  }
+
+  /* Login Modal - Mobil */
+  .login-modal {
+    padding: 1rem;
+  }
+
+  .login-box {
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+    max-width: 100%;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .login-box h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Empty State - Mobil */
+  .empty-state {
+    padding: 3rem 1.5rem;
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .empty-state i {
+    font-size: 3.5rem;
+    color: var(--primary);
+    opacity: 0.3;
+  }
+
+  .empty-state p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: var(--gray);
+  }
+
+  /* =================================
+     MOBİL FOOTER
+     ================================= */
+  footer {
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-logo-section {
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-logo-img {
+    width: 200px;
+    height: 100px;
+  }
+
+  .footer-logo-text {
+    font-size: 1.3rem;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    margin-top: 1.2rem;
+  }
+
+  .social-links a {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+}
+
+/* =================================
+   EKSTRA KÜÇÜK CİHAZLAR (300px-480px)
+   ================================= */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .service-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .modal-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .admin-form h3 {
+    font-size: 1.2rem;
+  }
+
+  .footer-logo-img {
+    width: 160px;
+    height: 80px;
+  }
+  
+  .about-stats-preview {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =================================
+   ÇOK KÜÇÜK CİHAZLAR (300px-360px)
+   ================================= */
+@media (max-width: 360px) {
+  :root {
+    --mobile-padding: 0.8rem;
+  }
+
+  .navbar-container {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .logo-img {
+    width: 85px;
+    height: 42px;
+  }
+
+  .hamburger {
+    width: 25px;
+    height: 20px;
+  }
+
+  .mobile-menu {
+    padding: 80px 1.5rem 1.5rem;
+  }
+
+  .mobile-menu nav a {
+    font-size: 1.2rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .hero-btn {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .section-header p {
+    font-size: 0.9rem;
+  }
+
+  .service-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .admin-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .login-box {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .login-box h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* =================================
+   YATAY ORIENTASYON FIX
+   ================================= */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    height: 100vh;
+    min-height: auto;
+  }
+
+  .mobile-menu {
+    padding: 70px 1.5rem 1.5rem;
+  }
+
+  .mobile-menu nav a {
+    padding: 0.8rem 1.2rem;
+font-size: 1.2rem;
+}
+.mobile-contact-buttons {
+margin-top: 1.5rem;
+padding-top: 1.5rem;
+}
+}
