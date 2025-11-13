@@ -32,7 +32,7 @@
               <span>WhatsApp</span>
             </a>
             
-            <a href="https://instagram.com/metropoldogalgaz"
+            <a href="https://www.instagram.com/metropol_dogalgaz/"
               class="contact-btn instagram-btn"
               target="_blank">
               <i class="fab fa-instagram"></i>
@@ -61,6 +61,8 @@
         <a href="#" onclick="navigateTo('home')">Ana Sayfa</a>
         <a href="#" onclick="navigateTo('home'); setTimeout(() => smoothScroll('services'), 300)">Hizmetlerimiz</a>
         <a href="#" onclick="navigateTo('about')">Hakkımızda</a>
+        <a href="#" onclick="navigateTo('partners')">İş Ortakları</a>
+        <a href="#" onclick="navigateTo('references')">Referanslar</a>
         <a href="#" onclick="navigateTo('projects')">Projeler</a>
         <a href="#" onclick="navigateTo('products')">Ürünler</a>
         <a href="#" onclick="navigateTo('contact')">İletişim</a>
@@ -71,7 +73,9 @@
           <i class="fab fa-whatsapp"></i>
           <span>WhatsApp</span>
         </a>
-        <a href="https://instagram.com/metropoldogalgaz" class="instagram-btn" target="_blank">
+        <a href="https://www.instagram.com/metropol_dogalgaz/
+        
+        " class="instagram-btn" target="_blank">
           <i class="fab fa-instagram"></i>
           <span>Instagram</span>
         </a>
@@ -103,6 +107,33 @@
           </div>
         </div>
       </section>
+
+      <!-- Partners Section -->
+<section class="partners-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>İş Ortaklarımız</h2>
+      <p>Güvenilir markalarla çalışıyoruz</p>
+    </div>
+    <div class="partners-grid" id="partnersGrid"></div>
+  </div>
+</section>
+
+<!-- References Section -->
+<section class="references-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Referanslarımız</h2>
+      <p>Başarıyla tamamladığımız projelerimiz</p>
+    </div>
+    <div class="references-slider">
+      <div class="slider-track" id="sliderTrackRight"></div>
+    </div>
+    <div class="references-slider reverse">
+      <div class="slider-track" id="sliderTrackLeft"></div>
+    </div>
+  </div>
+</section>
 
       <!-- Services -->
       <section id="services" class="services-section">
@@ -373,6 +404,32 @@
       </div>
     </div>
 
+    <!-- Partners Page -->
+<div id="partnersPage" class="hidden">
+  <div class="page-container">
+    <div class="container">
+      <div class="section-header">
+        <h2>İş Ortaklarımız</h2>
+        <p>Güvendiğimiz ve birlikte çalıştığımız markalar</p>
+      </div>
+      <div class="content-grid" id="partnersPageGrid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- References Page -->
+<div id="referencesPage" class="hidden">
+  <div class="page-container">
+    <div class="container">
+      <div class="section-header">
+        <h2>Referanslarımız</h2>
+        <p>Başarıyla tamamladığımız işler ve mutlu müşterilerimiz</p>
+      </div>
+      <div class="content-grid" id="referencesPageGrid"></div>
+    </div>
+  </div>
+</div>
+
     <!-- Products Page -->
     <div id="productsPage" class="hidden">
       <div class="page-container">
@@ -481,7 +538,7 @@
           <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/metropoldogalgaz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/metropol_dogalgaz/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
@@ -494,6 +551,8 @@
           <a href="#" onclick="navigateTo('projects')"><i class="fas fa-project-diagram"></i> Projeler</a>
           <a href="#" onclick="navigateTo('products')"><i class="fas fa-box"></i> Ürünler</a>
           <a href="#" onclick="navigateTo('contact')"><i class="fas fa-envelope"></i> İletişim</a>
+          <a href="#" onclick="navigateTo('partners')"><i class="fas fa-handshake"></i> İş Ortakları</a>
+<a href="#" onclick="navigateTo('references')"><i class="fas fa-star"></i> Referanslar</a>
         </div>
 
         <div class="footer-section">
@@ -550,6 +609,38 @@
       </div>
     </div>
 
+    <!-- Partner Modal -->
+<div class="modal" id="partnerModal" onclick="closePartnerModal()">
+  <div class="modal-content partner-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closePartnerModal()">&times;</button>
+    <div class="partner-modal-layout">
+      <div class="partner-modal-logo">
+        <img id="partnerModalLogo" src="" alt="" />
+      </div>
+      <div class="partner-modal-info">
+        <h2 id="partnerModalTitle"></h2>
+        <p id="partnerModalDescription"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Reference Modal -->
+<div class="modal" id="referenceModal" onclick="closeReferenceModal()">
+  <div class="modal-content reference-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeReferenceModal()">&times;</button>
+    <div class="reference-modal-layout">
+      <div class="reference-modal-logo">
+        <img id="referenceModalLogo" src="" alt="" />
+      </div>
+      <div class="reference-modal-info">
+        <h2 id="referenceModalTitle"></h2>
+        <p id="referenceModalDescription"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- Login Modal -->
     <div class="login-modal" id="loginModal" onclick="closeLoginModal()">
       <div class="login-box" onclick="event.stopPropagation()">
@@ -591,6 +682,12 @@
           <button class="admin-tab" onclick="switchTab('products')">
             <i class="fas fa-box"></i> Ürünler Yönetimi
           </button>
+           <button class="admin-tab" onclick="switchTab('partners')">
+  <i class="fas fa-handshake"></i> İş Ortakları Yönetimi
+</button>
+<button class="admin-tab" onclick="switchTab('references')">
+  <i class="fas fa-star"></i> Referanslar Yönetimi
+</button>
         </div>
 
         <!-- Projects Tab -->
@@ -700,6 +797,111 @@
           </h3>
           <div class="admin-list" id="productsList"></div>
         </div>
+
+        <!-- Partners Tab -->
+<div class="tab-content" id="partnersTab">
+  <div class="admin-form">
+    <h3><i class="fas fa-plus-circle"></i> Yeni İş Ortağı Ekle</h3>
+    <form id="partnerForm" onsubmit="handlePartnerSubmit(event)">
+      <div class="form-group">
+        <label>İş Ortağı Adı *</label>
+        <input
+          type="text"
+          id="partnerName"
+          required
+          placeholder="Örn: Baymak"
+        />
+      </div>
+      <div class="form-group">
+        <label>Açıklama</label>
+        <textarea
+          id="partnerDesc"
+          placeholder="İş ortağı hakkında kısa bilgi..."
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label>Logo Yükleme Yöntemi</label>
+        <select id="partnerImageMethod" onchange="togglePartnerImageInput()">
+          <option value="url">URL ile Ekle</option>
+          <option value="file">Dosya Yükle</option>
+        </select>
+      </div>
+      <div class="form-group" id="partnerImageUrlGroup">
+        <label>Logo URL *</label>
+        <input
+          type="url"
+          id="partnerImageUrl"
+          placeholder="https://..."
+        />
+      </div>
+      <div class="form-group hidden" id="partnerImageFileGroup">
+        <label>Logo Dosyası *</label>
+        <input type="file" id="partnerImageFile" accept="image/*" />
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> İş Ortağını Kaydet
+      </button>
+    </form>
+  </div>
+  <h3 style="margin-bottom: 1.5rem; color: var(--primary)">
+    <i class="fas fa-list"></i> Kayıtlı İş Ortakları
+  </h3>
+  <div class="admin-list" id="partnersList"></div>
+</div>
+
+<!-- References Tab -->
+<div class="tab-content" id="referencesTab">
+  <div class="admin-form">
+    <h3><i class="fas fa-plus-circle"></i> Yeni Referans Ekle</h3>
+    <form id="referenceForm" onsubmit="handleReferenceSubmit(event)">
+      <div class="form-group">
+        <label>Firma/Müşteri Adı *</label>
+        <input
+          type="text"
+          id="referenceName"
+          required
+          placeholder="Örn: ABC Rezidans"
+        />
+      </div>
+      <div class="form-group">
+        <label>Yapılan İş Açıklaması *</label>
+        <textarea
+          id="referenceDesc"
+          required
+          placeholder="Yapılan iş hakkında detaylı bilgi..."
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label>Logo Yükleme Yöntemi</label>
+        <select id="referenceImageMethod" onchange="toggleReferenceImageInput()">
+          <option value="url">URL ile Ekle</option>
+          <option value="file">Dosya Yükle</option>
+        </select>
+      </div>
+      <div class="form-group" id="referenceImageUrlGroup">
+        <label>Logo URL *</label>
+        <input
+          type="url"
+          id="referenceImageUrl"
+          placeholder="https://..."
+        />
+      </div>
+      <div class="form-group hidden" id="referenceImageFileGroup">
+        <label>Logo Dosyası *</label>
+        <input type="file" id="referenceImageFile" accept="image/*" />
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> Referansı Kaydet
+      </button>
+    </form>
+  </div>
+  <h3 style="margin-bottom: 1.5rem; color: var(--primary)">
+    <i class="fas fa-list"></i> Kayıtlı Referanslar
+  </h3>
+  <div class="admin-list" id="referencesList"></div>
+</div>
+
+       
       </div>
     </div>
 

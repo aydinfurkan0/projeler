@@ -37,6 +37,10 @@ let products = [];
 let editingProjectId = null;
 let editingProductId = null;
 let isLoggedIn = false;
+let partners = [];
+let references = [];
+let editingPartnerId = null;
+let editingReferenceId = null;
 
 // Navigation Functions
 window.navigateTo = function (page) {
@@ -45,6 +49,8 @@ window.navigateTo = function (page) {
   document.getElementById("projectsPage").classList.add("hidden");
   document.getElementById("productsPage").classList.add("hidden");
   document.getElementById("contactPage").classList.add("hidden");
+  document.getElementById('partnersPage').classList.add('hidden');
+  document.getElementById('referencesPage').classList.add('hidden');
 
   if (page === "home") {
     document.getElementById("homePage").classList.remove("hidden");
@@ -59,6 +65,13 @@ window.navigateTo = function (page) {
   } else if (page === "contact") {
     document.getElementById("contactPage").classList.remove("hidden");
   }
+  else if (page === 'partners') {
+  document.getElementById('partnersPage').classList.remove('hidden');
+  loadPartnersPage();
+} else if (page === 'references') {
+  document.getElementById('referencesPage').classList.remove('hidden');
+  loadReferencesPage();
+}
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -124,6 +137,8 @@ window.openAdminPanel = function () {
   document.body.style.overflow = "hidden";
   loadProjectsAdmin();
   loadProductsAdmin();
+  loadPartnersAdmin();
+  loadReferencesAdmin();
 };
 
 window.closeAdminPanel = function () {
@@ -133,6 +148,10 @@ window.closeAdminPanel = function () {
   editingProductId = null;
   document.getElementById("projectForm").reset();
   document.getElementById("productForm").reset();
+  editingPartnerId = null;
+  editingReferenceId = null;
+  document.getElementById('partnerForm').reset();
+  document.getElementById('referenceForm').reset();
 };
 
 window.switchTab = function (tab) {
@@ -162,6 +181,46 @@ window.toggleImageInput = function () {
   } else {
     urlGroup.classList.add("hidden");
     fileGroup.classList.remove("hidden");
+    urlInput.required = false;
+    fileInput.required = true;
+  }
+};
+
+window.togglePartnerImageInput = function () {
+  const method = document.getElementById('partnerImageMethod').value;
+  const urlGroup = document.getElementById('partnerImageUrlGroup');
+  const fileGroup = document.getElementById('partnerImageFileGroup');
+  const urlInput = document.getElementById('partnerImageUrl');
+  const fileInput = document.getElementById('partnerImageFile');
+
+  if (method === 'url') {
+    urlGroup.classList.remove('hidden');
+    fileGroup.classList.add('hidden');
+    urlInput.required = true;
+    fileInput.required = false;
+  } else {
+    urlGroup.classList.add('hidden');
+    fileGroup.classList.remove('hidden');
+    urlInput.required = false;
+    fileInput.required = true;
+  }
+};
+
+window.toggleReferenceImageInput = function () {
+  const method = document.getElementById('referenceImageMethod').value;
+  const urlGroup = document.getElementById('referenceImageUrlGroup');
+  const fileGroup = document.getElementById('referenceImageFileGroup');
+  const urlInput = document.getElementById('referenceImageUrl');
+  const fileInput = document.getElementById('referenceImageFile');
+
+  if (method === 'url') {
+    urlGroup.classList.remove('hidden');
+    fileGroup.classList.add('hidden');
+    urlInput.required = true;
+    fileInput.required = false;
+  } else {
+    urlGroup.classList.add('hidden');
+    fileGroup.classList.remove('hidden');
     urlInput.required = false;
     fileInput.required = true;
   }
@@ -537,6 +596,452 @@ window.deleteProduct = async function (id) {
   }
 };
 
+// Partners Functions
+async function loadPartners() {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'partners'));
+    partners = [];
+    querySnapshot.forEach((doc) => {
+      partners.push({ id: doc.id, ...doc.data() });
+    });
+    displayPartnersHome();
+  } catch (error) {
+    console.error('İş ortakları yüklenemedi:', error);
+  }
+}
+
+async function loadPartnersAdmin() {
+  await loadPartners();
+  displayPartnersList();
+}
+
+async function loadPartnersPage() {
+  await loadPartners();
+  displayPartnersFullPage();
+}
+
+function displayPartnersHome() {
+  const grid = document.getElementById('partnersGrid');
+  
+  if (!grid) {
+    console.error('partnersGrid elementi bulunamadı!');
+    return;
+  }
+  
+  grid.innerHTML = '';
+
+  if (partners.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-handshake"></i>
+        <p>Henüz iş ortağı eklenmemiş.</p>
+      </div>
+    `;
+    return;
+  }
+
+  partners.forEach((partner) => {
+    const item = document.createElement('div');
+    item.className = 'partner-item';
+    item.onclick = () => openPartnerModal(partner.id);
+    item.innerHTML = `
+      <img src="${partner.logoUrl}" alt="${partner.name}" onerror="this.src='https://via.placeholder.com/200x200?text=${encodeURIComponent(partner.name)}'">
+    `;
+    grid.appendChild(item);
+  });
+  
+  console.log('✅ Partners yüklendi:', partners.length, 'adet');
+}
+
+function displayPartnersFullPage() {
+  const grid = document.getElementById('partnersPageGrid');
+  grid.innerHTML = '';
+
+  if (partners.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-handshake"></i>
+        <p>Henüz iş ortağı eklenmemiş.</p>
+      </div>
+    `;
+    return;
+  }
+
+  partners.forEach((partner) => {
+    const card = document.createElement('div');
+    card.className = 'content-card';
+    card.onclick = () => openPartnerModal(partner.id);
+    card.style.cursor = 'pointer';
+    card.innerHTML = `
+      <div class="partner-logo-full">
+        <img src="${partner.logoUrl}" alt="${partner.name}" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(partner.name)}'">
+      </div>
+      <div class="content-info">
+        <h3>${partner.name}</h3>
+        <p>${partner.description || 'Güvenilir iş ortağımız'}</p>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+function displayPartnersList() {
+  const list = document.getElementById('partnersList');
+  list.innerHTML = '';
+
+  if (partners.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <i class="fas fa-handshake"></i>
+        <p>Henüz iş ortağı eklenmemiş.</p>
+      </div>
+    `;
+    return;
+  }
+
+  partners.forEach((partner) => {
+    const item = document.createElement('div');
+    item.className = 'admin-item';
+    item.innerHTML = `
+      <div class="admin-item-info">
+        <strong>${partner.name}</strong>
+        <p>${partner.description || 'Açıklama yok'}</p>
+      </div>
+      <div class="admin-item-actions">
+        <button class="btn btn-primary" onclick="editPartner('${partner.id}')">
+          <i class="fas fa-edit"></i> Düzenle
+        </button>
+        <button class="btn btn-danger" onclick="deletePartner('${partner.id}')">
+          <i class="fas fa-trash"></i> Sil
+        </button>
+      </div>
+    `;
+    list.appendChild(item);
+  });
+}
+
+window.handlePartnerSubmit = async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById('partnerName').value;
+  const description = document.getElementById('partnerDesc').value;
+  const method = document.getElementById('partnerImageMethod').value;
+
+  try {
+    let logoUrl;
+
+    if (method === 'url') {
+      logoUrl = document.getElementById('partnerImageUrl').value;
+      if (!logoUrl) {
+        alert('Lütfen bir logo URL\'si girin.');
+        return;
+      }
+    } else {
+      const file = document.getElementById('partnerImageFile').files[0];
+      if (!file) {
+        alert('Lütfen bir logo dosyası seçin.');
+        return;
+      }
+      const storageRef = ref(storage, `partners/${Date.now()}_${file.name}`);
+      await uploadBytes(storageRef, file);
+      logoUrl = await getDownloadURL(storageRef);
+    }
+
+    if (editingPartnerId) {
+      await updateDoc(doc(db, 'partners', editingPartnerId), {
+        name,
+        description,
+        logoUrl,
+        updatedAt: new Date(),
+      });
+      editingPartnerId = null;
+      alert('✓ İş ortağı başarıyla güncellendi!');
+    } else {
+      await addDoc(collection(db, 'partners'), {
+        name,
+        description,
+        logoUrl,
+        createdAt: new Date(),
+      });
+      alert('✓ İş ortağı başarıyla eklendi!');
+    }
+
+    document.getElementById('partnerForm').reset();
+    document.getElementById('partnerImageMethod').value = 'url';
+    togglePartnerImageInput();
+    loadPartnersAdmin();
+  } catch (error) {
+    console.error('Hata:', error);
+    alert('✗ Bir hata oluştu: ' + error.message);
+  }
+};
+
+window.editPartner = function (id) {
+  const partner = partners.find((p) => p.id === id);
+  if (partner) {
+    document.getElementById('partnerName').value = partner.name;
+    document.getElementById('partnerDesc').value = partner.description || '';
+    document.getElementById('partnerImageMethod').value = 'url';
+    document.getElementById('partnerImageUrl').value = partner.logoUrl;
+    togglePartnerImageInput();
+    editingPartnerId = id;
+    switchTab('partners');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+window.deletePartner = async function (id) {
+  if (confirm('Bu iş ortağını silmek istediğinizden emin misiniz?')) {
+    try {
+      await deleteDoc(doc(db, 'partners', id));
+      alert('✓ İş ortağı başarıyla silindi!');
+      loadPartnersAdmin();
+    } catch (error) {
+      console.error('Hata:', error);
+      alert('✗ İş ortağı silinirken bir hata oluştu.');
+    }
+  }
+};
+
+// References Functions
+async function loadReferences() {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'references'));
+    references = [];
+    querySnapshot.forEach((doc) => {
+      references.push({ id: doc.id, ...doc.data() });
+    });
+    displayReferencesHome();
+  } catch (error) {
+    console.error('Referanslar yüklenemedi:', error);
+  }
+}
+
+async function loadReferencesAdmin() {
+  await loadReferences();
+  displayReferencesList();
+}
+
+async function loadReferencesPage() {
+  await loadReferences();
+  displayReferencesFullPage();
+}
+
+function displayReferencesHome() {
+  const sliderRight = document.getElementById('sliderTrackRight');
+  const sliderLeft = document.getElementById('sliderTrackLeft');
+  
+  sliderRight.innerHTML = '';
+  sliderLeft.innerHTML = '';
+
+  if (references.length === 0) {
+    sliderRight.innerHTML = `
+      <div class="empty-state" style="padding: 4rem;">
+        <i class="fas fa-star"></i>
+        <p>Henüz referans eklenmemiş.</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Her iki slider için de aynı referansları ekle
+  const createReferenceItems = () => {
+    return references.map(ref => `
+      <div class="reference-item" onclick="openReferenceModal('${ref.id}')">
+        <div class="reference-logo-container">
+          <img src="${ref.logoUrl}" alt="${ref.name}" onerror="this.src='https://via.placeholder.com/200x150?text=${ref.name}'">
+        </div>
+        <h3>${ref.name}</h3>
+        <p>${ref.description}</p>
+      </div>
+    `).join('');
+  };
+
+  // Her slider için içeriği iki kez ekle (sonsuz döngü için)
+  const items = createReferenceItems();
+  sliderRight.innerHTML = items + items;
+  sliderLeft.innerHTML = items + items;
+}
+
+function displayReferencesFullPage() {
+  const grid = document.getElementById('referencesPageGrid');
+  grid.innerHTML = '';
+
+  if (references.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-star"></i>
+        <p>Henüz referans eklenmemiş.</p>
+      </div>
+    `;
+    return;
+  }
+
+  references.forEach((reference) => {
+    const card = document.createElement('div');
+    card.className = 'content-card';
+    card.onclick = () => openReferenceModal(reference.id);
+    card.innerHTML = `
+      <div class="reference-logo-container">
+        <img src="${reference.logoUrl}" alt="${reference.name}" onerror="this.src='https://via.placeholder.com/400x300?text=${reference.name}'">
+      </div>
+      <div class="content-info">
+        <h3>${reference.name}</h3>
+        <p>${reference.description}</p>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function displayReferencesList() {
+  const list = document.getElementById('referencesList');
+  list.innerHTML = '';
+
+  if (references.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <i class="fas fa-star"></i>
+        <p>Henüz referans eklenmemiş.</p>
+      </div>
+    `;
+    return;
+  }
+
+  references.forEach((reference) => {
+    const item = document.createElement('div');
+    item.className = 'admin-item';
+    item.innerHTML = `
+      <div class="admin-item-info">
+        <strong>${reference.name}</strong>
+        <p>${reference.description}</p>
+      </div>
+      <div class="admin-item-actions">
+        <button class="btn btn-primary" onclick="editReference('${reference.id}')">
+          <i class="fas fa-edit"></i> Düzenle
+        </button>
+        <button class="btn btn-danger" onclick="deleteReference('${reference.id}')">
+          <i class="fas fa-trash"></i> Sil
+        </button>
+      </div>
+    `;
+    list.appendChild(item);
+  });
+}
+
+// Partner Modal Functions
+window.openPartnerModal = function (id) {
+  const partner = partners.find((p) => p.id === id);
+  if (partner) {
+    document.getElementById('partnerModalLogo').src = partner.logoUrl;
+    document.getElementById('partnerModalTitle').textContent = partner.name;
+    document.getElementById('partnerModalDescription').textContent = partner.description || 'Güvenilir iş ortağımız';
+    document.getElementById('partnerModal').classList.add('active');
+  }
+};
+
+window.closePartnerModal = function () {
+  document.getElementById('partnerModal').classList.remove('active');
+};
+
+window.openReferenceModal = function (id) {
+  const reference = references.find((r) => r.id === id);
+  if (reference) {
+    document.getElementById('referenceModalLogo').src = reference.logoUrl;
+    document.getElementById('referenceModalTitle').textContent = reference.name;
+    document.getElementById('referenceModalDescription').textContent = reference.description;
+    document.getElementById('referenceModal').classList.add('active');
+  }
+};
+
+window.closeReferenceModal = function () {
+  document.getElementById('referenceModal').classList.remove('active');
+};
+
+window.handleReferenceSubmit = async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById('referenceName').value;
+  const description = document.getElementById('referenceDesc').value;
+  const method = document.getElementById('referenceImageMethod').value;
+
+  try {
+    let logoUrl;
+
+    if (method === 'url') {
+      logoUrl = document.getElementById('referenceImageUrl').value;
+      if (!logoUrl) {
+        alert('Lütfen bir logo URL\'si girin.');
+        return;
+      }
+    } else {
+      const file = document.getElementById('referenceImageFile').files[0];
+      if (!file) {
+        alert('Lütfen bir logo dosyası seçin.');
+        return;
+      }
+      const storageRef = ref(storage, `references/${Date.now()}_${file.name}`);
+      await uploadBytes(storageRef, file);
+      logoUrl = await getDownloadURL(storageRef);
+    }
+
+    if (editingReferenceId) {
+      await updateDoc(doc(db, 'references', editingReferenceId), {
+        name,
+        description,
+        logoUrl,
+        updatedAt: new Date(),
+      });
+      editingReferenceId = null;
+      alert('✓ Referans başarıyla güncellendi!');
+    } else {
+      await addDoc(collection(db, 'references'), {
+        name,
+        description,
+        logoUrl,
+        createdAt: new Date(),
+      });
+      alert('✓ Referans başarıyla eklendi!');
+    }
+
+    document.getElementById('referenceForm').reset();
+    document.getElementById('referenceImageMethod').value = 'url';
+    toggleReferenceImageInput();
+    loadReferencesAdmin();
+  } catch (error) {
+    console.error('Hata:', error);
+    alert('✗ Bir hata oluştu: ' + error.message);
+  }
+};
+
+window.editReference = function (id) {
+  const reference = references.find((r) => r.id === id);
+  if (reference) {
+    document.getElementById('referenceName').value = reference.name;
+    document.getElementById('referenceDesc').value = reference.description;
+    document.getElementById('referenceImageMethod').value = 'url';
+    document.getElementById('referenceImageUrl').value = reference.logoUrl;
+    toggleReferenceImageInput();
+    editingReferenceId = id;
+    switchTab('references');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+window.deleteReference = async function (id) {
+  if (confirm('Bu referansı silmek istediğinizden emin misiniz?')) {
+    try {
+      await deleteDoc(doc(db, 'references', id));
+      alert('✓ Referans başarıyla silindi!');
+      loadReferencesAdmin();
+    } catch (error) {
+      console.error('Hata:', error);
+      alert('✗ Referans silinirken bir hata oluştu.');
+    }
+  }
+};
+
 // Initial Load
-loadProjects();
-loadProducts();
+  loadProjects();
+  loadProducts();
+  loadPartners();
+  loadReferences();
