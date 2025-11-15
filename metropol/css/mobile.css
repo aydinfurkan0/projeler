@@ -1711,3 +1711,83 @@
     width: 100%;
   }
 }
+
+/* =================================
+   MOBİL KATEGORİ FİLTRELERİ
+   ================================= */
+  .category-filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 0.8rem;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .category-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.6rem 0.3rem;
+    background: var(--light);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--gray);
+    font-weight: 600;
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  .category-btn i {
+    font-size: 0.95rem;
+  }
+
+  .category-btn span:not(.category-count) {
+    display: block;
+    line-height: 1.2;
+  }
+
+  .category-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+  }
+
+  .category-count {
+    display: none;  /* ← SAYILARI GİZLE */
+  }
+
+  @media (max-width: 480px) {
+  .category-btn {
+    padding: 0.55rem 0.25rem;
+    font-size: 0.6rem;
+  }
+
+  .category-btn i {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .category-filters {
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .category-btn {
+    padding: 0.5rem 0.2rem;
+    font-size: 0.55rem;
+  }
+
+  .category-btn i {
+    font-size: 0.8rem;
+  }
+}

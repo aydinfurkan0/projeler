@@ -43,8 +43,8 @@ let editingPartnerId = null;
 let editingReferenceId = null;
 let currentCategory = 'all';
 
-// Navigation Functions
 window.navigateTo = function (page) {
+  // Tüm sayfaları gizle
   document.getElementById("homePage").classList.add("hidden");
   document.getElementById("aboutPage").classList.add("hidden");
   document.getElementById("projectsPage").classList.add("hidden");
@@ -53,6 +53,7 @@ window.navigateTo = function (page) {
   document.getElementById('partnersPage').classList.add('hidden');
   document.getElementById('referencesPage').classList.add('hidden');
 
+  // İstenen sayfayı göster
   if (page === "home") {
     document.getElementById("homePage").classList.remove("hidden");
   } else if (page === "about") {
@@ -65,26 +66,26 @@ window.navigateTo = function (page) {
     loadProducts();
   } else if (page === "contact") {
     document.getElementById("contactPage").classList.remove("hidden");
+  } else if (page === 'partners') {
+    document.getElementById('partnersPage').classList.remove('hidden');
+    loadPartnersPage();
+  } else if (page === 'references') {
+    document.getElementById('referencesPage').classList.remove('hidden');
+    loadReferencesPage();
   }
-  else if (page === 'partners') {
-  document.getElementById('partnersPage').classList.remove('hidden');
-  loadPartnersPage();
-} else if (page === 'references') {
-  document.getElementById('referencesPage').classList.remove('hidden');
-  loadReferencesPage();
-}
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
-  // Close mobile menu if open
+  // MENÜYÜ KAPAT - HER DURUMDA
   const mobileMenu = document.querySelector(".mobile-menu");
   const hamburger = document.querySelector(".hamburger");
   const overlay = document.querySelector(".menu-overlay");
-  if (mobileMenu.classList.contains("active")) {
-    mobileMenu.classList.remove("active");
-    hamburger.classList.remove("active");
-    overlay.classList.remove("active");
-  }
+  
+  if (mobileMenu) mobileMenu.classList.remove("active");
+  if (hamburger) hamburger.classList.remove("active");
+  if (overlay) overlay.classList.remove("active");
+  document.body.style.overflow = "auto";
+
+  // En üste kaydır
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 window.smoothScroll = function (id) {
