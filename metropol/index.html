@@ -13,78 +13,106 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-container">
-        <a href="#" class="logo" onclick="navigateTo('home')">
-          <img
-            src="img/logo/metropol-logo.png"
-            alt="Metropol Doğalgaz"
-            class="logo-img"
-          />
-        </a>
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="#" class="logo" onclick="navigateTo('home')">
+      <img
+        src="img/logo/metropol-logo.png"
+        alt="Metropol Doğalgaz"
+        class="logo-img"
+      />
+    </a>
 
-        <div class="nav-center">
-          <div class="contact-buttons">
-            <a href="https://wa.me/903121234567"
-              class="contact-btn whatsapp-btn"
-              target="_blank">
-              <i class="fab fa-whatsapp"></i>
-              <span>WhatsApp</span>
-            </a>
-            
-            <a href="https://www.instagram.com/metropol_dogalgaz/"
-              class="contact-btn instagram-btn"
-              target="_blank">
-              <i class="fab fa-instagram"></i>
-              <span>Instagram</span>
-            </a>
-            
-            <a href="tel:+903121234567" class="contact-btn phone-btn">
-              <i class="fas fa-phone"></i>
-              <span>0312 123 45 67</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hamburger" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="menu-overlay" onclick="toggleMenu()"></div>
-    <div class="mobile-menu">
-      <nav>
-        <a href="#" onclick="navigateTo('home')">Ana Sayfa</a>
-        <a href="#" onclick="navigateTo('home'); setTimeout(() => smoothScroll('services'), 300)">Hizmetlerimiz</a>
-        <a href="#" onclick="navigateTo('about')">Hakkımızda</a>
-        <a href="#" onclick="navigateTo('partners')">İş Ortakları</a>
-        <a href="#" onclick="navigateTo('references')">Referanslar</a>
-        <a href="#" onclick="navigateTo('projects')">Projeler</a>
-        <a href="#" onclick="navigateTo('products')">Ürünler</a>
-        <a href="#" onclick="navigateTo('contact')">İletişim</a>
-      </nav>
-      
-      <div class="mobile-contact-buttons">
-        <a href="https://wa.me/903121234567" class="whatsapp-btn" target="_blank">
+    <div class="nav-center">
+      <div class="contact-buttons">
+        <a href="https://wa.me/903121234567"
+          class="contact-btn whatsapp-btn"
+          target="_blank">
           <i class="fab fa-whatsapp"></i>
           <span>WhatsApp</span>
         </a>
-        <a href="https://www.instagram.com/metropol_dogalgaz/
         
-        " class="instagram-btn" target="_blank">
+        <a href="https://www.instagram.com/metropol_dogalgaz/"
+          class="contact-btn instagram-btn"
+          target="_blank">
           <i class="fab fa-instagram"></i>
           <span>Instagram</span>
         </a>
-        <a href="tel:+903121234567" class="phone-btn">
+        
+        <a href="tel:+903121234567" class="contact-btn phone-btn">
           <i class="fas fa-phone"></i>
           <span>0312 123 45 67</span>
         </a>
       </div>
     </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+   <!-- Mobile Menu -->
+<div class="menu-overlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu">
+  <div class="mobile-menu-header">
+    <h3>Menü</h3>
+    <button class="mobile-close-btn" onclick="toggleMenu()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <nav>
+    <a href="#" onclick="navigateTo('home'); toggleMenu();">
+      <i class="fas fa-home"></i>
+      <span>Ana Sayfa</span>
+    </a>
+    <a href="#" onclick="navigateTo('home'); setTimeout(() => smoothScroll('services'), 300); toggleMenu();">
+      <i class="fas fa-cogs"></i>
+      <span>Hizmetlerimiz</span>
+    </a>
+    <a href="#" onclick="navigateTo('about'); toggleMenu();">
+      <i class="fas fa-info-circle"></i>
+      <span>Hakkımızda</span>
+    </a>
+    <a href="#" onclick="navigateTo('partners'); toggleMenu();">
+      <i class="fas fa-handshake"></i>
+      <span>İş Ortakları</span>
+    </a>
+    <a href="#" onclick="navigateTo('references'); toggleMenu();">
+      <i class="fas fa-star"></i>
+      <span>Referanslar</span>
+    </a>
+    <a href="#" onclick="navigateTo('projects'); toggleMenu();">
+      <i class="fas fa-project-diagram"></i>
+      <span>Projeler</span>
+    </a>
+    <a href="#" onclick="navigateTo('products'); toggleMenu();">
+      <i class="fas fa-box"></i>
+      <span>Ürünler</span>
+    </a>
+    <a href="#" onclick="navigateTo('contact'); toggleMenu();">
+      <i class="fas fa-envelope"></i>
+      <span>İletişim</span>
+    </a>
+  </nav>
+  
+  <div class="mobile-contact-buttons">
+    <a href="https://wa.me/903121234567" class="whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://www.instagram.com/metropol_dogalgaz/" class="instagram-btn" target="_blank">
+      <i class="fab fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+    <a href="tel:+903121234567" class="phone-btn">
+      <i class="fas fa-phone"></i>
+      <span>0312 123 45 67</span>
+    </a>
+  </div>
+</div>
 
     <!-- Home Page -->
     <div id="homePage">
@@ -218,18 +246,18 @@
           <div class="about-preview-text">
             <h2>Metropol Doğalgaz Hakkında</h2>
             <p>
-              2003 yılından bu yana doğalgaz sektöründe faaliyet gösteren Metropol Doğalgaz, 
-              güvenilir ve kaliteli hizmet anlayışıyla öne çıkan bir firmadır. 20 yılı aşkın 
+              2011 yılından bu yana doğalgaz sektöründe faaliyet gösteren <b>Metropol Doğalgaz</b> , 
+              güvenilir ve kaliteli hizmet anlayışıyla öne çıkan bir firmadır. 14 yılı aşkın 
               tecrübemizle, konut, işyeri ve endüstriyel tesislerde doğalgaz tesisat kurulumu, 
               bakım ve onarım hizmetleri sunmaktayız.
             </p>
             <div class="about-stats-preview">
               <div class="stat-preview">
-                <div class="stat-preview-number">20+</div>
+                <div class="stat-preview-number">14+</div>
                 <div class="stat-preview-label">Yıllık Tecrübe</div>
               </div>
               <div class="stat-preview">
-                <div class="stat-preview-number">5000+</div>
+                <div class="stat-preview-number">1000+</div>
                 <div class="stat-preview-label">Tamamlanan Proje</div>
               </div>
               <div class="stat-preview">
@@ -307,10 +335,10 @@
               </div>
               <h3>Şirketimiz</h3>
               <p>
-                Metropol Doğalgaz, 2003 yılından bu yana doğalgaz sektöründe faaliyet gösteren, 
-                güvenilir ve kaliteli hizmet anlayışıyla öne çıkan bir firmadır. 20 yılı aşkın 
-                tecrübemizle, konut, işyeri ve endüstriyel tesislerde doğalgaz tesisat kurulumu, 
-                bakım ve onarım hizmetleri sunmaktayız.
+                1989 yılında Mekanik Tesisat Sektöründe Mühendislik hizmetleri vermeye başladıktan sonra edindiğimiz deneyimleri değerlendirmek üzere 2011 yılında <b>METROPOL DOĞALGAZ LTD.ŞTİ.</b>’ni kurduk.  <br>
+                Firmamız kurulduğu günden bugüne kadar Mekanik Tesisat Sektörünün, satış, proje, taahhüt gibi alanlarında faaliyet göstermektedir. <br>
+                Sektörümüzün ciddi bir mühendislik bilgisi gerektirdiği, yüksek bir sorumluluk ve insanların yaşam kalitesini arttıran önemli 
+                bir alan olduğu bilinci ile çalışan firmamız, çalışmalarında sektörün lider markaları ile çözüm ortaklığı yaparak daima müşteri memnuniyetini ön plana almıştır.
               </p>
             </div>
 
@@ -320,9 +348,9 @@
               </div>
               <h3>Vizyonumuz</h3>
               <p>
-                Doğalgaz sektöründe teknolojik gelişmeleri yakından takip eden, müşteri 
-                memnuniyetini ön planda tutan, çevre dostu ve sürdürülebilir enerji 
-                çözümleri sunan lider firma olmak.
+                Mekanik Tesisat Sektörü, dinamik yapısı ve gelişen teknoloji nedeni ile hızla değişmekte ve yenilenmektedir. 
+                Firmamız yenilikçi ve dinamik yapısı sayesinde çevreci, enerji etkin, kaliteli ve sürdürülebilir 
+                çözümler üretme ve uygulama yönünde çalışmalarına devam etmektedir.
               </p>
             </div>
 
@@ -332,19 +360,19 @@
               </div>
               <h3>Misyonumuz</h3>
               <p>
-                Müşterilerimize en yüksek kalitede doğalgaz hizmetleri sunarak, güvenli, 
-                verimli ve ekonomik enerji kullanımını sağlamak. TSE standartlarına uygun, 
-                profesyonel kadromuzla kesintisiz hizmet vermek.
+                Yüksek bir motivasyonla ve çok severek yaptığımız işimizde en büyük hedefimiz, mekanik tesisat sektörünü ileriye taşıyabilecek başarılı ve kaliteli 
+                işlerin yanı sıra alternatif ve yenilenebilir enerji kaynaklarının da kullanıldığı, 
+                böylece hem kullanıcı hem de ülke ekonomisine katkıda bulunduğumuz proje ve uygulamalara imza atmaktır.
               </p>
             </div>
 
             <div class="about-stats">
               <div class="stat-item">
-                <div class="stat-number">20+</div>
+                <div class="stat-number">14+</div>
                 <div class="stat-label">Yıllık Tecrübe</div>
               </div>
               <div class="stat-item">
-                <div class="stat-number">5000+</div>
+                <div class="stat-number">1000+</div>
                 <div class="stat-label">Tamamlanan Proje</div>
               </div>
               <div class="stat-item">
@@ -431,17 +459,26 @@
 </div>
 
     <!-- Products Page -->
-    <div id="productsPage" class="hidden">
-      <div class="page-container">
-        <div class="container">
-          <div class="section-header">
-            <h2>Ürünlerimiz</h2>
-            <p>Kaliteli ve güvenilir doğalgaz ürünleri</p>
-          </div>
-          <div class="content-grid" id="productsGrid"></div>
-        </div>
+<div id="productsPage" class="hidden">
+  <div class="page-container">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ürünlerimiz</h2>
+        <p>Kaliteli ve güvenilir doğalgaz ürünleri</p>
       </div>
+      
+      <!-- Kategori Filtreleri -->
+      <div class="category-filters" id="categoryFilters">
+        <button class="category-btn active" onclick="filterProducts('all')">
+          <i class="fas fa-th"></i>
+          <span>Tümü</span>
+        </button>
+      </div>
+      
+      <div class="content-grid" id="productsGrid"></div>
     </div>
+  </div>
+</div>
 
     <!-- Contact Page -->
     <div id="contactPage" class="hidden">
@@ -494,15 +531,13 @@
             <div class="contact-map-section">
               <h3><i class="fas fa-location-dot"></i> Konumumuz</h3>
               <div class="map-container">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48988.12119377226!2d32.7948349!3d39.9187847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d520732db1%3A0x9bce5c8c8108c604!2s%C3%87ankaya%2C%20Ankara!5e0!3m2!1str!2str!4v1234567890123!5m2!1str!2str"
-                  width="100%" 
-                  height="450" 
-                  style="border:0;" 
-                  allowfullscreen="" 
-                  loading="lazy" 
-                  referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24471.418690510975!2d32.81243717431639!3d39.943014999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34e8b39eaca0b%3A0x7e1962570cd9fd12!2sMetropol%20Do%C4%9Falgaz%20Kombi%20Market%20(Spot%20Kombi)!5e0!3m2!1str!2str!4v1763232075005!5m2!1str!2str" 
+                width="1200" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
 
@@ -519,6 +554,8 @@
       </div>
     </div>
 
+    
+
     <!-- Footer -->
     <footer>
       <div class="footer-content">
@@ -531,7 +568,7 @@
             />
           </div>
           <p>
-            Doğalgaz sektöründe 20+ yıllık tecrübe ile güvenilir çözüm
+            Doğalgaz sektöründe 14+ yıllık tecrübe ile güvenilir çözüm
             ortağınız. Profesyonel hizmet anlayışı ve müşteri memnuniyeti odaklı
             çalışmalarımızla sektörde öncüyüz.
           </p>
@@ -564,8 +601,7 @@
 
         <div class="footer-section">
           <h3>Çalışma Saatleri</h3>
-          <p><i class="fas fa-clock"></i> Pazartesi - Cuma: 08:00 - 18:00</p>
-          <p><i class="fas fa-clock"></i> Cumartesi: 09:00 - 15:00</p>
+          <p><i class="fas fa-clock"></i> Pazartesi - Cumartesi: 08:00 - 19:00</p>
           <p><i class="fas fa-clock"></i> Pazar: Kapalı</p>
           <p style="margin-top: 1rem; color: var(--white); font-weight: 700">
             <i class="fas fa-phone-volume"></i> Acil Servis: 7/24 Aktif
@@ -738,65 +774,77 @@
           <div class="admin-list" id="projectsList"></div>
         </div>
 
-        <!-- Products Tab -->
-        <div class="tab-content" id="productsTab">
-          <div class="admin-form">
-            <h3><i class="fas fa-plus-circle"></i> Yeni Ürün Ekle</h3>
-            <form id="productForm" onsubmit="handleProductSubmit(event)">
-              <div class="form-group">
-                <label>Ürün Adı *</label>
-                <input
-                  type="text"
-                  id="productName"
-                  required
-                  placeholder="Örn: Yoğuşmalı Kombi XYZ"
-                />
-              </div>
-              <div class="form-group">
-                <label>Ürün Açıklaması *</label>
-                <textarea
-                  id="productDesc"
-                  required
-                  placeholder="Ürün hakkında detaylı bilgi..."
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <label>Ürün Özellikleri * (Her satıra bir özellik)</label>
-                <textarea
-                  id="productFeatures"
-                  placeholder="Yüksek verimlilik&#10;Düşük emisyon değerleri&#10;Sessiz çalışma&#10;5 yıl garanti"
-                  required
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <label>Görsel Yükleme Yöntemi</label>
-                <select id="imageMethod" onchange="toggleImageInput()">
-                  <option value="url">URL ile Ekle</option>
-                  <option value="file">Dosya Yükle</option>
-                </select>
-              </div>
-              <div class="form-group" id="imageUrlGroup">
-                <label>Görsel URL *</label>
-                <input
-                  type="url"
-                  id="productImageUrl"
-                  placeholder="https://..."
-                />
-              </div>
-              <div class="form-group hidden" id="imageFileGroup">
-                <label>Görsel Dosyası *</label>
-                <input type="file" id="productImageFile" accept="image/*" />
-              </div>
-              <button type="submit" class="btn btn-primary">
-                <i class="fas fa-save"></i> Ürünü Kaydet
-              </button>
-            </form>
-          </div>
-          <h3 style="margin-bottom: 1.5rem; color: var(--primary)">
-            <i class="fas fa-list"></i> Kayıtlı Ürünler
-          </h3>
-          <div class="admin-list" id="productsList"></div>
-        </div>
+<!-- Products Tab -->
+<div class="tab-content" id="productsTab">
+  <div class="admin-form">
+    <h3><i class="fas fa-plus-circle"></i> Yeni Ürün Ekle</h3>
+    <form id="productForm" onsubmit="handleProductSubmit(event)">
+      <div class="form-group">
+        <label>Kategori *</label>
+        <select id="productCategory" required>
+          <option value="">Kategori Seçin</option>
+          <option value="kombi">Kombi</option>
+          <option value="radyatorler">Radyatörler</option>
+          <option value="sofbenler">Şofbenler</option>
+          <option value="kazan">Kazan Sistemleri</option>
+          <option value="yerden-isitma">Yerden Isıtma</option>
+          <option value="yangin">Yangın Malzemeleri</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ürün Adı *</label>
+        <input
+          type="text"
+          id="productName"
+          required
+          placeholder="Örn: Baymak Duotec Kombi"
+        />
+      </div>
+      <div class="form-group">
+        <label>Ürün Açıklaması *</label>
+        <textarea
+          id="productDesc"
+          required
+          placeholder="Ürün hakkında detaylı bilgi..."
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label>Ürün Özellikleri * (Her satıra bir özellik)</label>
+        <textarea
+          id="productFeatures"
+          placeholder="Yüksek verimlilik&#10;Düşük emisyon değerleri&#10;Sessiz çalışma&#10;5 yıl garanti"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label>Görsel Yükleme Yöntemi</label>
+        <select id="imageMethod" onchange="toggleImageInput()">
+          <option value="url">URL ile Ekle</option>
+          <option value="file">Dosya Yükle</option>
+        </select>
+      </div>
+      <div class="form-group" id="imageUrlGroup">
+        <label>Görsel URL *</label>
+        <input
+          type="url"
+          id="productImageUrl"
+          placeholder="https://..."
+        />
+      </div>
+      <div class="form-group hidden" id="imageFileGroup">
+        <label>Görsel Dosyası *</label>
+        <input type="file" id="productImageFile" accept="image/*" />
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> Ürünü Kaydet
+      </button>
+    </form>
+  </div>
+  <h3 style="margin-bottom: 1.5rem; color: var(--primary)">
+    <i class="fas fa-list"></i> Kayıtlı Ürünler
+  </h3>
+  <div class="admin-list" id="productsList"></div>
+</div>
 
         <!-- Partners Tab -->
 <div class="tab-content" id="partnersTab">
@@ -901,7 +949,185 @@
   <div class="admin-list" id="referencesList"></div>
 </div>
 
-       
+      <!-- Edit Product Modal -->
+<div class="modal" id="editProductModal" onclick="closeEditProductModal()">
+  <div class="modal-content admin-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeEditProductModal()">&times;</button>
+    <div class="admin-modal-layout">
+      <h2><i class="fas fa-edit"></i> Ürün Düzenle</h2>
+      <form id="editProductForm" onsubmit="handleEditProductSubmit(event)">
+        <div class="form-group">
+          <label>Kategori *</label>
+          <select id="editProductCategory" required>
+            <option value="">Kategori Seçin</option>
+            <option value="kombi">Kombi</option>
+            <option value="radyatorler">Radyatörler</option>
+            <option value="sofbenler">Şofbenler</option>
+            <option value="kazan">Kazan Sistemleri</option>
+            <option value="yerden-isitma">Yerden Isıtma</option>
+            <option value="yangin">Yangın Malzemeleri</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ürün Adı *</label>
+          <input type="text" id="editProductName" required />
+        </div>
+        <div class="form-group">
+          <label>Ürün Açıklaması *</label>
+          <textarea id="editProductDesc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Ürün Özellikleri * (Her satıra bir özellik)</label>
+          <textarea id="editProductFeatures" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Görsel Yükleme Yöntemi</label>
+          <select id="editImageMethod" onchange="toggleEditImageInput()">
+            <option value="url">URL ile Ekle</option>
+            <option value="file">Dosya Yükle</option>
+          </select>
+        </div>
+        <div class="form-group" id="editImageUrlGroup">
+          <label>Görsel URL *</label>
+          <input type="url" id="editProductImageUrl" />
+        </div>
+        <div class="form-group hidden" id="editImageFileGroup">
+          <label>Görsel Dosyası</label>
+          <input type="file" id="editProductImageFile" accept="image/*" />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Kaydet
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="closeEditProductModal()">
+            <i class="fas fa-times"></i> İptal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Project Modal -->
+<div class="modal" id="editProjectModal" onclick="closeEditProjectModal()">
+  <div class="modal-content admin-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeEditProjectModal()">&times;</button>
+    <div class="admin-modal-layout">
+      <h2><i class="fas fa-edit"></i> Proje Düzenle</h2>
+      <form id="editProjectForm" onsubmit="handleEditProjectSubmit(event)">
+        <div class="form-group">
+          <label>Proje Adı *</label>
+          <input type="text" id="editProjectName" required />
+        </div>
+        <div class="form-group">
+          <label>Proje Açıklaması *</label>
+          <textarea id="editProjectDesc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>YouTube Video URL *</label>
+          <input type="text" id="editProjectVideo" required />
+          <small style="color: var(--gray); display: block; margin-top: 0.5rem">
+            <i class="fas fa-info-circle"></i> YouTube video linkini direkt yapıştırabilirsiniz.
+          </small>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Kaydet
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="closeEditProjectModal()">
+            <i class="fas fa-times"></i> İptal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Partner Modal -->
+<div class="modal" id="editPartnerModal" onclick="closeEditPartnerModal()">
+  <div class="modal-content admin-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeEditPartnerModal()">&times;</button>
+    <div class="admin-modal-layout">
+      <h2><i class="fas fa-edit"></i> İş Ortağı Düzenle</h2>
+      <form id="editPartnerForm" onsubmit="handleEditPartnerSubmit(event)">
+        <div class="form-group">
+          <label>İş Ortağı Adı *</label>
+          <input type="text" id="editPartnerName" required />
+        </div>
+        <div class="form-group">
+          <label>Açıklama</label>
+          <textarea id="editPartnerDesc"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Logo Yükleme Yöntemi</label>
+          <select id="editPartnerImageMethod" onchange="toggleEditPartnerImageInput()">
+            <option value="url">URL ile Ekle</option>
+            <option value="file">Dosya Yükle</option>
+          </select>
+        </div>
+        <div class="form-group" id="editPartnerImageUrlGroup">
+          <label>Logo URL *</label>
+          <input type="url" id="editPartnerImageUrl" />
+        </div>
+        <div class="form-group hidden" id="editPartnerImageFileGroup">
+          <label>Logo Dosyası</label>
+          <input type="file" id="editPartnerImageFile" accept="image/*" />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Kaydet
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="closeEditPartnerModal()">
+            <i class="fas fa-times"></i> İptal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Reference Modal -->
+<div class="modal" id="editReferenceModal" onclick="closeEditReferenceModal()">
+  <div class="modal-content admin-modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeEditReferenceModal()">&times;</button>
+    <div class="admin-modal-layout">
+      <h2><i class="fas fa-edit"></i> Referans Düzenle</h2>
+      <form id="editReferenceForm" onsubmit="handleEditReferenceSubmit(event)">
+        <div class="form-group">
+          <label>Firma/Müşteri Adı *</label>
+          <input type="text" id="editReferenceName" required />
+        </div>
+        <div class="form-group">
+          <label>Yapılan İş Açıklaması *</label>
+          <textarea id="editReferenceDesc" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Logo Yükleme Yöntemi</label>
+          <select id="editReferenceImageMethod" onchange="toggleEditReferenceImageInput()">
+            <option value="url">URL ile Ekle</option>
+            <option value="file">Dosya Yükle</option>
+          </select>
+        </div>
+        <div class="form-group" id="editReferenceImageUrlGroup">
+          <label>Logo URL *</label>
+          <input type="url" id="editReferenceImageUrl" />
+        </div>
+        <div class="form-group hidden" id="editReferenceImageFileGroup">
+          <label>Logo Dosyası</label>
+          <input type="file" id="editReferenceImageFile" accept="image/*" />
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Kaydet
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="closeEditReferenceModal()">
+            <i class="fas fa-times"></i> İptal
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 
       </div>
     </div>
 

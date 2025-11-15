@@ -41,6 +41,7 @@ let partners = [];
 let references = [];
 let editingPartnerId = null;
 let editingReferenceId = null;
+let currentCategory = 'all';
 
 // Navigation Functions
 window.navigateTo = function (page) {
@@ -97,12 +98,18 @@ window.toggleMenu = function () {
   const mobileMenu = document.querySelector(".mobile-menu");
   const hamburger = document.querySelector(".hamburger");
   const overlay = document.querySelector(".menu-overlay");
+  const body = document.body;
 
   mobileMenu.classList.toggle("active");
   hamburger.classList.toggle("active");
   overlay.classList.toggle("active");
+  
+  if (mobileMenu.classList.contains("active")) {
+    body.style.overflow = "hidden";
+  } else {
+    body.style.overflow = "auto";
+  }
 };
-
 // Login Functions
 window.openLoginModal = function () {
   document.getElementById("loginModal").classList.add("active");
@@ -396,6 +403,7 @@ async function loadProducts() {
       products.push({ id: doc.id, ...doc.data() });
     });
     displayProducts();
+    updateCategoryFilters();
   } catch (error) {
     console.error("Ürünler yüklenemedi:", error);
   }
@@ -410,27 +418,37 @@ function displayProducts() {
   const grid = document.getElementById("productsGrid");
   grid.innerHTML = "";
 
-  if (products.length === 0) {
+  const filteredProducts = currentCategory === 'all' 
+    ? products 
+    : products.filter(p => p.category === currentCategory);
+
+  if (filteredProducts.length === 0) {
     grid.innerHTML = `
-              <div class="empty-state" style="grid-column: 1/-1;">
-                  <i class="fas fa-box-open"></i>
-                  <p>Henüz ürün eklenmemiş.</p>
-              </div>
-          `;
+      <div class="empty-state" style="grid-column: 1/-1;">
+          <i class="fas fa-box-open"></i>
+          <p>Bu kategoride henüz ürün eklenmemiş.</p>
+      </div>
+    `;
     return;
   }
 
-  products.forEach((product) => {
+  filteredProducts.forEach((product) => {
     const card = document.createElement("div");
     card.className = "content-card";
     card.onclick = () => openProductModal(product);
+    
+    const categoryBadge = getCategoryBadge(product.category);
+    
     card.innerHTML = `
-              <img class="content-media" src="${product.imageUrl}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400'">
-              <div class="content-info">
-                  <h3>${product.name}</h3>
-                  <p>${product.description}</p>
-              </div>
-          `;
+      <div class="product-image-container">
+        <img class="content-media" src="${product.imageUrl}" alt="${product.name}" onerror="this.src='https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400'">
+        ${categoryBadge}
+      </div>
+      <div class="content-info">
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+      </div>
+    `;
     grid.appendChild(card);
   });
 }
@@ -441,35 +459,66 @@ function displayProductsList() {
 
   if (products.length === 0) {
     list.innerHTML = `
-              <div class="empty-state">
-                  <i class="fas fa-box-open"></i>
-                  <p>Henüz ürün eklenmemiş.</p>
-              </div>
-          `;
+      <div class="empty-state">
+          <i class="fas fa-box-open"></i>
+          <p>Henüz ürün eklenmemiş.</p>
+      </div>
+    `;
     return;
   }
 
-  products.forEach((product) => {
-    const item = document.createElement("div");
-    item.className = "admin-item";
-    item.innerHTML = `
-              <div class="admin-item-info">
-                  <strong>${product.name}</strong>
-                  <p>${product.description}</p>
-              </div>
-              <div class="admin-item-actions">
-                  <button class="btn btn-primary" onclick="editProduct('${product.id}')">
-                      <i class="fas fa-edit"></i> Düzenle
-                  </button>
-                  <button class="btn btn-danger" onclick="deleteProduct('${product.id}')">
-                      <i class="fas fa-trash"></i> Sil
-                  </button>
-              </div>
-          `;
-    list.appendChild(item);
+  const groupedProducts = {};
+  products.forEach(product => {
+    const cat = product.category || 'diger';
+    if (!groupedProducts[cat]) {
+      groupedProducts[cat] = [];
+    }
+    groupedProducts[cat].push(product);
+  });
+
+  const categoryNames = {
+    'kombi': 'Kombi',
+    'radyatorler': 'Radyatörler',
+    'sofbenler': 'Şofbenler',
+    'kazan': 'Kazan Sistemleri',
+    'yerden-isitma': 'Yerden Isıtma',
+    'yangin': 'Yangın Malzemeleri',
+    'diger': 'Diğer'
+  };
+
+  Object.entries(groupedProducts).forEach(([category, items]) => {
+    const categorySection = document.createElement('div');
+    categorySection.className = 'admin-category-section';
+    categorySection.innerHTML = `
+      <h4 class="admin-category-title">
+        <i class="fas fa-folder"></i>
+        ${categoryNames[category]} (${items.length})
+      </h4>
+    `;
+    
+    items.forEach(product => {
+      const item = document.createElement("div");
+      item.className = "admin-item";
+      item.innerHTML = `
+        <div class="admin-item-info">
+            <strong>${product.name}</strong>
+            <p>${product.description}</p>
+        </div>
+        <div class="admin-item-actions">
+            <button class="btn btn-primary" onclick="editProduct('${product.id}')">
+                <i class="fas fa-edit"></i> Düzenle
+            </button>
+            <button class="btn btn-danger" onclick="deleteProduct('${product.id}')">
+                <i class="fas fa-trash"></i> Sil
+            </button>
+        </div>
+      `;
+      categorySection.appendChild(item);
+    });
+    
+    list.appendChild(categorySection);
   });
 }
-
 window.openProductModal = function (product) {
   document.getElementById("modalImage").src = product.imageUrl;
   document.getElementById("modalTitle").textContent = product.name;
@@ -505,6 +554,7 @@ window.closeModal = function () {
 window.handleProductSubmit = async function (event) {
   event.preventDefault();
 
+  const category = document.getElementById("productCategory").value;
   const name = document.getElementById("productName").value;
   const description = document.getElementById("productDesc").value;
   const features = document
@@ -512,6 +562,11 @@ window.handleProductSubmit = async function (event) {
     .value.split("\n")
     .filter((f) => f.trim());
   const method = document.getElementById("imageMethod").value;
+
+  if (!category) {
+    alert("Lütfen bir kategori seçin.");
+    return;
+  }
 
   try {
     let imageUrl;
@@ -538,6 +593,7 @@ window.handleProductSubmit = async function (event) {
 
     if (editingProductId) {
       await updateDoc(doc(db, "products", editingProductId), {
+        category,
         name,
         description,
         features,
@@ -548,6 +604,7 @@ window.handleProductSubmit = async function (event) {
       alert("✓ Ürün başarıyla güncellendi!");
     } else {
       await addDoc(collection(db, "products"), {
+        category,
         name,
         description,
         features,
@@ -570,6 +627,7 @@ window.handleProductSubmit = async function (event) {
 window.editProduct = function (id) {
   const product = products.find((p) => p.id === id);
   if (product) {
+    document.getElementById("productCategory").value = product.category || 'kombi';
     document.getElementById("productName").value = product.name;
     document.getElementById("productDesc").value = product.description;
     document.getElementById("productFeatures").value =
@@ -582,7 +640,6 @@ window.editProduct = function (id) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 };
-
 window.deleteProduct = async function (id) {
   if (confirm("Bu ürünü silmek istediğinizden emin misiniz?")) {
     try {
@@ -1039,6 +1096,362 @@ window.deleteReference = async function (id) {
     }
   }
 };
+
+
+function getCategoryBadge(category) {
+  const categories = {
+    'kombi': { name: 'Kombi', icon: 'fa-fire', color: '#e74c3c' },
+    'radyatorler': { name: 'Radyatörler', icon: 'fa-temperature-high', color: '#e67e22' },
+    'sofbenler': { name: 'Şofbenler', icon: 'fa-shower', color: '#3498db' },
+    'kazan': { name: 'Kazan Sistemleri', icon: 'fa-industry', color: '#9b59b6' },
+    'yerden-isitma': { name: 'Yerden Isıtma', icon: 'fa-layer-group', color: '#1abc9c' },
+    'yangin': { name: 'Yangın Malzemeleri', icon: 'fa-fire-extinguisher', color: '#c0392b' }
+  };
+  
+  const cat = categories[category] || { name: 'Diğer', icon: 'fa-tools', color: '#95a5a6' };
+  return `<div class="category-badge" style="background: ${cat.color}">
+    <i class="fas ${cat.icon}"></i>
+    <span>${cat.name}</span>
+  </div>`;
+}
+
+function updateCategoryFilters() {
+  const filtersContainer = document.getElementById('categoryFilters');
+  if (!filtersContainer) return;
+  
+  const categories = {
+    'all': { name: 'Tümü', icon: 'fa-th' },
+    'kombi': { name: 'Kombi', icon: 'fa-fire' },
+    'radyatorler': { name: 'Radyatörler', icon: 'fa-temperature-high' },
+    'sofbenler': { name: 'Şofbenler', icon: 'fa-shower' },
+    'kazan': { name: 'Kazan Sistemleri', icon: 'fa-industry' },
+    'yerden-isitma': { name: 'Yerden Isıtma', icon: 'fa-layer-group' },
+    'yangin': { name: 'Yangın Malzemeleri', icon: 'fa-fire-extinguisher' }
+  };
+  
+  const categoryCounts = { all: products.length };
+  products.forEach(p => {
+    categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
+  });
+  
+  filtersContainer.innerHTML = '';
+  
+  Object.entries(categories).forEach(([key, cat]) => {
+    if (key === 'all' || categoryCounts[key] > 0) {
+      const count = categoryCounts[key] || 0;
+      const button = document.createElement('button');
+      button.className = `category-btn ${currentCategory === key ? 'active' : ''}`;
+      button.onclick = () => filterProducts(key);
+      button.innerHTML = `
+        <i class="fas ${cat.icon}"></i>
+        <span>${cat.name}</span>
+        <span class="category-count">${count}</span>
+      `;
+      filtersContainer.appendChild(button);
+    }
+  });
+}
+
+window.filterProducts = function(category) {
+  currentCategory = category;
+  
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.target.closest('.category-btn').classList.add('active');
+  
+  displayProducts();
+};
+
+// PRODUCT EDIT MODAL
+window.editProduct = function (id) {
+  const product = products.find((p) => p.id === id);
+  if (product) {
+    editingProductId = id;
+    document.getElementById("editProductCategory").value = product.category || 'kombi';
+    document.getElementById("editProductName").value = product.name;
+    document.getElementById("editProductDesc").value = product.description;
+    document.getElementById("editProductFeatures").value = product.features.join("\n");
+    document.getElementById("editImageMethod").value = "url";
+    document.getElementById("editProductImageUrl").value = product.imageUrl;
+    toggleEditImageInput();
+    document.getElementById("editProductModal").classList.add("active");
+  }
+};
+
+window.closeEditProductModal = function () {
+  document.getElementById("editProductModal").classList.remove("active");
+  document.getElementById("editProductForm").reset();
+  editingProductId = null;
+};
+
+window.toggleEditImageInput = function () {
+  const method = document.getElementById("editImageMethod").value;
+  const urlGroup = document.getElementById("editImageUrlGroup");
+  const fileGroup = document.getElementById("editImageFileGroup");
+  const urlInput = document.getElementById("editProductImageUrl");
+  const fileInput = document.getElementById("editProductImageFile");
+
+  if (method === "url") {
+    urlGroup.classList.remove("hidden");
+    fileGroup.classList.add("hidden");
+    urlInput.required = true;
+    fileInput.required = false;
+  } else {
+    urlGroup.classList.add("hidden");
+    fileGroup.classList.remove("hidden");
+    urlInput.required = false;
+    fileInput.required = false;
+  }
+};
+
+window.handleEditProductSubmit = async function (event) {
+  event.preventDefault();
+
+  const category = document.getElementById("editProductCategory").value;
+  const name = document.getElementById("editProductName").value;
+  const description = document.getElementById("editProductDesc").value;
+  const features = document.getElementById("editProductFeatures").value.split("\n").filter((f) => f.trim());
+  const method = document.getElementById("editImageMethod").value;
+
+  try {
+    let imageUrl;
+
+    if (method === "url") {
+      imageUrl = document.getElementById("editProductImageUrl").value;
+    } else {
+      const file = document.getElementById("editProductImageFile").files[0];
+      if (file) {
+        const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
+        await uploadBytes(storageRef, file);
+        imageUrl = await getDownloadURL(storageRef);
+      } else {
+        const product = products.find((p) => p.id === editingProductId);
+        imageUrl = product.imageUrl;
+      }
+    }
+
+    await updateDoc(doc(db, "products", editingProductId), {
+      category,
+      name,
+      description,
+      features,
+      imageUrl,
+      updatedAt: new Date(),
+    });
+
+    alert("✓ Ürün başarıyla güncellendi!");
+    closeEditProductModal();
+    loadProductsAdmin();
+  } catch (error) {
+    console.error("Hata:", error);
+    alert("✗ Bir hata oluştu: " + error.message);
+  }
+};
+
+// PROJECT EDIT MODAL
+window.editProject = function (id) {
+  const project = projects.find((p) => p.id === id);
+  if (project) {
+    editingProjectId = id;
+    document.getElementById("editProjectName").value = project.name;
+    document.getElementById("editProjectDesc").value = project.description;
+    document.getElementById("editProjectVideo").value = project.videoUrl;
+    document.getElementById("editProjectModal").classList.add("active");
+  }
+};
+
+window.closeEditProjectModal = function () {
+  document.getElementById("editProjectModal").classList.remove("active");
+  document.getElementById("editProjectForm").reset();
+  editingProjectId = null;
+};
+
+window.handleEditProjectSubmit = async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("editProjectName").value;
+  const description = document.getElementById("editProjectDesc").value;
+  const videoUrl = document.getElementById("editProjectVideo").value;
+
+  try {
+    await updateDoc(doc(db, "projects", editingProjectId), {
+      name,
+      description,
+      videoUrl,
+      updatedAt: new Date(),
+    });
+
+    alert("✓ Proje başarıyla güncellendi!");
+    closeEditProjectModal();
+    loadProjectsAdmin();
+  } catch (error) {
+    console.error("Hata:", error);
+    alert("✗ Bir hata oluştu: " + error.message);
+  }
+};
+
+// PARTNER EDIT MODAL
+window.editPartner = function (id) {
+  const partner = partners.find((p) => p.id === id);
+  if (partner) {
+    editingPartnerId = id;
+    document.getElementById("editPartnerName").value = partner.name;
+    document.getElementById("editPartnerDesc").value = partner.description || '';
+    document.getElementById("editPartnerImageMethod").value = "url";
+    document.getElementById("editPartnerImageUrl").value = partner.logoUrl;
+    toggleEditPartnerImageInput();
+    document.getElementById("editPartnerModal").classList.add("active");
+  }
+};
+
+window.closeEditPartnerModal = function () {
+  document.getElementById("editPartnerModal").classList.remove("active");
+  document.getElementById("editPartnerForm").reset();
+  editingPartnerId = null;
+};
+
+window.toggleEditPartnerImageInput = function () {
+  const method = document.getElementById("editPartnerImageMethod").value;
+  const urlGroup = document.getElementById("editPartnerImageUrlGroup");
+  const fileGroup = document.getElementById("editPartnerImageFileGroup");
+  const urlInput = document.getElementById("editPartnerImageUrl");
+  const fileInput = document.getElementById("editPartnerImageFile");
+
+  if (method === "url") {
+    urlGroup.classList.remove("hidden");
+    fileGroup.classList.add("hidden");
+    urlInput.required = true;
+    fileInput.required = false;
+  } else {
+    urlGroup.classList.add("hidden");
+    fileGroup.classList.remove("hidden");
+    urlInput.required = false;
+    fileInput.required = false;
+  }
+};
+
+window.handleEditPartnerSubmit = async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("editPartnerName").value;
+  const description = document.getElementById("editPartnerDesc").value;
+  const method = document.getElementById("editPartnerImageMethod").value;
+
+  try {
+    let logoUrl;
+
+    if (method === "url") {
+      logoUrl = document.getElementById("editPartnerImageUrl").value;
+    } else {
+      const file = document.getElementById("editPartnerImageFile").files[0];
+      if (file) {
+        const storageRef = ref(storage, `partners/${Date.now()}_${file.name}`);
+        await uploadBytes(storageRef, file);
+        logoUrl = await getDownloadURL(storageRef);
+      } else {
+        const partner = partners.find((p) => p.id === editingPartnerId);
+        logoUrl = partner.logoUrl;
+      }
+    }
+
+    await updateDoc(doc(db, "partners", editingPartnerId), {
+      name,
+      description,
+      logoUrl,
+      updatedAt: new Date(),
+    });
+
+    alert("✓ İş ortağı başarıyla güncellendi!");
+    closeEditPartnerModal();
+    loadPartnersAdmin();
+  } catch (error) {
+    console.error("Hata:", error);
+    alert("✗ Bir hata oluştu: " + error.message);
+  }
+};
+
+// REFERENCE EDIT MODAL
+window.editReference = function (id) {
+  const reference = references.find((r) => r.id === id);
+  if (reference) {
+    editingReferenceId = id;
+    document.getElementById("editReferenceName").value = reference.name;
+    document.getElementById("editReferenceDesc").value = reference.description;
+    document.getElementById("editReferenceImageMethod").value = "url";
+    document.getElementById("editReferenceImageUrl").value = reference.logoUrl;
+    toggleEditReferenceImageInput();
+    document.getElementById("editReferenceModal").classList.add("active");
+  }
+};
+
+window.closeEditReferenceModal = function () {
+  document.getElementById("editReferenceModal").classList.remove("active");
+  document.getElementById("editReferenceForm").reset();
+  editingReferenceId = null;
+};
+
+window.toggleEditReferenceImageInput = function () {
+  const method = document.getElementById("editReferenceImageMethod").value;
+  const urlGroup = document.getElementById("editReferenceImageUrlGroup");
+  const fileGroup = document.getElementById("editReferenceImageFileGroup");
+  const urlInput = document.getElementById("editReferenceImageUrl");
+  const fileInput = document.getElementById("editReferenceImageFile");
+
+  if (method === "url") {
+    urlGroup.classList.remove("hidden");
+    fileGroup.classList.add("hidden");
+    urlInput.required = true;
+    fileInput.required = false;
+  } else {
+    urlGroup.classList.add("hidden");
+    fileGroup.classList.remove("hidden");
+    urlInput.required = false;
+    fileInput.required = false;
+  }
+};
+
+window.handleEditReferenceSubmit = async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("editReferenceName").value;
+  const description = document.getElementById("editReferenceDesc").value;
+  const method = document.getElementById("editReferenceImageMethod").value;
+
+  try {
+    let logoUrl;
+
+    if (method === "url") {
+      logoUrl = document.getElementById("editReferenceImageUrl").value;
+    } else {
+      const file = document.getElementById("editReferenceImageFile").files[0];
+      if (file) {
+        const storageRef = ref(storage, `references/${Date.now()}_${file.name}`);
+        await uploadBytes(storageRef, file);
+        logoUrl = await getDownloadURL(storageRef);
+      } else {
+        const reference = references.find((r) => r.id === editingReferenceId);
+        logoUrl = reference.logoUrl;
+      }
+    }
+
+    await updateDoc(doc(db, "references", editingReferenceId), {
+      name,
+      description,
+      logoUrl,
+      updatedAt: new Date(),
+    });
+
+    alert("✓ Referans başarıyla güncellendi!");
+    closeEditReferenceModal();
+    loadReferencesAdmin();
+  } catch (error) {
+    console.error("Hata:", error);
+    alert("✗ Bir hata oluştu: " + error.message);
+  }
+};
+
+
 
 // Initial Load
   loadProjects();
