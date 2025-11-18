@@ -22,6 +22,28 @@ body {
   overflow-x: hidden;
 }
 
+/* ✅ FONT DISPLAY SWAP - Dosyanın en başına ekle */
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; /* ✅ BU SATIR ÖNEMLİ */
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap; /* ✅ BU SATIR ÖNEMLİ */
+}
+
+/* Mevcut CSS'leriniz buradan devam ediyor... */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
@@ -315,7 +337,7 @@ body {
 
 .section-header p {
   font-size: 1.2rem;
-  color: var(--gray);
+  color: #495057; /* Daha koyu gri - WCAG AA uyumlu */
 }
 
 .services-grid {
@@ -2144,4 +2166,22 @@ footer {
 .btn-secondary:hover {
   background: #5a6268;
   transform: translateY(-2px);
+}
+
+.hamburger {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  z-index: 1001;
+  background: transparent; /* ✅ Ekle */
+  border: none; /* ✅ Ekle */
+  padding: 0; /* ✅ Ekle */
+}
+
+.hamburger:focus {
+  outline: 2px solid var(--primary); /* ✅ Ekle */
+  outline-offset: 4px; /* ✅ Ekle */
 }
