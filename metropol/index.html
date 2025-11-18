@@ -1,16 +1,148 @@
 <!DOCTYPE html>
 <html lang="tr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metropol Doğalgaz - Güvenilir Doğalgaz Çözümleri</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ✅ KRİTİK CSS'İ HEAD'E AL (İlk görünen kısım için) -->
+  <style>
+    body { margin: 0; font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .navbar { position: fixed; top: 0; width: 100%; background: #fff; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+    .hero { margin-top: 80px; height: 85vh; position: relative; overflow: hidden; }
+    .hero-overlay { background: linear-gradient(135deg, rgba(0,86,179,0.8) 0%, rgba(0,61,130,0.9) 100%); }
+  </style>
+
+  <!-- ✅ DİĞER CSS'LERİ PRELOAD İLE YÜKLE -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- JS Olmayan Tarayıcılar İçin Fallback -->
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mobile.css">
-  </head>
+  </noscript>
+  
+  <title>Metropol Doğalgaz - Güvenilir Doğalgaz Çözümleri</title>
+
+   <!-- ✅ DNS-PREFETCH VE PRECONNECT EKLE -->
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://www.gstatic.com">
+  <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+  <link rel="dns-prefetch" href="https://productimages.hepsiburada.net">
+  <link rel="dns-prefetch" href="https://corluprothermservisi.com">
+  
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
+   <meta name="description" content="Metropol Doğalgaz, Ankara'da 14 yıllık tecrübesiyle doğalgaz tesisatı, kombi montajı, yerden ısıtma ve bakım-onarım hizmetleri sunar. 7/24 acil servis, TSE belgeli, %100 müşteri memnuniyeti. ☎ 0312 123 45 67">
+  
+  <meta name="keywords" content="doğalgaz tesisatı ankara, kombi montajı, yerden ısıtma, doğalgaz bakım, doğalgaz onarım, acil doğalgaz servisi, TSE belgeli doğalgaz, ankara doğalgaz firması, çankaya doğalgaz, metropol doğalgaz">
+  
+  <meta name="author" content="Metropol Doğalgaz">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="language" content="Turkish">
+  <meta name="revisit-after" content="7 days">
+  <meta name="theme-color" content="#0056b3">
+  
+  <!-- ✅ OPEN GRAPH (Facebook, LinkedIn vb.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Metropol Doğalgaz">
+  <meta property="og:title" content="Metropol Doğalgaz - Ankara'da Güvenilir Doğalgaz Çözümleri">
+  <meta property="og:description" content="14 yıllık tecrübeyle doğalgaz tesisatı, kombi montajı ve bakım hizmetleri. 7/24 acil servis ☎ 0312 123 45 67">
+  <meta property="og:url" content="https://aydinfurkan0.github.io/metropol/">
+  <meta property="og:image" content="https://aydinfurkan0.github.io/metropol/img/logo/metropol-logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="tr_TR">
+  
+  <!-- ✅ TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Metropol Doğalgaz - Ankara'da Güvenilir Doğalgaz Çözümleri">
+  <meta name="twitter:description" content="14 yıllık tecrübeyle doğalgaz tesisatı, kombi montajı ve bakım hizmetleri. 7/24 acil servis">
+  <meta name="twitter:image" content="https://aydinfurkan0.github.io/metropol/img/logo/metropol-logo.png">
+  
+  <!-- ✅ CANONICAL URL -->
+  <link rel="canonical" href="https://aydinfurkan0.github.io/metropol/">
+  
+  <!-- ✅ SCHEMA.ORG MARKUP (JSON-LD) - Google'a işletme bilgisi -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Metropol Doğalgaz",
+    "image": "https://aydinfurkan0.github.io/metropol/img/logo/metropol-logo.png",
+    "description": "Ankara'da 14 yıllık tecrübeyle doğalgaz tesisatı, kombi montajı, yerden ısıtma ve bakım-onarım hizmetleri",
+    "@id": "https://aydinfurkan0.github.io/metropol/",
+    "url": "https://aydinfurkan0.github.io/metropol/",
+    "telephone": "+903121234567",
+    "email": "info@metropoldogalgaz.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Çankaya",
+      "addressLocality": "Ankara",
+      "addressRegion": "Ankara",
+      "postalCode": "06000",
+      "addressCountry": "TR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.943015,
+      "longitude": 32.8558634
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/metropol_dogalgaz/",
+      "https://wa.me/903121234567"
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Ankara"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Doğalgaz Hizmetleri",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Doğalgaz Tesisatı",
+            "description": "TSE standartlarına uygun doğalgaz tesisatı kurulumu"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Kombi Montajı",
+            "description": "Tüm markalarda kombi montajı ve bakım"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Yerden Isıtma",
+            "description": "Modern yerden ısıtma sistemleri kurulumu"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+</head>
   <body>
     <!-- Navbar -->
 <nav class="navbar">
@@ -46,11 +178,11 @@
       </div>
     </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Mobil Menüyü Aç" aria-expanded="false">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
   </div>
 </nav>
 
@@ -59,9 +191,9 @@
 <div class="mobile-menu">
   <div class="mobile-menu-header">
     <h3>Menü</h3>
-    <button class="mobile-close-btn" onclick="toggleMenu()">
-      <i class="fas fa-times"></i>
-    </button>
+    <button class="mobile-close-btn" onclick="toggleMenu()" aria-label="Menüyü Kapat">
+  <i class="fas fa-times"></i>
+</button>
   </div>
   <nav>
     <a href="#" onclick="navigateTo('home'); return false;">
