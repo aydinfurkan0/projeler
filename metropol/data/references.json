@@ -1,0 +1,52 @@
+{
+  "products": {
+    "product_001": {
+      "name": "Baymak Duotec Yoğuşmalı Kombi",
+      "description": "En yüksek verimlilik sınıfı ile enerji tasarrufu sağlayan yoğuşmalı kombi. Sessiz çalışma ve uzun ömür garantisi.",
+      "features": [
+        "A+ enerji sınıfı",
+        "Modülasyonlu yoğuşmalı teknoloji",
+        "5 yıl garanti",
+        "Sessiz çalışma (38 dB)",
+        "Akıllı oda termostatı uyumlu",
+        "Kolay kullanım paneli"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800",
+      "createdAt": {
+        "__timestamp__": "2024-11-15T10:00:00Z"
+      }
+    },
+    "product_002": {
+      "name": "Vaillant ecoTEC Plus Kombi",
+      "description": "Alman mühendisliği ile tasarlanmış premium segment yoğuşmalı kombi. Maksimum konfor ve minimum tüketim.",
+      "features": [
+        "En yüksek verimlilik (%109)",
+        "Uzun ömürlü paslanmaz çelik eşanjör",
+        "7 yıl yedek parça garantisi",
+        "WiFi bağlantılı akıllı kontrol",
+        "Çevre dostu düşük emisyon",
+        "Geniş modülasyon aralığı"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800",
+      "createdAt": {
+        "__timestamp__": "2024-11-20T11:30:00Z"
+      }
+    },
+    "product_003": {
+      "name": "Buderus Logamax Plus GB072",
+      "description": "Premium kalite ve yüksek teknoloji bir arada. Endüstriyel seviyede dayanıklılık.",
+      "features": [
+        "Alüminyum-silisyum eşanjör",
+        "10 yıl korozyon garantisi",
+        "Otomatik hava tahliye sistemi",
+        "Geniş çalışma aralığı",
+        "Kompakt tasarım",
+        "Kolay montaj ve bakım"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800",
+      "createdAt": {
+        "__timestamp__": "2024-11-25T15:45:00Z"
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@
   <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/logo/favicon.ico" type="image/x-icon">
   
   <!-- ✅ KRİTİK CSS'İ HEAD'E AL (İlk görünen kısım için) -->
   <style>
@@ -144,48 +145,75 @@
   </script>
 </head>
   <body>
-    <!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-container">
-    <a href="#" class="logo" onclick="navigateTo('home')">
-      <img
-        src="img/logo/metropol-logo.png"
-        alt="Metropol Doğalgaz"
-        class="logo-img"
-      />
-    </a>
 
-    <div class="nav-center">
-      <div class="contact-buttons">
-        <a href="https://wa.me/903121234567"
-          class="contact-btn whatsapp-btn"
-          target="_blank">
-          <i class="fab fa-whatsapp"></i>
-          <span>WhatsApp</span>
+<!-- Navbar -->
+<nav class="navbar">
+  <!-- Üst Bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-left">
+        <a href="mailto:info@metropoldogalgaz.com" class="top-bar-link">
+          <i class="fas fa-envelope"></i>
+          <span>info@metropoldogalgaz.com</span>
         </a>
-        
-        <a href="https://www.instagram.com/metropol_dogalgaz/"
-          class="contact-btn instagram-btn"
-          target="_blank">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-        
-        <a href="tel:+903121234567" class="contact-btn phone-btn">
+        <a href="tel:+903121234567" class="top-bar-link">
           <i class="fas fa-phone"></i>
           <span>0312 123 45 67</span>
         </a>
       </div>
+      <div class="top-bar-right">
+        <a href="https://www.instagram.com/metropol_dogalgaz/" target="_blank" class="top-bar-social" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/903121234567" target="_blank" class="top-bar-social" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/metropoldogalgaz" target="_blank" class="top-bar-social" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ana Navbar -->
+  <div class="navbar-container">
+    <a href="#" class="logo" onclick="navigateTo('home')">
+      <img src="img/logo/metropol-logo.png" alt="Metropol Doğalgaz" class="logo-img" />
+    </a>
+
+    <div class="desktop-menu">
+      <a href="#" onclick="navigateTo('home'); return false;">ANA SAYFA</a>
+      
+      <div class="dropdown" style="display: flex !important;">
+        <a href="#" class="dropdown-toggle">
+          KURUMSAL <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" onclick="navigateTo('about'); return false;">
+            <i class="fas fa-info-circle"></i> Hakkımızda
+          </a>
+          <a href="#" onclick="navigateTo('partners'); return false;">
+            <i class="fas fa-handshake"></i> İş Ortakları
+          </a>
+          <a href="#" onclick="navigateTo('references'); return false;">
+            <i class="fas fa-star"></i> Referanslar
+          </a>
+        </div>
+      </div>
+
+      <a href="#" onclick="navigateTo('home'); setTimeout(() => smoothScroll('services'), 300); return false;">HİZMETLER</a>
+      <a href="#" onclick="navigateTo('projects'); return false;">PROJELER</a>
+      <a href="#" onclick="navigateTo('products'); return false;">ÜRÜNLER</a>
+      <a href="#" onclick="navigateTo('contact'); return false;">İLETİŞİM</a>
     </div>
 
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Mobil Menüyü Aç" aria-expanded="false">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Mobil Menüyü Aç">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
-
 <!-- Mobile Menu -->
 <div class="menu-overlay" onclick="toggleMenu()"></div>
 <div class="mobile-menu">
@@ -249,35 +277,235 @@
     <!-- Home Page -->
     <div id="homePage">
       <!-- Hero Section -->
-      <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
-          <source
-            src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div class="hero-overlay">
-          <div class="hero-content">
-            <h1>Doğalgaz Çözümlerinde Güvenilir İş Ortağınız</h1>
-            <p>
-              20 yılı aşkın tecrübemizle, profesyonel hizmet anlayışı ve yüksek
-              kalite standartlarıyla yanınızdayız
-            </p>
-            <a href="#" onclick="navigateTo('projects')" class="hero-btn">Projelerimizi İnceleyin</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Partners Section -->
-<section class="partners-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>İş Ortaklarımız</h2>
-      <p>Güvenilir markalarla çalışıyoruz</p>
+<section class="hero">
+  <!-- Slider Container -->
+  <div class="hero-slider">
+    <div class="hero-slide active">
+      <img src="img/havapompa.webp" alt="Mekanik Tesisat">
     </div>
-    <div class="partners-grid" id="partnersGrid"></div>
+    <div class="hero-slide">
+      <img src="img/havalnadirma-2.jpg" alt="Modern Ofis İklimlendirme">
+    </div>
+    <div class="hero-slide">
+      <img src="img/kazan.jpeg" alt="Endüstriyel Tesis">
+    </div>
+    <div class="hero-slide">
+      <img src="img/ısıpompasi.jpeg" alt="Modern Binalar">
+    </div>
+    <div class="hero-slide">
+      <img src="img/endüstri.jpeg" alt="Klima Sistemleri">
+    </div>
+  </div>
+  
+  <!-- Slider Navigation Arrows -->
+  <button class="slider-arrow prev-arrow" onclick="changeSlide(-1)" aria-label="Önceki Slayt">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="slider-arrow next-arrow" onclick="changeSlide(1)" aria-label="Sonraki Slayt">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+  
+  <!-- Slider Navigation Dots -->
+  <div class="slider-dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div>
+  
+  <!-- Hero Content (Butonlar) -->
+  <div class="hero-content">
+    <div class="hero-buttons-row">
+      <!-- Projelerimiz Butonu -->
+      <a href="#" onclick="navigateTo('projects')" class="hero-btn">
+        <i class="fas fa-project-diagram"></i>
+        <span>Projelerimiz</span>
+      </a>
+      
+      <!-- Telefon İkonu -->
+      <a href="tel:+903121234567" class="hero-icon-btn phone-icon" title="Hemen Ara">
+        <i class="fas fa-phone"></i>
+      </a>
+      
+      <!-- WhatsApp İkonu -->
+      <a href="https://wa.me/903121234567" class="hero-icon-btn whatsapp-icon" target="_blank" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
   </div>
 </section>
+
+
+<!-- Services -->
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Hizmetlerimiz</h2>
+      <p>
+        Mekanik tesisat sektöründe kapsamlı ve profesyonel çözümler sunuyoruz
+      </p>
+    </div>
+    <div class="services-grid">
+      
+      <!--yerden  Isıtma Sistemleri -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('img/fraenkische-yerden-isitma-sistemi.jpg');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">Yerden Isıtma Sistemleri</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">Isıtma Sistemleri</h3>
+              <p class="text">
+                Yerden ısıtma sistemlerinin kurulumu, bakımı ve modernizasyonu. 
+                Enerji verimliliği odaklı çözümlerimizle konforunuzu artırıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Endüstriyel Isıtma -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('/img/sicak-hava-ureticisi-Depolar-ve-Lojistik-Merkezleri.jpg');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">Endüstriyel Isıtma</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">Endüstriyel Isıtma</h3>
+              <p class="text">
+                Her mekan için uygun, enerji tasarruflu Endüstriyel Isıtma sistemleri kuruyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Havalandırma Sistemleri -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('img/havalnadirma-2.jpg');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">Havalandırma Sistemleri</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">Havalandırma Sistemleri</h3>
+              <p class="text">
+                Mekanik havalandırma, aspirasyon ve hava kalitesi sistemleri. 
+                Sağlıklı iç mekan hava kalitesi için profesyonel çözümler sunuyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kazan Dairesi -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('img/kazan-dairesi.webp');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">Kazan Dairesi</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">Kazan Dairesi</h3>
+              <p class="text">
+                Su tesisatı, atık su sistemleri, sıcak su santralleri ve pompa grupları. 
+                Hijyenik ve güvenli su sistemleri için kapsamlı Kazan Dairesi hizmeti veriyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VRF Klima Sistemleri -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('img/vrf-1.jpg');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">VRF Klima Sistemleri</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">VRF Klima Sistemleri</h3>
+              <p class="text">
+                Değişken soğutucu akışkanlı (VRF) klima sistemleri kurulumu ve bakımı. 
+                Büyük yapılar için enerji verimli, sessiz ve konforlu çözümler.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yangın Tesisat Sistemleri -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('img/yangin-tesisati-1.webp');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">Yangın Tesisat Sistemleri</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">Yangın Tesisat Sistemleri</h3>
+              <p class="text">
+                Sprinkler sistemleri, yangın dolabı, FM-200 ve hidrofor tesisatları. 
+                Can ve mal güvenliği için TSE standartlarına uygun yangın sistemleri.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Isı Pompası -->
+      <div class="service-card">
+        <div class="wrapper" style="background-image: url('img/ısı-pompasi.jpg');">
+          <div class="header">
+            <div class="service-date">
+              <h2 class="service-title-main">Isı Pompası</h2>
+            </div>
+          </div>
+          <div class="data">
+            <div class="content">
+              <h3 class="title">Isı Pompası</h3>
+              <p class="text">
+                Hava kaynaklı ve toprak kaynaklı ısı pompası sistemleri. 
+                Enerji verimliliği yüksek, çevre dostu ısıtma ve soğutma çözümleri sunuyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Service Modal -->
+<div class="service-modal" id="serviceModal" onclick="closeServiceModal()">
+  <div class="service-modal-content" onclick="event.stopPropagation()">
+    <div class="service-modal-header">
+      <button class="service-modal-close" onclick="closeServiceModal()">×</button>
+      <h2 id="serviceModalTitle"></h2>
+    </div>
+    <div class="service-modal-body">
+      <p id="serviceModalDescription"></p>
+    </div>
+  </div>
+</div>
 
 <!-- References Section -->
 <section class="references-section">
@@ -295,82 +523,16 @@
   </div>
 </section>
 
-      <!-- Services -->
-      <section id="services" class="services-section">
-        <div class="container">
-          <div class="section-header">
-            <h2>Hizmetlerimiz</h2>
-            <p>
-              Doğalgaz sektöründe kapsamlı ve profesyonel çözümler sunuyoruz
-            </p>
-          </div>
-          <div class="services-grid">
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-tools"></i>
-              </div>
-              <h3>Doğalgaz Tesisatı</h3>
-              <p>
-                Tüm türlerde doğalgaz tesisatı kurulumu, bakım ve onarım
-                hizmetleri sunuyoruz. TSE standartlarına uygun çalışmalarımızla
-                güvenliğiniz bizim önceliğimiz.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-building"></i>
-              </div>
-              <h3>Proje Yönetimi</h3>
-              <p>
-                A'dan Z'ye tüm doğalgaz projelerinizin profesyonel yönetimini
-                gerçekleştiriyoruz. Planlama, uygulama ve devreye alma
-                süreçlerinde yanınızdayız.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-fire"></i>
-              </div>
-              <h3>Kombi Montajı</h3>
-              <p>
-                Tüm markalarda kombi montajı, bakım ve periyodik kontrol
-                hizmetleri sağlıyoruz. Uzman kadromuzla verimliliğinizi
-                artırıyoruz.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-thermometer-half"></i>
-              </div>
-              <h3>Yerden Isıtma</h3>
-              <p>
-                Modern yerden ısıtma sistemlerinin kurulumu ve bakımını
-                profesyonelce yapıyoruz. Enerji tasarrufu için ideal çözümler.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-wrench"></i>
-              </div>
-              <h3>Bakım & Onarım</h3>
-              <p>
-                Düzenli bakım ve 7/24 acil onarım hizmetleriyle her zaman
-                yanınızdayız. Kesintisiz hizmet garantisi sunuyoruz.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fas fa-clipboard-check"></i>
-              </div>
-              <h3>Teknik Danışmanlık</h3>
-              <p>
-                Uzman kadromuzla teknik danışmanlık ve çözüm önerileri
-                sunuyoruz. Projeleriniz için en uygun çözümleri belirliyoruz.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- Partners Section -->
+<section class="partners-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>İş Ortaklarımız</h2>
+      <p>Güvenilir markalarla çalışıyoruz</p>
+    </div>
+    <div class="partners-grid" id="partnersGrid"></div>
+  </div>
+</section>
 
       <!-- About Preview Section -->
       <section class="about-preview">
@@ -467,7 +629,7 @@
               </div>
               <h3>Şirketimiz</h3>
               <p>
-                1989 yılında Mekanik Tesisat Sektöründe Mühendislik hizmetleri vermeye başladıktan sonra edindiğimiz deneyimleri değerlendirmek üzere 2011 yılında <b>METROPOL DOĞALGAZ LTD.ŞTİ.</b>’ni kurduk.  <br>
+                1989 yılında Mekanik Tesisat Sektöründe Mühendislik hizmetleri vermeye başladıktan sonra edindiğimiz deneyimleri değerlendirmek üzere 2011 yılında <b>METROPOL DOĞALGAZ LTD.ŞTİ.</b>'ni kurduk.  <br>
                 Firmamız kurulduğu günden bugüne kadar Mekanik Tesisat Sektörünün, satış, proje, taahhüt gibi alanlarında faaliyet göstermektedir. <br>
                 Sektörümüzün ciddi bir mühendislik bilgisi gerektirdiği, yüksek bir sorumluluk ve insanların yaşam kalitesini arttıran önemli 
                 bir alan olduğu bilinci ile çalışan firmamız, çalışmalarında sektörün lider markaları ile çözüm ortaklığı yaparak daima müşteri memnuniyetini ön plana almıştır.

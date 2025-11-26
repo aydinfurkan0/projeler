@@ -1459,3 +1459,129 @@ window.handleEditReferenceSubmit = async function (event) {
   loadProducts();
   loadPartners();
   loadReferences();
+
+
+  // Hero Slider - 5 slide için güncelleme
+let currentSlideIndex = 0;
+let slideInterval;
+
+function showSlide(index) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.dot');
+  
+  if (index >= slides.length) {
+    currentSlideIndex = 0;
+  } else if (index < 0) {
+    currentSlideIndex = slides.length - 1;
+  } else {
+    currentSlideIndex = index;
+  }
+  
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    dots[i].classList.remove('active');
+  });
+  
+  slides[currentSlideIndex].classList.add('active');
+  dots[currentSlideIndex].classList.add('active');
+}
+
+function nextSlide() {
+  showSlide(currentSlideIndex + 1);
+}
+
+function prevSlide() {
+  showSlide(currentSlideIndex - 1);
+}
+
+function changeSlide(direction) {
+  clearInterval(slideInterval);
+  if (direction === 1) {
+    nextSlide();
+  } else {
+    prevSlide();
+  }
+  startSlideShow();
+}
+
+function currentSlide(index) {
+  clearInterval(slideInterval);
+  showSlide(index);
+  startSlideShow();
+}
+
+function startSlideShow() {
+  slideInterval = setInterval(nextSlide, 5000);
+}
+
+// Sayfa yüklendiğinde slider'ı başlat
+window.addEventListener('load', () => {
+  startSlideShow();
+});
+
+// Mouse slider üzerine geldiğinde durdur
+document.querySelector('.hero-slider')?.addEventListener('mouseenter', () => {
+  clearInterval(slideInterval);
+});
+
+// Mouse slider'dan ayrıldığında devam ettir
+document.querySelector('.hero-slider')?.addEventListener('mouseleave', () => {
+  startSlideShow();
+});
+
+// Global fonksiyonlar
+window.currentSlide = currentSlide;
+window.changeSlide = changeSlide;
+
+
+// Mobil dropdown toggle
+window.toggleMobileDropdown = function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const toggle = event.currentTarget;
+  const menu = toggle.nextElementSibling;
+  
+  toggle.classList.toggle('active');
+  menu.classList.toggle('active');
+};
+
+// Service Modal Functions - MOBİLDE TIKLANINCA AÇILACAK
+const serviceData = {
+  'Isıtma Sistemleri': 'Kombi, kazan, radyatör ve yerden ısıtma sistemlerinin kurulumu, bakımı ve modernizasyonu. Enerji verimliliği odaklı çözümlerimizle konforunuzu artırıyoruz.',
+  'Soğutma Sistemleri': 'Split klima, VRV/VRF sistemleri ve merkezi soğutma çözümleri. Her mekan için uygun, enerji tasarruflu soğutma sistemleri kuruyoruz.',
+  'Havalandırma Sistemleri': 'Mekanik havalandırma, aspirasyon ve hava kalitesi sistemleri. Sağlıklı iç mekan hava kalitesi için profesyonel çözümler sunuyoruz.',
+  'Sıhhi Tesisat': 'Su tesisatı, atık su sistemleri, sıcak su santralleri ve pompa grupları. Hijyenik ve güvenli su sistemleri için kapsamlı hizmet veriyoruz.',
+  'VRF Klima Sistemleri': 'Değişken soğutucu akışkanlı (VRF) klima sistemleri kurulumu ve bakımı. Büyük yapılar için enerji verimli, sessiz ve konforlu çözümler.',
+  'Yangın Tesisat Sistemleri': 'Sprinkler sistemleri, yangın dolabı, FM-200 ve hidrofor tesisatları. Can ve mal güvenliği için TSE standartlarına uygun yangın sistemleri.',
+  'Doğalgaz Tesisatı': 'Doğalgaz iç tesisat, dış hat bağlantıları ve proje çizimleri. TSE belgeli ekibimizle güvenli doğalgaz sistemleri kuruyoruz.',
+  'İklimlendirme Hizmetleri': 'Kapsamlı HVAC çözümleri ve enerji yönetim sistemleri. Bina otomasyonu ile akıllı ve tasarruflu iklimlendirme sağlıyoruz.',
+  'Mekanik Tesisat Sistemleri': 'Endüstriyel ve ticari mekanik tesisat projeleri. A\'dan Z\'ye proje tasarımı, uygulama ve devreye alma hizmetleri sunuyoruz.',
+  'Basınçlı Hava Tesisatları': 'Endüstriyel kompresör sistemleri ve basınçlı hava dağıtım hatları. Üretim tesisleri için verimli ve güvenilir basınçlı hava çözümleri.'
+};
+
+window.openServiceModal = function(title) {
+  if (window.innerWidth <= 768) {
+    document.getElementById('serviceModalTitle').textContent = title;
+    document.getElementById('serviceModalDescription').textContent = serviceData[title] || 'Hizmet açıklaması yükleniyor...';
+    document.getElementById('serviceModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeServiceModal = function() {
+  document.getElementById('serviceModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+};
+
+setTimeout(() => {
+  document.querySelectorAll('.service-card').forEach(card => {
+    const titleElement = card.querySelector('.service-title-main');
+    if (titleElement) {
+      const title = titleElement.textContent;
+      card.addEventListener('click', function() {
+        openServiceModal(title);
+      });
+    }
+  });
+}, 1000);
