@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kariyer - Aldex Gayrimenkul İnşaat</title>
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2c2c2c;
+            --accent: #c9a961;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 0;
+        }
+
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-contact span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .page-header {
+            margin-top: 130px;
+            padding: 80px 40px;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .section {
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title .line {
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 20px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .job-card {
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .job-header {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .job-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .job-description {
+            margin-bottom: 20px;
+        }
+
+        .job-description p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .job-requirements {
+            margin-bottom: 20px;
+        }
+
+        .job-requirements h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .job-requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-requirements li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .job-requirements li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        .btn-apply {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-apply:hover {
+            background: #b39550;
+            transform: translateY(-2px);
+        }
+
+        .application-section {
+            background: var(--light);
+        }
+
+        .application-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 50px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--light);
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--accent);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            background: var(--light);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #b39550;
+        }
+
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .internship-section {
+            background: var(--white);
+        }
+
+        .internship-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .internship-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .internship-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+        }
+
+        .internship-card h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .internship-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* ADMIN MODAL */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        .admin-modal.active {
+            display: block;
+        }
+
+        .admin-content {
+            max-width: 1400px;
+            margin: 50px auto;
+            background: var(--white);
+            padding: 60px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .admin-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .internship-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        +90 312 123 45 67
+                    </span>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        info@aldexinsaat.com
+                    </span>
+                </div>
+                <div class="header-contact">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Pzt-Cuma: 08:00 - 18:00
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">ALDEX<span>.</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+                    <li><a href="projeler.html">Projeler</a></li>
+                    <li><a href="hakkimizda.html">Kurumsal</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Kariyer</h1>
+        <p>Aldex ailesine katılın, geleceği birlikte inşa edelim</p>
+    </div>
+
+    <!-- İŞ İLANLARI -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Açık Pozisyonlar</h2>
+                <div class="line"></div>
+                <p>Ekibimize katılmak için açık iş pozisyonlarımız</p>
+            </div>
+
+            <div class="jobs-grid">
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">İnşaat Mühendisi</h3>
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Ankara
+                            </div>
+                            <div class="job-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                                Tam Zamanlı
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description">
+                        <p>Ankara'daki büyük ölçekli konut projelerimizde görev alacak deneyimli inşaat mühendisi arıyoruz.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Aranan Nitelikler:</h4>
+                        <ul>
+                            <li>İnşaat Mühendisliği mezunu</li>
+                            <li>En az 3 yıl tecrübeli</li>
+                            <li>AutoCAD, MS Project bilgisi</li>
+                            <li>Şantiye yönetimi deneyimi</li>
+                        </ul>
+                    </div>
+                    <a href="#basvuru" class="btn-apply">Başvur</a>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Mimar</h3>
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Ankara
+                            </div>
+                            <div class="job-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                                Tam Zamanlı
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description">
+                        <p>Yenilikçi konut ve ticari projelerimizde görev alacak yaratıcı mimar arıyoruz.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Aranan Nitelikler:</h4>
+                        <ul>
+                            <li>Mimarlık mezunu</li>
+                            <li>2-5 yıl tecrübeli</li>
+                            <li>AutoCAD, SketchUp, 3ds Max bilgisi</li>
+                            <li>Portföy sahibi</li>
+                        </ul>
+                    </div>
+                    <a href="#basvuru" class="btn-apply">Başvur</a>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3 class="job-title">Proje Yöneticisi</h3>
+                        <div class="job-meta">
+                            <div class="job-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Ankara
+                            </div>
+                            <div class="job-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                                Tam Zamanlı
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-description">
+                        <p>Büyük ölçekli projelerimizi yönetecek deneyimli proje yöneticisi arıyoruz.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Aranan Nitelikler:</h4>
+                        <ul>
+                            <li>Mühendislik veya İşletme mezunu</li>
+                            <li>5+ yıl proje yönetimi deneyimi</li>
+                            <li>PMP sertifikası tercih sebebi</li>
+                            <li>Liderlik becerileri</li>
+                        </ul>
+                    </div>
+                    <a href="#basvuru" class="btn-apply">Başvur</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ONLINE BAŞVURU FORMU -->
+    <section class="section application-section" id="basvuru">
+        <div class="container">
+            <div class="section-title">
+                <h2>Online Başvuru</h2>
+                <div class="line"></div>
+                <p>CV'nizi gönderin, ekibimize katılın</p>
+            </div>
+
+            <div class="application-form">
+                <div class="success-message" id="successMessage">
+                    Başvurunuz başarıyla alındı! En kısa sürede sizinle iletişime geçeceğiz.
+                </div>
+
+                <form id="applicationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ad Soyad *</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-posta *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Telefon *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Başvurulan Pozisyon *</label>
+                            <select id="position" required>
+                                <option value="">Seçiniz</option>
+                                <option value="insaat-muhendisi">İnşaat Mühendisi</option>
+                                <option value="mimar">Mimar</option>
+                                <option value="proje-yoneticisi">Proje Yöneticisi</option>
+                                <option value="saha-sefi">Şaha Şefi</option>
+                                <option value="teknik-ressam">Teknik Ressam</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Özgeçmiş (CV) Linki</label>
+                        <input type="url" id="cvLink" placeholder="Google Drive, Dropbox vb. link">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kendinizi Tanıtın</label>
+                        <textarea id="introduction" placeholder="Deneyimleriniz, becerileriniz ve neden Aldex'te çalışmak istediğinizi yazın..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Başvuruyu Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAJ PROGRAMI -->
+    <section class="section internship-section" id="staj">
+        <div class="container">
+            <div class="section-title">
+                <h2>Staj Programı</h2>
+                <div class="line"></div>
+                <p>Üniversite öğrencileri için staj imkanları</p>
+            </div>
+
+            <div class="internship-grid">
+                <div class="internship-card">
+                    <div class="internship-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <h4>Eğitim ve Gelişim</h4>
+                    <p>Alanında uzman mühendis ve mimarlardan mentorluk alın. Gerçek projelerde deneyim kazanın.</p>
+                    <a href="#basvuru" class="btn-apply">Staj Başvurusu</a>
+                </div>
+
+                <div class="internship-card">
+                    <div class="internship-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h4>Profesyonel Ekip</h4>
+                    <p>Sektörün önde gelen profesyonelleriyle çalışma fırsatı. Networking imkanları.</p>
+                    <a href="#basvuru" class="btn-apply">Staj Başvurusu</a>
+                </div>
+
+                <div class="internship-card">
+                    <div class="internship-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h4>Kariyer Fırsatı</h4>
+                    <p>Başarılı stajyerlerimize mezuniyet sonrası iş imkanı. Kariyer planlaması desteği.</p>
+                    <a href="#basvuru" class="btn-apply">Staj Başvurusu</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary);">Staj Başvuru Koşulları</h3>
+                <div style="text-align: left; color: var(--text-light); font-size: 16px; line-height: 1.8;">
+                    <p style="margin-bottom: 15px;">• İnşaat Mühendisliği, Mimarlık veya ilgili bölümlerde okuyan öğrenciler</p>
+                    <p style="margin-bottom: 15px;">• En az 20 iş günü staj yapabilecek öğrenciler</p>
+                    <p style="margin-bottom: 15px;">• AutoCAD temel bilgisi tercih sebebidir</p>
+                    <p style="margin-bottom: 15px;">• Takım çalışmasına yatkın, öğrenmeye açık</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 id="adminTrigger" style="cursor: pointer; user-select: none;">ALDEX<span style="color: #c9a961;">.</span></h3>
+                <p>Ankara'nın öncü gayrimenkul ve inşaat şirketi olarak 25 yılı aşkın süredir kaliteli ve güvenilir projeler üretiyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+                    <li><a href="projeler.html">Projeler</a></li>
+                    <li><a href="hakkimizda.html">Kurumsal</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Projeler</h3>
+                <ul class="footer-links">
+                    <li><a href="projeler.html?filter=tamamlandi">Tamamlanan Projeler</a></li>
+                    <li><a href="projeler.html?filter=devam">Devam Eden Projeler</a></li>
+                    <li><a href="projeler.html?filter=yapilacan">Yapılacak Projeler</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <ul class="footer-links">
+                    <li>Kızılırmak Mahallesi, Dumlupınar Bulvarı No:255, Çankaya/Ankara</li>
+                    <li>+90 312 123 45 67</li>
+                    <li>info@aldexinsaat.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aldex Gayrimenkul İnşaat. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Admin Panel Modal -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2>Admin Paneli</h2>
+                <button class="btn" onclick="closeAdminPanel()">Çıkış</button>
+            </div>
+            <div id="adminArea"></div>
+        </div>
+    </div>
+
+    <script>
+        let applications = [];
+        let contacts = [];
+        let projects = [];
+        let isLoggedIn = false;
+
+        // Storage Functions
+        async function loadApplicationsData() {
+            try {
+                const result = await window.storage.get('aldex-applications', false);
+                if (result && result.value) {
+                    applications = JSON.parse(result.value);
+                }
+            } catch (error) {
+                console.error('Error loading applications:', error);
+                applications = [];
+            }
+        }
+
+        async function saveApplications() {
+            try {
+                await window.storage.set('aldex-applications', JSON.stringify(applications), false);
+            } catch (error) {
+                console.error('Error saving applications:', error);
+            }
+        }
+
+        async function loadContactsData() {
+            try {
+                const result = await window.storage.get('aldex-contacts', false);
+                if (result && result.value) {
+                    contacts = JSON.parse(result.value);
+                }
+            } catch (error) {
+                console.error('Error loading contacts:', error);
+                contacts = [];
+            }
+        }
+
+        async function loadProjectsData() {
+            try {
+                const result = await window.storage.get('aldex-projects', false);
+                if (result && result.value) {
+                    projects = JSON.parse(result.value);
+                }
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                projects = [];
+            }
+        }
+
+        // Application Form
+        document.getElementById('applicationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const application = {
+                id: Date.now(),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                position: document.getElementById('position').value,
+                cvLink: document.getElementById('cvLink').value,
+                introduction: document.getElementById('introduction').value,
+                date: new Date().toISOString()
+            };
+
+            applications.push(application);
+            await saveApplications();
+
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+
+            document.getElementById('applicationForm').reset();
+
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Admin Panel Functions
+        function showAdminLogin() {
+            const adminArea = document.getElementById('adminArea');
+            adminArea.innerHTML = `
+                <div class="login-form">
+                    <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;">Admin Girişi</h3>
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" id="adminUsername" placeholder="Kullanıcı adınızı girin">
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="password" id="adminPassword" placeholder="Şifrenizi girin">
+                    </div>
+                    <button class="btn btn-primary" onclick="login()" style="width: 100%; background: var(--accent); color: white; border-color: var(--accent);">Giriş Yap</button>
+                </div>
+            `;
+        }
+
+        function login() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            if (username === 'admin' && password === 'aldex2024') {
+                isLoggedIn = true;
+                showAdminPanel();
+            } else {
+                alert('Kullanıcı adı veya şifre hatalı!');
+            }
+        }
+
+        function showAdminPanel() {
+            const adminArea = document.getElementById('adminArea');
+            adminArea.innerHTML = `
+                <div style="display: flex; gap: 20px; margin-bottom: 40px;">
+                    <button class="btn" onclick="window.location.href='iletisim.html'" style="background: var(--accent); color: white; border-color: var(--accent);">İletişim Formu Başvuruları</button>
+                    <button class="btn" onclick="window.location.href='projeler.html'" style="background: var(--accent); color: white; border-color: var(--accent);">Proje Yönetimi</button>
+                </div>
+                <h3 style="margin-bottom: 30px;">Kariyer Başvuruları</h3>
+                <div id="applicationsContent"></div>
+            `;
+            showApplicationsList();
+        }
+
+        function showApplicationsList() {
+            const content = document.getElementById('applicationsContent');
+            let html = '';
+            
+            if (applications.length === 0) {
+                html = '<p style="text-align: center; padding: 40px; color: var(--text-light);">Henüz başvuru gelmemiş</p>';
+            } else {
+                html = `
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: var(--primary); color: white;">
+                                <th style="padding: 15px; text-align: left;">Ad Soyad</th>
+                                <th style="padding: 15px; text-align: left;">E-posta</th>
+                                <th style="padding: 15px; text-align: left;">Telefon</th>
+                                <th style="padding: 15px; text-align: left;">Pozisyon</th>
+                                <th style="padding: 15px; text-align: left;">CV</th>
+                                <th style="padding: 15px; text-align: left;">Tarih</th>
+                                <th style="padding: 15px; text-align: left;">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                applications.forEach((app, index) => {
+                    const positionNames = {
+                        'insaat-muhendisi': 'İnşaat Mühendisi',
+                        'mimar': 'Mimar',
+                        'proje-yoneticisi': 'Proje Yöneticisi',
+                        'saha-sefi': 'Şaha Şefi',
+                        'teknik-ressam': 'Teknik Ressam',
+                        'diger': 'Diğer'
+                    };
+                    
+                    html += `
+                        <tr style="border-bottom: 1px solid var(--light);">
+                            <td style="padding: 15px;">${app.fullName}</td>
+                            <td style="padding: 15px;">${app.email}</td>
+                            <td style="padding: 15px;">${app.phone}</td>
+                            <td style="padding: 15px;">${positionNames[app.position] || app.position}</td>
+                            <td style="padding: 15px;">${app.cvLink ? `<a href="${app.cvLink}" target="_blank" style="color: var(--accent);">CV Linki</a>` : '-'}</td>
+                            <td style="padding: 15px;">${new Date(app.date).toLocaleDateString('tr-TR')}</td>
+                            <td style="padding: 15px;">
+                                <button onclick="viewApplication(${index})" style="padding: 8px 15px; background: #3498db; color: white; border: none; cursor: pointer; margin-right: 5px;">Detay</button>
+                                <button onclick="deleteApplication(${index})" style="padding: 8px 15px; background: #e74c3c; color: white; border: none; cursor: pointer;">Sil</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</tbody></table>';
+            }
+            
+            content.innerHTML = html;
+        }
+
+        function viewApplication(index) {
+            const app = applications[index];
+            const positionNames = {
+                'insaat-muhendisi': 'İnşaat Mühendisi',
+                'mimar': 'Mimar',
+                'proje-yoneticisi': 'Proje Yöneticisi',
+                'saha-sefi': 'Şaha Şefi',
+                'teknik-ressam': 'Teknik Ressam',
+                'diger': 'Diğer'
+            };
+            
+            alert(`
+Ad Soyad: ${app.fullName}
+E-posta: ${app.email}
+Telefon: ${app.phone}
+Pozisyon: ${positionNames[app.position] || app.position}
+CV Linki: ${app.cvLink || 'Yok'}
+
+Tanıtım:
+${app.introduction}
+
+Başvuru Tarihi: ${new Date(app.date).toLocaleString('tr-TR')}
+            `);
+        }
+
+        async function deleteApplication(index) {
+            if (confirm('Bu başvuruyu silmek istediğinize emin misiniz?')) {
+                applications.splice(index, 1);
+                await saveApplications();
+                showApplicationsList();
+            }
+        }
+
+        function closeAdminPanel() {
+            const adminModal = document.getElementById('adminModal');
+            adminModal.classList.remove('active');
+        }
+
+        // Admin Panel Trigger - TEK TIKLA AÇILIR
+        function setupAdminTrigger() {
+            const adminTrigger = document.getElementById('adminTrigger');
+            
+            if (!adminTrigger) {
+                console.error('Admin trigger bulunamadı!');
+                return;
+            }
+
+            adminTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const adminModal = document.getElementById('adminModal');
+                adminModal.classList.add('active');
+                
+                if (isLoggedIn) {
+                    showAdminPanel();
+                } else {
+                    showAdminLogin();
+                }
+            });
+            
+            adminTrigger.style.userSelect = 'none';
+            adminTrigger.style.cursor = 'pointer';
+        }
+
+        // Initialize
+        async function init() {
+            await loadApplicationsData();
+            await loadContactsData();
+            await loadProjectsData();
+            
+            setupAdminTrigger();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+    <script src="mobile.js"></script>
+</body>
+</html>
