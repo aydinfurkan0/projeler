@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referanslarımız - Aldex Gayrimenkul İnşaat</title>
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2c2c2c;
+            --accent: #c9a961;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 0;
+        }
+
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-contact span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .page-header {
+            margin-top: 130px;
+            padding: 80px 40px;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .section {
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title .line {
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 20px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .stats-section {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 56px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .featured-projects {
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--white);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            height: 300px;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .award-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(201, 169, 97, 0.4);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .project-year {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-awards {
+            padding: 15px;
+            background: var(--light);
+            margin-bottom: 20px;
+        }
+
+        .project-awards h4 {
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-awards ul {
+            list-style: none;
+        }
+
+        .project-awards li {
+            font-size: 13px;
+            color: var(--text-light);
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .project-awards li::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+        }
+
+        .clients-section {
+            background: var(--light);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .client-card {
+            background: var(--white);
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .client-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--light);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .client-card h4 {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .client-card p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .testimonials-section {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 40px;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 60px;
+            color: var(--accent);
+            opacity: 0.2;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .author-info h5 {
+            font-size: 16px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        +90 312 123 45 67
+                    </span>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        info@aldexinsaat.com
+                    </span>
+                </div>
+                <div class="header-contact">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Pzt-Cuma: 08:00 - 18:00
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">ALDEX<span>.</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+                    <li><a href="projeler.html">Projeler</a></li>
+                    <li><a href="hakkimizda.html">Kurumsal</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Referanslarımız</h1>
+        <p>25 yıllık deneyim ve başarılı projeler</p>
+    </div>
+
+    <!-- İSTATİSTİKLER -->
+    <section class="section stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Tamamlanan Proje</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5000+</h3>
+                    <p>Mutlu Müşteri</p>
+                </div>
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p>Yıllık Deneyim</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15</h3>
+                    <p>Ulusal Ödül</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖDÜLLÜ PROJELER -->
+    <section class="section featured-projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ödüllü Projelerimiz</h2>
+                <div class="line"></div>
+                <p>Ulusal ve uluslararası ödüller kazanan projelerimiz</p>
+            </div>
+
+            <div class="projects-grid" id="awardedProjects">
+                <!-- Dinamik olarak yüklenecek -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MÜŞTERİ FİRMALAR -->
+    <section class="section clients-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>İş Ortaklarımız</h2>
+                <div class="line"></div>
+                <p>Güvenilir iş ortaklıkları</p>
+            </div>
+
+            <div class="clients-grid">
+                <div class="client-card">
+                    <div class="client-logo">TC</div>
+                    <h4>T.C. Çevre ve Şehircilik Bakanlığı</h4>
+                    <p>Kamu Projeleri</p>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo">AŞ</div>
+                    <h4>Ankara Büyükşehir Belediyesi</h4>
+                    <p>Kentsel Dönüşüm</p>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo">TOKİ</div>
+                    <h4>TOKİ</h4>
+                    <p>Toplu Konut Projeleri</p>
+                </div>
+                <div class="client-card">
+                    <div class="client-logo">ÖS</div>
+                    <h4>Özel Sektör Yatırımcılar</h4>
+                    <p>Ticari Projeler</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÜŞTERİ GÖRÜŞLERİ -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Müşteri Görüşleri</h2>
+                <div class="line"></div>
+                <p>Müşterilerimizin deneyimleri</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        Aldex ile çalışmak gerçekten harikaydı. Projemiz zamanında ve kaliteli bir şekilde tamamlandı. 
+                        Profesyonel ekip ve titiz çalışma için teşekkür ederiz.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AY</div>
+                        <div class="author-info">
+                            <h5>Ahmet Yılmaz</h5>
+                            <p>Çankaya Rezidans Sahibi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        25 yıllık tecrübelerine güvenerek iş merkezi projemizi Aldex'e emanet ettik. Sonuçtan son derece memnunuz. 
+                        Kesinlikle tavsiye ederim.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h5>Mehmet Kaya</h5>
+                            <p>Yatırımcı</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        Hayalimizdeki evi Aldex ile gerçeğe dönüştürdük. Her aşamada bilgilendirildik ve 
+                        isteklerimiz dikkate alındı. Harika bir deneyimdi.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AŞ</div>
+                        <div class="author-info">
+                            <h5>Ayşe Şahin</h5>
+                            <p>Ev Sahibi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 id="adminTrigger" style="cursor: pointer; user-select: none;">ALDEX<span style="color: #c9a961;">.</span></h3>
+                <p>Ankara'nın öncü gayrimenkul ve inşaat şirketi olarak 25 yılı aşkın süredir kaliteli ve güvenilir projeler üretiyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+                    <li><a href="projeler.html">Projeler</a></li>
+                    <li><a href="hakkimizda.html">Kurumsal</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Projeler</h3>
+                <ul class="footer-links">
+                    <li><a href="projeler.html?filter=tamamlandi">Tamamlanan Projeler</a></li>
+                    <li><a href="projeler.html?filter=devam">Devam Eden Projeler</a></li>
+                    <li><a href="projeler.html?filter=yapilacan">Yapılacak Projeler</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <ul class="footer-links">
+                    <li>Kızılırmak Mahallesi, Dumlupınar Bulvarı No:255, Çankaya/Ankara</li>
+                    <li>+90 312 123 45 67</li>
+                    <li>info@aldexinsaat.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aldex Gayrimenkul İnşaat. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        let projects = [];
+
+        async function loadProjectsData() {
+            try {
+                const result = await window.storage.get('aldex-projects', false);
+                if (result && result.value) {
+                    projects = JSON.parse(result.value);
+                }
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                projects = [];
+            }
+        }
+
+        function loadAwardedProjects() {
+            const container = document.getElementById('awardedProjects');
+            
+            // Sadece ödüllü projeleri filtrele (awards alanı olan)
+            const awardedProjects = projects.filter(p => p.awards && p.awards.length > 0);
+            
+            if (awardedProjects.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 60px; color: var(--text-light);">Henüz ödüllü proje eklenmemiş</p>';
+                return;
+            }
+
+            container.innerHTML = awardedProjects.map(project => `
+                <div class="project-card">
+                    <div class="project-image">
+                        ${project.mainImage ? `<img src="${project.mainImage}" alt="${project.name}">` : ''}
+                        <div class="award-badge">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-year">${project.year || '2023'}</div>
+                        <h3>${project.name}</h3>
+                        <div class="project-location">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            ${project.location}
+                        </div>
+                        <p>${project.shortDesc}</p>
+                        ${project.awards && project.awards.length > 0 ? `
+                            <div class="project-awards">
+                                <h4>Ödüller</h4>
+                                <ul>
+                                    ${project.awards.map(award => `<li>${award}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Admin Trigger
+        function setupAdminTrigger() {
+            const adminTrigger = document.getElementById('adminTrigger');
+            if (adminTrigger) {
+                adminTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = 'projeler.html';
+                });
+                adminTrigger.style.userSelect = 'none';
+                adminTrigger.style.cursor = 'pointer';
+            }
+        }
+
+        // Initialize
+        async function init() {
+            await loadProjectsData();
+            loadAwardedProjects();
+            setupAdminTrigger();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+    <script src="mobile.js"></script>
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Türleri - Aldex Gayrimenkul İnşaat</title>
+    <link rel="stylesheet" href="mobile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2c2c2c;
+            --accent: #c9a961;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 0;
+        }
+
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header-contact span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .page-header {
+            margin-top: 130px;
+            padding: 80px 40px;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .filter-tabs {
+            background: var(--white);
+            padding: 30px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 130px;
+            z-index: 999;
+        }
+
+        .filter-tabs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 12px 25px;
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--white);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            height: 300px;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-type-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 20px;
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-devam {
+            background: #3498db;
+        }
+
+        .status-tamamlandi {
+            background: #27ae60;
+        }
+
+        .status-yapilacan {
+            background: #e67e22;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .project-details {
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light);
+        }
+
+        .project-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 40px;
+            color: var(--text-light);
+        }
+
+        .empty-state svg {
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-tabs-container {
+                flex-direction: column;
+            }
+
+            .filter-tab {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        +90 312 123 45 67
+                    </span>
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        info@aldexinsaat.com
+                    </span>
+                </div>
+                <div class="header-contact">
+                    <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Pzt-Cuma: 08:00 - 18:00
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'">ALDEX<span>.</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+                    <li><a href="projeler.html">Projeler</a></li>
+                    <li><a href="hakkimizda.html">Kurumsal</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Proje Türleri</h1>
+        <p>Farklı kategorilerde uzman çözümler</p>
+    </div>
+
+    <div class="filter-tabs">
+        <div class="filter-tabs-container">
+            <button class="filter-tab active" data-type="all">Tümü</button>
+            <button class="filter-tab" data-type="konut">Konut</button>
+            <button class="filter-tab" data-type="toplu-konut">Toplu Konut</button>
+            <button class="filter-tab" data-type="is-merkezi">İş Merkezi</button>
+            <button class="filter-tab" data-type="avm">AVM</button>
+            <button class="filter-tab" data-type="otel">Otel</button>
+            <button class="filter-tab" data-type="hali-saha">Halı Saha</button>
+            <button class="filter-tab" data-type="sosyal-tesis">Sosyal Tesis</button>
+            <button class="filter-tab" data-type="villa">Villa</button>
+            <button class="filter-tab" data-type="ofis">Ofis</button>
+            <button class="filter-tab" data-type="okul">Okul</button>
+            <button class="filter-tab" data-type="hastane">Hastane</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="projects-grid" id="projectsGrid"></div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <h3>Bu kategoride proje bulunmuyor</h3>
+            <p>Başka kategorilere göz atabilirsiniz</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 id="adminTrigger" style="cursor: pointer; user-select: none;">ALDEX<span style="color: #c9a961;">.</span></h3>
+                <p>Ankara'nın öncü gayrimenkul ve inşaat şirketi olarak 25 yılı aşkın süredir kaliteli ve güvenilir projeler üretiyoruz.</p>
+                <div class="social-links">
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hızlı Linkler</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler">Hizmetler</a></li>
+                    <li><a href="projeler.html">Projeler</a></li>
+                    <li><a href="hakkimizda.html">Kurumsal</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Projeler</h3>
+                <ul class="footer-links">
+                    <li><a href="projeler.html?filter=tamamlandi">Tamamlanan Projeler</a></li>
+                    <li><a href="projeler.html?filter=devam">Devam Eden Projeler</a></li>
+                    <li><a href="projeler.html?filter=yapilacan">Yapılacak Projeler</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <ul class="footer-links">
+                    <li>Kızılırmak Mahallesi, Dumlupınar Bulvarı No:255, Çankaya/Ankara</li>
+                    <li>+90 312 123 45 67</li>
+                    <li>info@aldexinsaat.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aldex Gayrimenkul İnşaat. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        let projects = [];
+        let currentType = 'all';
+
+        async function loadProjectsData() {
+            try {
+                const result = await window.storage.get('aldex-projects', false);
+                if (result && result.value) {
+                    projects = JSON.parse(result.value);
+                }
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                projects = [];
+            }
+        }
+
+        function getTypeText(type) {
+            const typeMap = {
+                'konut': 'Konut',
+                'toplu-konut': 'Toplu Konut',
+                'is-merkezi': 'İş Merkezi',
+                'avm': 'AVM',
+                'otel': 'Otel',
+                'hali-saha': 'Halı Saha',
+                'sosyal-tesis': 'Sosyal Tesis',
+                'villa': 'Villa',
+                'ofis': 'Ofis',
+                'okul': 'Okul',
+                'hastane': 'Hastane'
+            };
+            return typeMap[type] || type;
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'yapilacan': 'Yapılacak',
+                'devam': 'Devam Ediyor',
+                'tamamlandi': 'Tamamlandı'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getStatusClass(status) {
+            return `status-${status}`;
+        }
+
+        function loadProjects() {
+            const grid = document.getElementById('projectsGrid');
+            const emptyState = document.getElementById('emptyState');
+            
+            let filteredProjects = projects;
+            if (currentType !== 'all') {
+                filteredProjects = projects.filter(p => p.type === currentType);
+            }
+
+            if (filteredProjects.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            
+            grid.innerHTML = filteredProjects.map(project => `
+                <div class="project-card" onclick="window.location.href='projeler.html'">
+                    <div class="project-image">
+                        ${project.mainImage ? `<img src="${project.mainImage}" alt="${project.name}">` : ''}
+                        <div class="project-type-badge">${getTypeText(project.type)}</div>
+                        <div class="project-status ${getStatusClass(project.status)}">
+                            ${getStatusText(project.status)}
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>${project.name}</h3>
+                        <div class="project-location">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            ${project.location}
+                        </div>
+                        <p>${project.shortDesc}</p>
+                        <div class="project-details">
+                            <div class="project-detail-item">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18"/>
+                                </svg>
+                                ${project.area} m²
+                            </div>
+                            <div class="project-detail-item">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                </svg>
+                                ${project.floors} Kat
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterByType(type) {
+            currentType = type;
+            
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('data-type') === type) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            loadProjects();
+        }
+
+        // Filter Tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                filterByType(this.getAttribute('data-type'));
+            });
+        });
+
+        // URL Parameter Handling
+        const urlParams = new URLSearchParams(window.location.search);
+        const typeParam = urlParams.get('type');
+        if (typeParam) {
+            filterByType(typeParam);
+        }
+
+        // Admin Trigger
+        function setupAdminTrigger() {
+            const adminTrigger = document.getElementById('adminTrigger');
+            if (adminTrigger) {
+                adminTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = 'projeler.html';
+                });
+                adminTrigger.style.userSelect = 'none';
+                adminTrigger.style.cursor = 'pointer';
+            }
+        }
+
+        // Initialize
+        async function init() {
+            await loadProjectsData();
+            loadProjects();
+            setupAdminTrigger();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+    <script src="mobile.js"></script>
+</body>
+</html>
