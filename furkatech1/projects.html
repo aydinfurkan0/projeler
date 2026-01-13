@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerimiz - Digital Agency</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+    
+    <style>
+        @font-face {
+            src: url("https://fonts.cdnfonts.com/css/pp-neue-montreal") format("woff2");
+            font-family: "PP Neue Montreal", sans-serif;
+            font-weight: 400;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: "PP Neue Montreal", "Montserrat", sans-serif;
+            background-color: #f5f3ee;
+            color: #000;
+            padding: 1rem;
+            user-select: none;
+        }
+
+        /* Custom Cursor - SADECE DESKTOP'TA */
+        body:not(.touch-device) {
+            cursor: none !important;
+        }
+
+        body:not(.touch-device) * {
+            cursor: none !important;
+        }
+
+        /* Touch device'larda normal cursor */
+        body.touch-device,
+        body.touch-device * {
+            cursor: auto !important;
+        }
+
+        /* Custom Cursor - KIRMIZI RENK! */
+        .cursor {
+            width: var(--size, 15px);
+            height: var(--size, 15px);
+            border-radius: 50%;
+            background: #FF0000;  /* KIRMIZI! */
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            transition: transform 0.2s ease;
+            display: block;
+        }
+
+        .cursor-f {
+            width: var(--size, 45px);
+            height: var(--size, 45px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            border: 2px solid #FF0000;  /* KIRMIZI BORDER! */
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            z-index: 9998;
+            display: block;
+        }
+
+        /* Touch device'larda cursor'ları gizle */
+        body.touch-device .cursor,
+        body.touch-device .cursor-f {
+            display: none !important;
+        }
+
+        /* Navigation */
+        .back-home-nav {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+        }
+
+        .back-home-btn {
+            padding: 12px 24px;
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid #000;
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-home-btn:hover {
+            background: #000;
+            color: #f5f3ee;
+        }
+
+        /* Projects Component */
+        .projects-component {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            perspective: 1000px;
+            padding-top: 80px;
+        }
+
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+            justify-content: center;
+            position: relative;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            transform-style: preserve-3d;
+        }
+
+        .projects-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-item {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .project-title-container {
+            position: relative;
+            display: inline-block;
+            transform-style: preserve-3d;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin: 0.5rem 0;
+        }
+
+        .hover-indicator {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 200;
+        }
+
+        .hover-indicator.left {
+            left: -20px;
+        }
+
+        .hover-indicator.right {
+            right: -20px;
+        }
+
+        .project-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding: 0 1rem;
+            margin: 0;
+            pointer-events: none;
+            transform-style: preserve-3d;
+        }
+
+        .project-details {
+            width: 25%;
+            text-align: left;
+            font-size: 0.8rem;
+            letter-spacing: 0.05rem;
+            font-weight: 500;
+        }
+
+        .project-details .line-wrapper {
+            overflow: hidden;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-details.right {
+            text-align: right;
+        }
+
+        .detail-label {
+            margin-bottom: 0.25rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.05rem;
+        }
+
+        .detail-year {
+            margin-top: 0.5rem;
+        }
+
+        .project-image {
+            width: 40%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Responsive */
+        @media (max-height: 700px) {
+            .project-title {
+                font-size: 2.5rem;
+            }
+            .project-item {
+                margin-bottom: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .back-home-nav {
+                top: 15px;
+                left: 15px;
+            }
+
+            .back-home-btn {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+
+            .projects-component {
+                padding-top: 60px;
+            }
+
+            .project-content {
+                flex-direction: column;
+            }
+
+            .project-details {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .project-details.right {
+                text-align: center;
+                margin-top: 1rem;
+                margin-bottom: 0;
+            }
+
+            .project-image {
+                width: 80%;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-f"></div>
+
+    <!-- Navigation -->
+    <nav class="back-home-nav">
+        <a href="index.html" class="back-home-btn">← Ana Sayfa</a>
+    </nav>
+
+    <!-- Projects Component -->
+    <div class="projects-component">
+        <div class="projects-list">
+            <div class="project-item" data-index="0">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">E-TİCARET PLATFORMU</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">TAM ENTEGRASYON</p>
+                        <p class="detail-label">ÖDEME SİSTEMLERİ</p>
+                        <p class="detail-label">MOBİL UYUMLU</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg" alt="E-Ticaret Projesi">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">MODERN TASARIM</p>
+                        <p class="detail-label">SEO OPTİMİZE</p>
+                        <p class="detail-label">HIZLI PERFORMANS</p>
+                        <p class="detail-year">/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="1">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">KURUMSAL WEB SİTESİ</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">PROFESYONEL TASARIM</p>
+                        <p class="detail-label">İÇERİK YÖNETİMİ</p>
+                        <p class="detail-label">ÇOK DİLLİ DESTEK</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg" alt="Kurumsal Web Sitesi">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">RESPONSIVE YAPI</p>
+                        <p class="detail-label">GÜVENLİ ALTYAPI</p>
+                        <p class="detail-label">HIZLI YÜKLEME</p>
+                        <p class="detail-year">/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="2">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">MOBİL UYGULAMA</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">İOS & ANDROID</p>
+                        <p class="detail-label">NATIVE PERFORMANS</p>
+                        <p class="detail-label">BULUT ENTEGRASYONU</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg" alt="Mobil Uygulama">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">KULLANICI DOSTU</p>
+                        <p class="detail-label">PUSH BİLDİRİMLER</p>
+                        <p class="detail-label">OFFLİNE DESTEK</p>
+                        <p class="detail-year">/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="3">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">MARKA KİMLİĞİ</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">LOGO TASARIMI</p>
+                        <p class="detail-label">RENK PALETİ</p>
+                        <p class="detail-label">TİPOGRAFİ</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/1770809/pexels-photo-1770809.jpeg" alt="Marka Kimliği">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">BRAND GUIDE</p>
+                        <p class="detail-label">BASKI TASARIMLARI</p>
+                        <p class="detail-label">DİJİTAL VARLIKLAR</p>
+                        <p class="detail-year">/2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="4">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">UI/UX TASARIM</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">KULLANICI ARAŞTIRMASI</p>
+                        <p class="detail-label">WİREFRAME</p>
+                        <p class="detail-label">PROTOTIP</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/2002719/pexels-photo-2002719.jpeg" alt="UI/UX Tasarım">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">GÖRSEL TASARIM</p>
+                        <p class="detail-label">ETKİLEŞİM TASARIMI</p>
+                        <p class="detail-label">KULLANICI TESTİ</p>
+                        <p class="detail-year">/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="5">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">DİJİTAL PAZARLAMA</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">SEO STRATEJİSİ</p>
+                        <p class="detail-label">İÇERİK YÖNETİMİ</p>
+                        <p class="detail-label">SOSYAL MEDYA</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg" alt="Dijital Pazarlama">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">GOOGLE ADS</p>
+                        <p class="detail-label">ANALİTİK RAPORLAMA</p>
+                        <p class="detail-label">DÖNÜŞÜM OPTİMİZASYONU</p>
+                        <p class="detail-year">/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="6">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">VİDEO PRODÜKSİYON</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">KONSEPT GELİŞTİRME</p>
+                        <p class="detail-label">ÇEKİM & YÖNETMEN</p>
+                        <p class="detail-label">POST PRODÜKSİYON</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/1420701/pexels-photo-1420701.jpeg" alt="Video Prodüksiyon">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">REKLAM FİLMİ</p>
+                        <p class="detail-label">KURUMSAL VİDEO</p>
+                        <p class="detail-label">ANİMASYON</p>
+                        <p class="detail-year">/2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-item" data-index="7">
+                <div class="project-title-container">
+                    <div class="hover-indicator left"></div>
+                    <h2 class="project-title">3D MODELLEME</h2>
+                    <div class="hover-indicator right"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-details left">
+                        <p class="detail-label">ÜRÜN GÖRSELLEŞTİRME</p>
+                        <p class="detail-label">MEKAN TASARIMI</p>
+                        <p class="detail-label">KARAKTER TASARIMI</p>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-wrapper">
+                            <img src="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg" alt="3D Modelleme">
+                        </div>
+                    </div>
+                    <div class="project-details right">
+                        <p class="detail-label">FOTOGERÇEKÇİ RENDER</p>
+                        <p class="detail-label">ANIMASYON</p>
+                        <p class="detail-label">VR/AR DESTEK</p>
+                        <p class="detail-year">/2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CUSTOM CURSOR - KIRMIZI RENK =====
+        (function initCustomCursor() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            if (isTouchDevice) {
+                document.body.classList.add('touch-device');
+                return;
+            }
+
+            let cursor = document.querySelector('.cursor');
+            let cursorF = document.querySelector('.cursor-f');
+
+            if (!cursor) {
+                cursor = document.createElement('div');
+                cursor.className = 'cursor';
+                document.body.appendChild(cursor);
+            }
+
+            if (!cursorF) {
+                cursorF = document.createElement('div');
+                cursorF.className = 'cursor-f';
+                document.body.appendChild(cursorF);
+            }
+
+            function lerp(start, end, amount) {
+                return (1 - amount) * start + amount * end;
+            }
+
+            let cursorX = 0;
+            let cursorY = 0;
+            let pageX = 0;
+            let pageY = 0;
+            let size = 15;
+            let sizeF = 45;
+            let followSpeed = 0.16;
+
+            cursor.style.setProperty('--size', size + 'px');
+            cursorF.style.setProperty('--size', sizeF + 'px');
+
+            window.addEventListener('mousemove', function(e) {
+                pageX = e.clientX;
+                pageY = e.clientY;
+                cursor.style.left = e.clientX - size / 2 + 'px';
+                cursor.style.top = e.clientY - size / 2 + 'px';
+            });
+
+            function loop() {
+                cursorX = lerp(cursorX, pageX, followSpeed);
+                cursorY = lerp(cursorY, pageY, followSpeed);
+                cursorF.style.top = cursorY - sizeF / 2 + 'px';
+                cursorF.style.left = cursorX - sizeF / 2 + 'px';
+                requestAnimationFrame(loop);
+            }
+            loop();
+
+            window.addEventListener('mousedown', function() {
+                gsap.to(cursor, { scale: 2, duration: 0.3 });
+                gsap.to(cursorF, { scale: 0.8, duration: 0.3 });
+            });
+
+            window.addEventListener('mouseup', function() {
+                gsap.to(cursor, { scale: 1, duration: 0.3 });
+                gsap.to(cursorF, { scale: 1, duration: 0.3 });
+            });
+        })();
+
+        // ===== PROJECTS ANIMATION =====
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(CustomEase);
+            
+            CustomEase.create("projectExpand", "0.25, 0.1, 0.25, 1.05");
+            CustomEase.create("projectCollapse", "0.36, 0.07, 0.19, 0.97");
+            CustomEase.create("textReveal", "0.25, 1, 0.5, 1");
+
+            const projectItems = document.querySelectorAll(".project-item");
+            let activeProject = null;
+            let isClickAllowed = true;
+
+            projectItems.forEach((project) => {
+                const detailElements = project.querySelectorAll(".project-details p");
+                detailElements.forEach((element) => {
+                    const originalText = element.innerText;
+                    element.innerHTML = "";
+                    const lineWrapper = document.createElement("div");
+                    lineWrapper.className = "line-wrapper";
+                    const lineElement = document.createElement("div");
+                    lineElement.className = "line";
+                    lineElement.innerText = originalText;
+                    lineWrapper.appendChild(lineElement);
+                    element.appendChild(lineWrapper);
+                    gsap.set(lineElement, { y: "100%", opacity: 0 });
+                });
+
+                gsap.set(project, { opacity: 0, y: 15 });
+
+                const titleContainer = project.querySelector(".project-title-container");
+                const leftIndicator = project.querySelector(".hover-indicator.left");
+                const rightIndicator = project.querySelector(".hover-indicator.right");
+
+                gsap.set(titleContainer, {
+                    transformPerspective: 1000,
+                    transformStyle: "preserve-3d"
+                });
+
+                gsap.set([leftIndicator, rightIndicator], {
+                    width: "0px",
+                    height: "8px",
+                    opacity: 1,
+                    transformOrigin: "center center",
+                    zIndex: 200
+                });
+
+                titleContainer.addEventListener("mouseenter", () => {
+                    if (!activeProject) {
+                        gsap.killTweensOf([leftIndicator, rightIndicator]);
+                        
+                        gsap.timeline()
+                            .set(leftIndicator, { opacity: 1, x: -20, width: "0px", height: "8px" })
+                            .to(leftIndicator, { x: -10, width: "12px", duration: 0.15, ease: "power2.in" })
+                            .to(leftIndicator, { x: 0, width: "8px", duration: 0.15, ease: "none" });
+
+                        gsap.timeline({ delay: 0.05 })
+                            .set(rightIndicator, { opacity: 1, x: 20, width: "0px", height: "8px" })
+                            .to(rightIndicator, { x: 10, width: "12px", duration: 0.15, ease: "power2.in" })
+                            .to(rightIndicator, { x: 0, width: "8px", duration: 0.15, ease: "none" });
+                    }
+                });
+
+                titleContainer.addEventListener("mouseleave", () => {
+                    if (!activeProject) {
+                        gsap.killTweensOf([leftIndicator, rightIndicator]);
+                        
+                        gsap.timeline()
+                            .to(leftIndicator, { x: -10, width: "12px", duration: 0.15, ease: "none" })
+                            .to(leftIndicator, { x: -20, width: "0px", duration: 0.15, ease: "power2.out" });
+
+                        gsap.timeline()
+                            .to(rightIndicator, { x: 10, width: "12px", duration: 0.15, ease: "none" })
+                            .to(rightIndicator, { x: 20, width: "0px", duration: 0.15, ease: "power2.out" });
+                    }
+                });
+            });
+
+            gsap.to(projectItems, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                stagger: 0.06,
+                ease: "none",
+                onComplete: () => {
+                    gsap.set(projectItems, { clearProps: "opacity,y" });
+                }
+            });
+
+            gsap.set(".image-wrapper img", {
+                clipPath: "inset(100% 0 0 0)"
+            });
+
+            const applyStarWarsEffect = (activeIndex) => {
+                projectItems.forEach((item, index) => {
+                    const titleContainer = item.querySelector(".project-title-container");
+                    
+                    if (index === activeIndex) {
+                        gsap.to(titleContainer, {
+                            rotateX: 0, rotateY: 0, translateZ: 0, translateY: 0,
+                            scale: 1, duration: 0.6, ease: "power2.out", zIndex: 50
+                        });
+                        return;
+                    }
+
+                    const distance = Math.abs(index - activeIndex);
+                    const isAbove = index < activeIndex;
+                    let rotateX, translateZ, translateY;
+
+                    if (distance === 1) {
+                        rotateX = isAbove ? 12 : -12;
+                        translateZ = -80;
+                        translateY = isAbove ? -15 : 15;
+                    } else if (distance === 2) {
+                        rotateX = isAbove ? 20 : -20;
+                        translateZ = -160;
+                        translateY = isAbove ? -30 : 30;
+                    } else {
+                        rotateX = isAbove ? 30 : -30;
+                        translateZ = -240;
+                        translateY = isAbove ? -45 : 45;
+                    }
+
+                    gsap.to(titleContainer, {
+                        rotateX: rotateX, translateZ: translateZ, translateY: translateY,
+                        scale: 1 - distance * 0.05, duration: 0.6, ease: "power2.out",
+                        zIndex: 40 - distance * 5
+                    });
+                });
+            };
+
+            const resetTransforms = () => {
+                projectItems.forEach((item) => {
+                    const titleContainer = item.querySelector(".project-title-container");
+                    gsap.to(titleContainer, {
+                        rotateX: 0, rotateY: 0, translateZ: 0, translateY: 0,
+                        scale: 1, duration: 0.6, ease: "power2.out", zIndex: 1
+                    });
+
+                    const leftIndicator = item.querySelector(".hover-indicator.left");
+                    const rightIndicator = item.querySelector(".hover-indicator.right");
+                    gsap.set([leftIndicator, rightIndicator], {
+                        width: "0px",
+                        x: function(i) { return i === 0 ? -20 : 20; }
+                    });
+                });
+            };
+
+            const closeAllProjects = () => {
+                projectItems.forEach((item) => {
+                    item.classList.remove("active");
+                });
+                activeProject = null;
+                resetTransforms();
+            };
+
+            const toggleProject = (project) => {
+                if (!isClickAllowed) return;
+                
+                isClickAllowed = false;
+                setTimeout(() => { isClickAllowed = true; }, 500);
+
+                if (activeProject === project) {
+                    const image = project.querySelector(".image-wrapper img");
+                    const leftDetails = project.querySelectorAll(".project-details .line");
+                    const rightDetails = project.querySelectorAll(".project-details .line");
+                    const title = project.querySelector(".project-title");
+                    const content = project.querySelector(".project-content");
+
+                    gsap.to(title, { letterSpacing: "-0.02em", duration: 0.3, ease: "projectCollapse" });
+                    gsap.to(image, { clipPath: "inset(100% 0 0 0)", duration: 0.2, ease: "none" });
+                    gsap.to([...leftDetails, ...rightDetails], {
+                        y: "100%", opacity: 0, duration: 0.3, stagger: 0.03, ease: "projectCollapse"
+                    });
+                    gsap.to(content, {
+                        maxHeight: 0, opacity: 0, margin: 0, duration: 0.3, ease: "projectCollapse"
+                    });
+
+                    setTimeout(() => {
+                        project.classList.remove("active");
+                        activeProject = null;
+                        resetTransforms();
+                        gsap.to(".project-item", {
+                            marginBottom: "1.5rem", duration: 0.4, ease: "projectExpand", stagger: 0.02
+                        });
+                    }, 300);
+                } else {
+                    if (activeProject) {
+                        const prevImage = activeProject.querySelector(".image-wrapper img");
+                        const prevLeftDetails = activeProject.querySelectorAll(".project-details .line");
+                        const prevRightDetails = activeProject.querySelectorAll(".project-details .line");
+                        const prevTitle = activeProject.querySelector(".project-title");
+                        const prevContent = activeProject.querySelector(".project-content");
+
+                        gsap.to(prevTitle, { letterSpacing: "-0.02em", duration: 0.25, ease: "projectCollapse" });
+                        gsap.to(prevImage, { clipPath: "inset(100% 0 0 0)", duration: 0.2, ease: "none" });
+                        gsap.to([...prevLeftDetails, ...prevRightDetails], {
+                            y: "100%", opacity: 0, duration: 0.25, stagger: 0.02, ease: "projectCollapse"
+                        });
+                        gsap.to(prevContent, {
+                            maxHeight: 0, opacity: 0, margin: 0, duration: 0.25, ease: "projectCollapse"
+                        });
+
+                        setTimeout(() => {
+                            closeAllProjects();
+                            openProject();
+                        }, 250);
+                    } else {
+                        openProject();
+                    }
+
+                    function openProject() {
+                        document.querySelectorAll(".hover-indicator").forEach((indicator) => {
+                            gsap.killTweensOf(indicator);
+                            gsap.set(indicator, {
+                                width: "0px",
+                                x: indicator.classList.contains("left") ? -20 : 20
+                            });
+                        });
+
+                        project.classList.add("active");
+                        activeProject = project;
+
+                        const activeIndex = Array.from(projectItems).indexOf(project);
+                        applyStarWarsEffect(activeIndex);
+
+                        const image = project.querySelector(".image-wrapper img");
+                        const leftDetails = project.querySelectorAll(".project-details.left .line");
+                        const rightDetails = project.querySelectorAll(".project-details.right .line");
+                        const title = project.querySelector(".project-title");
+                        const content = project.querySelector(".project-content");
+
+                        gsap.set(image, { clipPath: "inset(100% 0 0 0)" });
+                        gsap.set([...leftDetails, ...rightDetails], { y: "100%", opacity: 0 });
+                        gsap.set(content, { display: "flex", maxHeight: 0, opacity: 0, margin: 0 });
+
+                        const tl = gsap.timeline({ defaults: { ease: "textReveal" } });
+                        
+                        tl.to(title, { letterSpacing: "0.01em", duration: 0.4, ease: "projectExpand" }, 0);
+                        tl.to(content, { maxHeight: 500, opacity: 1, margin: "2rem 0", duration: 0.4, ease: "projectExpand" }, 0);
+                        tl.to(image, { clipPath: "inset(0% 0 0 0)", duration: 0.3, ease: "none" }, 0);
+                        tl.to(leftDetails, { y: "0%", opacity: 1, duration: 0.45, stagger: 0.05, ease: "textReveal" }, "-=0.2");
+                        tl.to(rightDetails, { y: "0%", opacity: 1, duration: 0.45, stagger: 0.05, ease: "textReveal" }, "-=0.4");
+
+                        const projectIndex = Array.from(projectItems).indexOf(project);
+                        if (projectIndex > 0) {
+                            gsap.to(Array.from(projectItems).slice(0, projectIndex), {
+                                marginBottom: "0.5rem", duration: 0.4, ease: "projectCollapse", stagger: 0.02
+                            });
+                        }
+                        if (projectIndex < projectItems.length - 1) {
+                            gsap.to(Array.from(projectItems).slice(projectIndex + 1), {
+                                marginBottom: "0.5rem", duration: 0.4, ease: "projectCollapse", stagger: 0.02
+                            });
+                        }
+
+                        setTimeout(() => {
+                            const projectsList = document.querySelector(".projects-list");
+                            const rect = project.getBoundingClientRect();
+                            const containerRect = projectsList.getBoundingClientRect();
+                            if (rect.top < containerRect.top || rect.bottom > containerRect.bottom) {
+                                const scrollOffset = rect.top - containerRect.top - containerRect.height / 2 + rect.height / 2;
+                                projectsList.scrollBy({ top: scrollOffset, behavior: "smooth" });
+                            }
+                        }, 100);
+                    }
+                }
+            };
+
+            projectItems.forEach((item) => {
+                item.addEventListener("click", () => {
+                    toggleProject(item);
+                });
+            });
+
+            window.addEventListener("resize", () => {
+                if (activeProject) {
+                    const projectsList = document.querySelector(".projects-list");
+                    const rect = activeProject.getBoundingClientRect();
+                    const containerRect = projectsList.getBoundingClientRect();
+                    if (rect.top < containerRect.top || rect.bottom > containerRect.bottom) {
+                        const scrollOffset = rect.top - containerRect.top - containerRect.height / 2 + rect.height / 2;
+                        projectsList.scrollBy({ top: scrollOffset, behavior: "smooth" });
+                    }
+                }
+            });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                    document.querySelectorAll(".hover-indicator").forEach((indicator) => {
+                        gsap.killTweensOf(indicator);
+                        gsap.set(indicator, {
+                            width: "0px",
+                            x: indicator.classList.contains("left") ? -20 : 20
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
